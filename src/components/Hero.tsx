@@ -30,21 +30,36 @@ export default function Hero() {
         alignItems: "center",
       }}
     >
-      {/* Motif — enormous circle, cropped at right — the hero mass */}
+      {/* Hero logo — replaces decorative circle */}
       <div
-        className="motif"
         aria-hidden
         style={{
-          width: "min(130vh, 130vw)",
-          height: "min(130vh, 130vw)",
-          right: "calc(min(130vh, 130vw) * -0.28)",
+          position: "absolute",
+          width: "min(90vh, 90vw)",
+          height: "min(90vh, 90vw)",
+          right: "calc(min(90vh, 90vw) * -0.22)",
           top: "50%",
           transform: "translateY(-50%)",
-          opacity: 0.95,
+          borderRadius: "50%",
+          overflow: "hidden",
+          opacity: 0.92,
+          zIndex: 0,
         }}
-      />
+      >
+        <img
+          src="/himti-una/logo-himti.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            mixBlendMode: "luminosity",
+            filter: "brightness(0.9) contrast(1.1)",
+          }}
+        />
+      </div>
 
-      {/* Ambient glow behind motif — accent dim circle, no gradient */}
+      {/* Ambient glow behind logo */}
       <div aria-hidden style={{
         position: "absolute",
         width: "50vh", height: "50vh",
@@ -52,7 +67,7 @@ export default function Hero() {
         borderRadius: "50%",
         background: "var(--accent-dim)",
         pointerEvents: "none",
-        filter: "blur(60px)",
+        filter: "blur(80px)",
       }} />
 
       {/* Photo — shutter entrance, blended */}

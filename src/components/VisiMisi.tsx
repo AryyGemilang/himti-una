@@ -49,8 +49,8 @@ export default function VisiMisi() {
         {/* PERMIKOMNAS block */}
         <div className="reveal bezel" style={{ marginTop: "5rem", ["--d" as string]: "300ms" }}>
           <div className="bezel-inner" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "2rem", alignItems: "center", padding: "2rem 2.5rem" }}>
-            <div style={{ width: 52, height: 52, borderRadius: "50%", background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <span style={{ color: "var(--accent-ink)", fontWeight: 900, fontSize: "1.25rem", letterSpacing: "-0.02em" }}>P</span>
+            <div style={{ width: 64, height: 64, borderRadius: 8, overflow: "hidden", flexShrink: 0, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img src="/himti-una/PERMIKOMNAS.png" alt="Logo PERMIKOMNAS" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
             <div>
               <h3 style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "0.5rem" }}>PERMIKOMNAS</h3>

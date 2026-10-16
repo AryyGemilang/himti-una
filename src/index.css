@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────
-   HIMTI UNA · Direction: One-Motif · Soot & Lime
+   HIMTI UNA · Direction: One-Motif · Blue & Purple
    Vibe: Ethereal Dark · Font: Jost
    ────────────────────────────────────────────── */
 
 :root {
-  --bg:         #080808;
-  --surface:    #111111;
-  --surface-2:  #181818;
-  --ink:        #f0f0f0;
-  --muted:      #6b6b6b;
-  --muted-2:    #3a3a3a;
-  --accent:     #d8f96a;
-  --accent-dim: rgba(216,249,106,.12);
-  --accent-ink: #0a0a0a;
+  --bg:         #07111F;
+  --surface:    #0D1B2A;
+  --surface-2:  #112234;
+  --ink:        #F1F5F9;
+  --muted:      #94A3B8;
+  --muted-2:    #2A3F55;
+  --accent:     #3B82F6;
+  --accent-dim: rgba(59,130,246,.12);
+  --accent-ink: #ffffff;
+  --accent-2:   #8B5CF6;
 
   --font: "Jost", ui-sans-serif, system-ui, sans-serif;
 
@@ -155,7 +156,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
-  background: rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.12);
   transition: transform var(--t-fast) var(--spring);
 }
 .btn:hover .icon-bubble { transform: translateX(2px) translateY(-1px) scale(1.1); }
@@ -377,7 +378,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 .coupon input,
 .coupon textarea {
   width: 100%;
-  background: rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.1);
   border: none;
   border-radius: 6px;
   padding: 0.875rem 1rem;
@@ -389,9 +390,9 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   resize: vertical;
 }
 .coupon input::placeholder,
-.coupon textarea::placeholder { color: rgba(10,10,10,0.4); }
+.coupon textarea::placeholder { color: rgba(255,255,255,0.4); }
 .coupon input:focus,
-.coupon textarea:focus { background: rgba(0,0,0,0.18); }
+.coupon textarea:focus { background: rgba(255,255,255,0.18); }
 .coupon-submit {
   width: 100%;
   background: var(--accent-ink);

@@ -1,12 +1,12 @@
 import { useReveal } from "../hooks/useReveal"
 
 const KETUA = [
-  { periode: "1 Okt 2013", label: "Berdiri",      nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA" },
-  { periode: "2020–2021",  label: "Periode III",   nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim" },
-  { periode: "2021–2022",  label: "Periode IV",    nama: "Ibnu Haykal Lubis",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021" },
-  { periode: "2022–2023",  label: "Periode V",     nama: "Mhd Zikri Ansyari",    ket: "" },
-  { periode: "2023–2024",  label: "Periode VI",    nama: "Mhd Fikri Gunawan",    ket: "PJ Kahim, Mhd Risky Al Faridz" },
-  { periode: "2024–2025",  label: "Periode VII",   nama: "Bintang Fajar R Putra", ket: "Ketua aktif" },
+  { periode: "1 Okt 2013", label: "Berdiri",      nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA",            foto: "/himti-una/Rahmat irawan ST..jpg" },
+  { periode: "2020–2021",  label: "Periode III",   nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim",                           foto: "/himti-una/Reza Fahlevi S.Kom.jpg" },
+  { periode: "2021–2022",  label: "Periode IV",    nama: "Ibnu Haykal Lubis",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/Ibnu Haykal Lubis S.Kom.jpg" },
+  { periode: "2022–2023",  label: "Periode V",     nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/Mhd Zikri Ansyari.jpg" },
+  { periode: "2023–2024",  label: "Periode VI",    nama: "Mhd Fikri Gunawan",    ket: "PJ Kahim, Mhd Risky Al Faridz",     foto: "/himti-una/Mhd Fikri Gunawan.jpg" },
+  { periode: "2024–2025",  label: "Periode VII",   nama: "Bintang Fajar R Putra", ket: "Ketua aktif",                       foto: "/himti-una/Bintang Fajar R Putra.jpg" },
 ]
 
 export default function Sejarah() {
@@ -45,10 +45,21 @@ export default function Sejarah() {
                     background: i === KETUA.length - 1 ? "var(--accent)" : "var(--muted-2)",
                   }} />
                 </div>
-                <div style={{ paddingTop: 2 }}>
-                  <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem", fontWeight: 700 }}>{k.label}</p>
-                  <p style={{ fontWeight: 800, fontSize: "var(--step-lg)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>{k.nama}</p>
-                  {k.ket && <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", marginTop: "0.25rem" }}>{k.ket}</p>}
+                <div style={{ paddingTop: 2, display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                  <img
+                    src={k.foto}
+                    alt={k.nama}
+                    style={{
+                      width: 56, height: 56, borderRadius: 8,
+                      objectFit: "cover", flexShrink: 0,
+                      background: "var(--surface-2)",
+                    }}
+                  />
+                  <div>
+                    <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem", fontWeight: 700 }}>{k.label}</p>
+                    <p style={{ fontWeight: 800, fontSize: "var(--step-lg)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>{k.nama}</p>
+                    {k.ket && <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", marginTop: "0.25rem" }}>{k.ket}</p>}
+                  </div>
                 </div>
               </li>
             ))}
