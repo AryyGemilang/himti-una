@@ -1,0 +1,41 @@
+/*
+  # Prevent MIME sniffing
+  X-Content-Type-Options: nosniff
+
+  # Block clickjacking
+  X-Frame-Options: DENY
+
+  # Referrer — only send origin to cross-origin
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Disable browser features not used by this site
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+
+  # HSTS — 1 year, no preload (workers.dev subdomain, not owned root domain)
+  Strict-Transport-Security: max-age=31536000
+
+  # Prevent cross-origin window attacks
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+  # Restrict cross-origin resource reads
+  Cross-Origin-Resource-Policy: cross-origin
+
+  # Block cross-origin embedding
+  Cross-Origin-Embedder-Policy: unsafe-none
+
+  # Content Security Policy
+  # - script-src: only self (no inline scripts, no eval)
+  # - style-src: self + Google Fonts stylesheet + unsafe-inline (Vite injects inline styles)
+  # - font-src: self + Google Fonts CDN
+  # - img-src: self + data URIs + picsum (placeholder photos)
+  # - connect-src: self (mailto opens email client, not a fetch)
+  # - frame-ancestors: none (no embedding this site in iframes)
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://picsum.photos; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'none'; upgrade-insecure-requests
+
+  # Cache: HTML — no cache (always fresh)
+/index.html
+  Cache-Control: no-store
+
+  # Cache: assets with content hash — 1 year immutable
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
