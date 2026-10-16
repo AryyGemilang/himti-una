@@ -48,7 +48,7 @@ export default function Tentang() {
                   <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0 }}>{body}</p>
                 </div>
               ))}
-              <a href="#kegiatan" className="btn reveal" style={{ alignSelf: "flex-start", ["--d" as string]: "360ms" }}>
+              <a href="/#kegiatan" className="btn reveal" style={{ alignSelf: "flex-start", ["--d" as string]: "360ms" }}>
                 Lihat Kegiatan
               </a>
             </div>

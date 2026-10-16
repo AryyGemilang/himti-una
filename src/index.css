@@ -499,19 +499,45 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   }
 }
 
-/* ── Hero background logo ── */
-.hero-bg-logo {
-  width: min(85vh, 85vw);
-  height: min(85vh, 85vw);
-  right: calc(min(85vh, 85vw) * -0.18);
+/* ── Hero logos ── */
+.hero-logos {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.hero-logo-himti { height: 88px; width: auto; object-fit: contain; display: block; }
+.hero-logo-una   { height: 72px; width: auto; object-fit: contain; opacity: 0.9; display: block; }
+@media (max-width: 48em) {
+  .hero-logos { gap: 1rem; margin-bottom: 2rem; }
+  .hero-logo-himti { height: 56px; }
+  .hero-logo-una   { height: 46px; }
+}
+@media (max-width: 23.5em) {
+  .hero-logo-himti { height: 48px; }
+  .hero-logo-una   { height: 40px; }
+}
+
+/* ── Global background logo (fixed layer, semua section) ── */
+.bg-logo-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-logo-img {
+  position: absolute;
+  top: 50%;
+  left: 100%; /* mulai di kanan viewport */
+  width: min(70vh, 70vw);
+  height: min(70vh, 70vw);
+  transform: translate(0%, -50%);
+  will-change: transform;
 }
 @media (max-width: 48em) {
-  .hero-bg-logo {
-    width: 75vw;
-    height: 75vw;
-    right: -20vw;
-    opacity: 0.55; /* gambar sudah punya opacity 0.22, ini pada container */
-  }
+  .bg-logo-img { width: 78vw; height: 78vw; }
 }
 
 /* ── Reduced motion ── */

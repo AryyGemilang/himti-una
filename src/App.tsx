@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import Navbar from "./components/Navbar"
 import SlideIndicator from "./components/SlideIndicator"
+import BgLogo from "./components/BgLogo"
 import Hero from "./components/Hero"
 import Tentang from "./components/Tentang"
 import Sejarah from "./components/Sejarah"
@@ -9,14 +10,58 @@ import Pengurus from "./components/Pengurus"
 import Kegiatan from "./components/Kegiatan"
 import Kontak from "./components/Kontak"
 import Footer from "./components/Footer"
+import BidangPage from "./components/BidangPage"
 import { useActiveSection } from "./hooks/useReveal"
+import { useRoute, navigate, currentPath } from "./lib/router"
+import { getBidang } from "./data/bidang"
 
 const SECTIONS = ["beranda","tentang","sejarah","visimisi","pengurus","kegiatan","kontak"]
 
-export default function App() {
+/** Intersep klik anchor internal agar pakai client-side routing */
+function useLinkInterceptor() {
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+      const a = (e.target as HTMLElement).closest("a")
+      if (!a) return
+      const href = a.getAttribute("href")
+      if (!href || !href.startsWith("/") || href.startsWith("//")) return
+
+      e.preventDefault()
+
+      // Anchor ke section di halaman utama (mis. "/#pengurus")
+      const [path, hash] = href.split("#")
+
+      if (path === "/" || path === "") {
+        const base = import.meta.env.BASE_URL
+        const isHome = currentPath() === "/"
+        if (isHome) {
+          if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" })
+          else window.scrollTo({ top: 0, behavior: "smooth" })
+        } else {
+          navigate(base, { replace: false })
+          // Tunggu home render lalu scroll ke section
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: "instant" as ScrollBehavior })
+            })
+          )
+        }
+        return
+      }
+
+      // Halaman detail bidang, mis. "/bidang/humas/"
+      navigate(path + (hash ? `#${hash}` : ""))
+      window.scrollTo({ top: 0 })
+    }
+    document.addEventListener("click", onClick)
+    return () => document.removeEventListener("click", onClick)
+  }, [])
+}
+
+function HomePage() {
   useActiveSection(SECTIONS)
 
-  // Keyboard section navigation
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement).tagName
@@ -39,22 +84,41 @@ export default function App() {
   }, [])
 
   return (
+    <main>
+      <Hero />
+      <Tentang />
+      <Sejarah />
+      <VisiMisi />
+      <Pengurus />
+      <Kegiatan />
+      <Kontak />
+    </main>
+  )
+}
+
+export default function App() {
+  const path = useRoute()
+  useLinkInterceptor()
+
+  // Route: /bidang/:slug/
+  const match = path.match(/^\/bidang\/([^/]+)\/?$/)
+  const bidang = match ? getBidang(match[1]) : undefined
+
+  // 404 → beranda
+  useEffect(() => {
+    if (match && !bidang) navigate("/", { replace: true })
+  }, [path])
+
+  return (
     <>
-      {/* Fixed grain overlay — pointer-events-none, not on scroll container */}
       <div className="grain" aria-hidden />
+      <BgLogo />
 
       <Navbar />
-      <SlideIndicator />
+      {!match && <SlideIndicator />}
 
-      <main>
-        <Hero />
-        <Tentang />
-        <Sejarah />
-        <VisiMisi />
-        <Pengurus />
-        <Kegiatan />
-        <Kontak />
-      </main>
+      {bidang ? <BidangPage bidang={bidang} /> : <HomePage />}
+
       <Footer />
     </>
   )

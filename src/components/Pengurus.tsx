@@ -1,7 +1,6 @@
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
 import { useReveal } from "../hooks/useReveal"
 import { pengurus, PERIODE, type Orang } from "../data/pengurus"
+import { bidangList } from "../data/bidang"
 import Foto from "./Foto"
 
 function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number; size?: "lg" | "md" | "sm" }) {
@@ -29,8 +28,7 @@ function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number
 
 export default function Pengurus() {
   const ref = useReveal()
-  const [buka, setBuka] = useState<number | null>(null)
-  const { ketua, sekretaris, wakilSekretaris, bendahara, wakilBendahara, bidang } = pengurus
+  const { ketua, sekretaris, wakilSekretaris, bendahara, wakilBendahara } = pengurus
 
   return (
     <section id="pengurus" ref={ref} className="section" style={{ background: "var(--surface)" }}>
@@ -68,38 +66,16 @@ export default function Pengurus() {
           Kepala Bidang
         </h3>
         <div className="pengurus-bidang-grid" id="bidang">
-          {bidang.map((b, i) => (
-            <div key={b.nama}>
-              <Kartu orang={b.kabid} delay={i * 80} size="md" />
-              <button
-                onClick={() => setBuka(buka === i ? null : i)}
-                aria-expanded={buka === i}
-                className="bidang-btn"
-              >
-                {b.nama.replace("Bidang ", "")}
-                <ChevronDown size={13} style={{ transform: buka === i ? "rotate(180deg)" : "none", transition: "transform 200ms ease", flexShrink: 0 }} aria-hidden />
-              </button>
+          {bidangList.map((b, i) => (
+            <div key={b.slug}>
+              <Kartu orang={b.head} delay={i * 80} size="md" />
+              <a href={`/bidang/${b.slug}/`} className="bidang-btn">
+                {b.namaPendek}
+                <span aria-hidden style={{ flexShrink: 0 }}>→</span>
+              </a>
             </div>
           ))}
         </div>
-
-        {/* Anggota panel */}
-        {buka !== null && bidang[buka].anggota.length > 0 && (
-          <div style={{ marginTop: "1.5rem", background: "var(--surface-2)", borderRadius: 8, padding: "1.75rem" }}>
-            <p className="label" style={{ marginBottom: "1rem" }}>Anggota {bidang[buka].nama}</p>
-            <div className="anggota-grid">
-              {bidang[buka].anggota.map((a, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.75rem", background: "var(--surface)", borderRadius: 6 }}>
-                  <Foto src={a.foto} alt={`${a.jabatan}, ${a.nama}`} style={{ width: 52, height: 52, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
-                  <div style={{ minWidth: 0 }}>
-                    <p style={{ fontWeight: 700, fontSize: "var(--step-sm)", margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{a.nama}</p>
-                    <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", margin: 0 }}>{a.jabatan}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
       </div>
 

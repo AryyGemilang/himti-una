@@ -28,8 +28,8 @@ export function useActiveSection(ids: string[]) {
         entries.forEach(e => {
           if (e.isIntersecting) {
             document.querySelectorAll(".nav-links a, .nav-mobile-menu a").forEach(a => {
-              const href = (a as HTMLAnchorElement).getAttribute("href")
-              a.classList.toggle("active", href === `#${e.target.id}`)
+              const href = (a as HTMLAnchorElement).getAttribute("href") || ""
+              a.classList.toggle("active", href.endsWith(`#${e.target.id}`))
             })
             document.querySelectorAll(".slide-dot").forEach((d, i) => {
               d.classList.toggle("active", ids[i] === e.target.id)

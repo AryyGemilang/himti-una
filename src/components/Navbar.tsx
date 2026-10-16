@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
 const MENU = [
-  ["Beranda", "#beranda"], ["Tentang", "#tentang"], ["Sejarah", "#sejarah"],
-  ["Visi Misi", "#visimisi"], ["Pengurus", "#pengurus"],
-  ["Kegiatan", "#kegiatan"], ["Kontak", "#kontak"],
+  ["Beranda", "/#beranda"], ["Tentang", "/#tentang"], ["Sejarah", "/#sejarah"],
+  ["Visi Misi", "/#visimisi"], ["Pengurus", "/#pengurus"],
+  ["Kegiatan", "/#kegiatan"], ["Kontak", "/#kontak"],
 ] as const
 
 export default function Navbar() {
@@ -26,7 +26,7 @@ export default function Navbar() {
       <header className="nav" aria-label="Navigasi utama">
         <div className="nav-pill">
           {/* Logo */}
-          <a href="#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
+          <a href="/#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
             <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" style={{ height: 32, width: "auto", objectFit: "contain" }} />
           </a>
 
@@ -38,7 +38,7 @@ export default function Navbar() {
           </ul>
 
           {/* Desktop CTA */}
-          <a href="#kontak" className="btn nav-action hide-mobile">Hubungi</a>
+          <a href="/#kontak" className="btn nav-action hide-mobile">Hubungi</a>
 
           {/* Hamburger — morphs to X */}
           <button
@@ -90,7 +90,7 @@ export default function Navbar() {
           </a>
         ))}
         <a
-          href="#kontak"
+          href="/#kontak"
           className="btn"
           onClick={() => setOpen(false)}
           style={{

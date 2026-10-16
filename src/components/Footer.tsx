@@ -81,7 +81,7 @@ export default function Footer() {
           <p style={{ fontSize: "var(--step-xs)", color: "var(--muted-2)", margin: 0 }}>
             © {new Date().getFullYear()} HIMTI Universitas Asahan
           </p>
-          <a href="#beranda" className="btn" style={{ fontSize: "var(--step-xs)", minHeight: "2.25rem", padding: "0 1.1rem" }}>
+          <a href="/#beranda" className="btn" style={{ fontSize: "var(--step-xs)", minHeight: "2.25rem", padding: "0 1.1rem" }}>
             Kembali ke atas
           </a>
         </div>
