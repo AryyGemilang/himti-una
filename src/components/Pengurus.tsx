@@ -118,13 +118,13 @@ export default function Pengurus() {
           align-items: center;
           justify-content: center;
           gap: 0.4rem;
-          border: 1.5px solid var(--muted-2);
+          border: 1.5px solid var(--control-border);
           transition: border-color 160ms ease, color 160ms ease;
           font-family: var(--font);
           text-align: center;
           word-break: break-word;
         }
-        .bidang-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .bidang-btn:hover { border-color: var(--accent-strong); color: var(--accent-strong); }
         .anggota-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);

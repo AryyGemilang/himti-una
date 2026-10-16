@@ -28,8 +28,8 @@ export default function Footer() {
               height: `${UNA_H[i]}%`,
               width: "clamp(36px, 7vw, 88px)",
               fontSize: "clamp(1rem, 3.5vw, 3.5rem)",
-              background: "rgba(59,130,246,.15)",
-              color: "var(--accent)",
+              background: "var(--accent-dim)",
+              color: "var(--accent-strong)",
             }}>{l}</div>
           ))}
         </div>

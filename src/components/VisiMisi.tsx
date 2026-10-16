@@ -49,7 +49,7 @@ export default function VisiMisi() {
         {/* PERMIKOMNAS block */}
         <div className="reveal bezel" style={{ marginTop: "5rem", ["--d" as string]: "300ms" }}>
           <div className="bezel-inner" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "2rem", alignItems: "center", padding: "2rem 2.5rem" }}>
-            <div style={{ width: 64, height: 64, borderRadius: 8, overflow: "hidden", flexShrink: 0, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 64, height: 64, borderRadius: 8, overflow: "hidden", flexShrink: 0, background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <img src="/himti-una/PERMIKOMNAS.png" alt="Logo PERMIKOMNAS" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
             <div>

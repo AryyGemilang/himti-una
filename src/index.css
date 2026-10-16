@@ -1,21 +1,36 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────
-   HIMTI UNA · Direction: One-Motif · Blue & Purple
-   Vibe: Ethereal Dark · Font: Jost
+   HIMTI UNA · Cyan Light Theme · Font: Jost
    ────────────────────────────────────────────── */
 
 :root {
-  --bg:         #0191c7;
-  --surface:    #0D1B2A;
-  --surface-2:  #112234;
-  --ink:        #F1F5F9;
-  --muted:      #94A3B8;
-  --muted-2:    #2A3F55;
-  --accent:     #3B82F6;
-  --accent-dim: rgba(59,130,246,.12);
-  --accent-ink: #ffffff;
-  --accent-2:   #8B5CF6;
+  color-scheme: light;
+  --bg:             #0191C7;
+  --page-bg:        #F7FAFC;
+  --surface:        #FFFFFF;
+  --surface-2:      #EDF6F9;
+  --ink:            #102A38;
+  --muted:          #49616D;
+  --muted-2:        #526B76;
+  --accent:         #0191C7;
+  --accent-strong:  #00698F;
+  --accent-hover:   #1BA4D1;
+  --accent-dim:     rgba(1,145,199,.12);
+  --accent-ink:     #061B24;
+  --accent-2:       #526E7A;
+  --accent-ink-soft: rgba(6,27,36,.32);
+  --accent-chip:    rgba(255,255,255,.64);
+  --border:         #D8E5EA;
+  --control-border: #718A96;
+  --shadow:         rgba(16,42,56,.10);
+  --nav-surface:    #FFFFFF;
+  --overlay-surface:rgba(247,250,252,.98);
+  --success:        #176B43;
+  --warning:        #805400;
+  --error:          #B42318;
+  --disabled-bg:    #E9EFF2;
+  --disabled-ink:   #52616A;
 
   --font: "Jost", ui-sans-serif, system-ui, sans-serif;
 
@@ -51,7 +66,7 @@ html {
 }
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--page-bg);
   color: var(--ink);
   font-family: var(--font);
   font-size: var(--step-md);
@@ -73,11 +88,17 @@ p + p { margin-top: 0.9em; }
 
 /* ── Brand tokens ── */
 ::selection { background: var(--accent); color: var(--accent-ink); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; border-radius: 2px; }
+button:disabled, input:disabled, textarea:disabled, select:disabled {
+  color: var(--disabled-ink);
+  background-color: var(--disabled-bg);
+  cursor: not-allowed;
+  opacity: .72;
+}
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-track { background: var(--page-bg); }
 ::-webkit-scrollbar-thumb { background: var(--muted-2); border-radius: 2px; }
 
 /* ── Typography ── */
@@ -102,7 +123,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 .muted { color: var(--muted); }
 
@@ -121,16 +142,14 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 
 /* ── Double-bezel card ── */
 .bezel {
-  padding: 2px;
-  background: rgba(255,255,255,0.04);
+  padding: 1px;
+  background: var(--border);
   border-radius: calc(var(--r-card) + 2px);
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.06); /* taste-skill-ignore — bevel highlight */
 }
 .bezel-inner {
   background: var(--surface);
   border-radius: var(--r-card);
   overflow: hidden;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.05); /* taste-skill-ignore — bevel inner highlight */
 }
 
 /* ── Buttons ── */
@@ -152,7 +171,8 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   will-change: transform;
   white-space: nowrap;
 }
-.btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn:hover { opacity: 1; transform: translateY(-1px); }
+.btn:not(.btn-ghost):hover { background: var(--accent-hover); }
 .btn:active { transform: scale(0.97) translateY(0); }
 
 /* Button trailing icon bubble */
@@ -163,7 +183,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
-  background: rgba(255,255,255,0.12);
+  background: var(--accent-chip);
   transition: transform var(--t-fast) var(--spring);
 }
 .btn:hover .icon-bubble { transform: translateX(2px) translateY(-1px) scale(1.1); }
@@ -171,9 +191,9 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 .btn-ghost {
   background: transparent;
   color: var(--ink);
-  border: 1.5px solid rgba(255,255,255,0.15);
+  border: 1.5px solid var(--control-border);
 }
-.btn-ghost:hover { border-color: rgba(255,255,255,0.4); opacity: 1; }
+.btn-ghost:hover { border-color: var(--accent-strong); opacity: 1; }
 
 /* ── Nav — floating island ── */
 .nav {
@@ -192,12 +212,11 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   justify-content: space-between;
   gap: 2rem;
   padding: 0.625rem 1.25rem 0.625rem 1rem;
-  background: rgba(14,14,14,0.72);
+  background: var(--nav-surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 9999px;
-  border: 1px solid rgba(255,255,255,0.09); /* taste-skill-ignore — nav pill frame */
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.06); /* taste-skill-ignore — floating sticky bar */
+  box-shadow: 0 8px 28px var(--shadow); /* taste-skill-ignore — fixed navigation */
   transition: background var(--t-med) ease, box-shadow var(--t-med) ease;
   max-width: calc(100vw - 2.5rem);
 }
@@ -256,7 +275,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   transition: color var(--t-fast) ease;
 }
 .nav-links a:hover { color: var(--ink); }
-.nav-links a.active { color: var(--accent); }
+.nav-links a.active { color: var(--accent-strong); }
 .nav-action { font-size: var(--step-xs); min-height: 2.25rem; padding: 0 1.1rem; flex-shrink: 0; }
 .nav-hamburger { display: none; color: var(--ink); padding: 0.25rem; }
 
@@ -265,7 +284,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   position: fixed;
   inset: 0;
   z-index: 99;
-  background: rgba(6,6,6,0.95);
+  background: var(--overlay-surface);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   display: flex;
@@ -313,7 +332,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.2);
+  background: var(--control-border);
   transition: background var(--t-fast) ease, transform var(--t-fast) var(--spring);
   cursor: pointer;
   text-decoration: none;
@@ -382,8 +401,8 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   position: absolute;
   left: 88px;
   top: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--muted-2) 15%, var(--muted-2) 85%, transparent); /* taste-skill-ignore — timeline fade */
+  width: 2px;
+  background: var(--border);
 }
 
 /* ── Gallery crossfade ── */
@@ -407,25 +426,34 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 .coupon input,
 .coupon textarea {
   width: 100%;
-  background: rgba(255,255,255,0.1);
-  border: none;
+  background: var(--surface);
+  border: 1px solid var(--control-border);
   border-radius: 6px;
   padding: 0.875rem 1rem;
   font-size: var(--step-md);
   font-family: var(--font);
-  color: var(--accent-ink);
+  color: var(--ink);
   outline: none;
   transition: background var(--t-fast) ease;
   resize: vertical;
 }
 .coupon input::placeholder,
-.coupon textarea::placeholder { color: rgba(255,255,255,0.4); }
+.coupon textarea::placeholder { color: var(--muted); opacity: 1; }
 .coupon input:focus,
-.coupon textarea:focus { background: rgba(255,255,255,0.18); }
+.coupon textarea:focus {
+  background: var(--surface);
+  border-color: var(--accent-strong);
+}
+.coupon input:focus-visible,
+.coupon textarea:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+.coupon-label p { color: var(--accent-ink); opacity: 1 !important; }
 .coupon-submit {
   width: 100%;
-  background: var(--accent-ink);
-  color: var(--accent);
+  background: var(--surface);
+  color: var(--accent-strong);
   font-family: var(--font);
   font-weight: 800;
   font-size: var(--step-xs);
@@ -437,7 +465,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   cursor: pointer;
   transition: opacity var(--t-fast) ease, transform var(--t-fast) var(--spring);
 }
-.coupon-submit:hover { opacity: 0.88; }
+.coupon-submit:hover { background: var(--surface-2); }
 .coupon-submit:active { transform: scale(0.98); }
 
 /* ── Footer mark band ── */

@@ -183,7 +183,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           margin-bottom: 2rem;
           transition: color 160ms ease;
         }
-        .bidang-back:hover { color: var(--accent); }
+        .bidang-back:hover { color: var(--accent-strong); }
         .bidang-hero-top {
           display: flex;
           align-items: center;
@@ -303,7 +303,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
         .bidang-empty p + p { margin-top: 0.4rem; }
 
         .bidang-nav-section {
-          border-top: 1px solid rgba(255,255,255,0.06); /* taste-skill-ignore — section divider */
+          background: var(--surface-2);
           padding-block: 3rem;
         }
         .bidang-nav {
@@ -334,7 +334,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           letter-spacing: -0.02em;
           color: var(--ink);
         }
-        .bidang-nav-link:hover .bidang-nav-nama { color: var(--accent); }
+        .bidang-nav-link:hover .bidang-nav-nama { color: var(--accent-strong); }
 
         @media (max-width: 48em) {
           .bidang-hero-logo { height: 52px; }

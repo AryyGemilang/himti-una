@@ -56,7 +56,7 @@ export default function Kontak() {
 
               {/* Label side */}
               <div className="coupon-label">
-                <div aria-hidden style={{ position: "absolute", right: 0, top: "10%", bottom: "10%", width: 0, borderRight: "2px dashed rgba(255,255,255,0.15)" }} />
+                <div aria-hidden style={{ position: "absolute", right: 0, top: "10%", bottom: "10%", width: 0, borderRight: "2px dashed var(--accent-ink-soft)" }} />
                 <div>
                   <h3 style={{ fontWeight: 900, fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)", lineHeight: 1.0, textTransform: "uppercase", letterSpacing: "-0.035em", margin: 0 }}>
                     Kirim<br />Pesan
