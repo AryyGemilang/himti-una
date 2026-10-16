@@ -15,7 +15,7 @@ export default function Tentang() {
 
             <div>
               <h2 className="head reveal">Apa itu<br />HIMTI?</h2>
-              <div aria-hidden style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--accent)", margin: "1.75rem 0 1.25rem" }} />
+              <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0 1.25rem", display: "block", opacity: 0.85 }} />
               <p className="reveal muted" style={{ ["--d" as string]: "100ms" }}>
                 HIMTI adalah wadah penampung aspirasi, prestasi, dan skill mahasiswa Teknik Informatika
                 Universitas Asahan untuk terus berkembang dan maju.

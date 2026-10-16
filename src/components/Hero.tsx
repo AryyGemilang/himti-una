@@ -2,15 +2,17 @@ import { useEffect, useRef } from "react"
 import { ArrowDown } from "lucide-react"
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const bgLogoRef = useRef<HTMLDivElement>(null)
 
+  // Reveal animasi
   useEffect(() => {
-    const el = ref.current
+    const el = sectionRef.current
     if (!el) return
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting)
-          el.querySelectorAll(".reveal, .reveal-x, .shutter").forEach(el => el.classList.add("visible"))
+          el.querySelectorAll(".reveal, .reveal-x, .shutter").forEach(n => n.classList.add("visible"))
       },
       { threshold: 0.05 }
     )
@@ -18,10 +20,37 @@ export default function Hero() {
     return () => io.disconnect()
   }, [])
 
+  // Animasi scroll: logo bergerak dari kanan ke tengah
+  useEffect(() => {
+    const logo = bgLogoRef.current
+    if (!logo) return
+    // Hormati reduced-motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const scrollY = window.scrollY
+        const vh = window.innerHeight
+        const progress = Math.min(scrollY / vh, 1)
+        const tx = progress * -40
+        const scale = 1 - progress * 0.08
+        logo.style.transform = `translateY(-50%) translateX(${tx}%) scale(${scale})`
+      })
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
   return (
     <section
       id="beranda"
-      ref={ref}
+      ref={sectionRef}
       style={{
         minHeight: "100dvh",
         position: "relative",
@@ -30,36 +59,37 @@ export default function Hero() {
         alignItems: "center",
       }}
     >
-      {/* Hero logo — replaces decorative circle */}
+      {/* Background logo HIMTI — animasi scroll kanan → tengah */}
       <div
+        ref={bgLogoRef}
         aria-hidden
         style={{
           position: "absolute",
-          width: "min(90vh, 90vw)",
-          height: "min(90vh, 90vw)",
-          right: "calc(min(90vh, 90vw) * -0.22)",
+          width: "min(85vh, 85vw)",
+          height: "min(85vh, 85vw)",
+          right: "calc(min(85vh, 85vw) * -0.18)",
           top: "50%",
-          transform: "translateY(-50%)",
-          borderRadius: "50%",
-          overflow: "hidden",
-          opacity: 0.92,
+          transform: "translateY(-50%) translateX(0%) scale(1)",
           zIndex: 0,
+          pointerEvents: "none",
+          willChange: "transform",
+          transition: "transform 0.05s linear",
         }}
       >
         <img
-          src="/himti-una/logo-himti.jpg"
+          src="/himti-una/Logo-Himti.svg"
           alt=""
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
-            mixBlendMode: "luminosity",
-            filter: "brightness(0.9) contrast(1.1)",
+            objectFit: "contain",
+            opacity: 0.22,
+            filter: "saturate(0.45) brightness(0.9)",
           }}
         />
       </div>
 
-      {/* Ambient glow behind logo */}
+      {/* Ambient glow */}
       <div aria-hidden style={{
         position: "absolute",
         width: "50vh", height: "50vh",
@@ -68,44 +98,24 @@ export default function Hero() {
         background: "var(--accent-dim)",
         pointerEvents: "none",
         filter: "blur(80px)",
+        zIndex: 0,
       }} />
-
-      {/* Photo — shutter entrance, blended */}
-      <img
-        src="/images/hero.png"
-        alt="Kegiatan mahasiswa HIMTI UNA"
-        className="shutter"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          mixBlendMode: "luminosity",
-          opacity: 0.12,
-          zIndex: 0,
-        }}
-      />
 
       {/* Content */}
       <div className="wrap" style={{ position: "relative", zIndex: 1, width: "100%", paddingTop: "8rem", paddingBottom: "5rem" }}>
         <div style={{ maxWidth: "min(55%, 680px)" }}>
 
           {/* Logos */}
-          <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "3rem" }}>
-            <div className="bezel" style={{ display: "inline-flex" }}>
-              <div className="bezel-inner" style={{ padding: "6px" }}>
-                <img
-                  src="/images/logo-himti.jpg"
-                  alt="Logo HIMTI UNA"
-                  style={{ height: 52, width: 52, objectFit: "contain", borderRadius: "6px", display: "block" }}
-                />
-              </div>
-            </div>
+          <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "1.25rem", marginBottom: "3rem" }}>
             <img
-              src="/images/logo-una.jpg"
+              src="/himti-una/Logo-Himti.svg"
+              alt="Logo HIMTI UNA"
+              style={{ height: 56, width: "auto", objectFit: "contain", display: "block" }}
+            />
+            <img
+              src="/himti-una/Logo-Una.svg"
               alt="Logo Universitas Asahan"
-              style={{ height: 44, objectFit: "contain", opacity: 0.7, borderRadius: "4px" }}
+              style={{ height: 48, width: "auto", objectFit: "contain", opacity: 0.85, display: "block" }}
             />
           </div>
 
@@ -143,25 +153,6 @@ export default function Hero() {
 
         </div>
       </div>
-
-      {/* Scroll label */}
-      <span
-        className="reveal hide-mobile"
-        style={{
-          position: "absolute",
-          bottom: "2rem",
-          left: "var(--margin)",
-          fontSize: "var(--step-xs)",
-          color: "var(--muted)",
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          zIndex: 1,
-          ["--d" as string]: "500ms",
-        }}
-        aria-hidden
-      >
-        Scroll
-      </span>
     </section>
   )
 }

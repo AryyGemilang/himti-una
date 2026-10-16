@@ -28,7 +28,7 @@ export default function Kontak() {
           <div>
             <p className="label reveal">Kontak</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Hubungi<br />Kami</h2>
-            <div aria-hidden style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--accent)", margin: "1.75rem 0" }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
             <p className="reveal muted" style={{ ["--d" as string]: "120ms" }}>
               Punya pertanyaan atau ingin bergabung bersama HIMTI UNA? Kirim pesan dan kami akan
               segera menghubungi kamu.

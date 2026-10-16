@@ -27,10 +27,7 @@ export default function Navbar() {
         <div className="nav-pill">
           {/* Logo */}
           <a href="#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
-            <img src="/images/logo-himti.jpg" alt="Logo HIMTI UNA" />
-            <span className="nav-wordmark">
-              HIMTI <span style={{ color: "var(--accent)" }}>UNA</span>
-            </span>
+            <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" style={{ height: 32, width: "auto", objectFit: "contain" }} />
           </a>
 
           {/* Desktop links */}

@@ -44,7 +44,7 @@ export default function Pengurus() {
           </div>
           <div style={{ paddingLeft: "4rem", display: "flex", alignItems: "center" }}>
             <p className="reveal muted" style={{ ["--d" as string]: "120ms" }}>
-              Kepengurusan HIMTI UNA terdiri dari Ketua Umum, jajaran inti, dan empat bidang kerja
+              Kepengurusan HIMTI UNA terdiri dari Ketua Umum, jajaran inti, dan lima bidang kerja
               yang memastikan program organisasi berjalan optimal.
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function Pengurus() {
         <h3 className="reveal" style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "1.5rem" }}>
           Kepala Bidang
         </h3>
-        <div id="bidang" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "var(--gap)", scrollMarginTop: "6rem" }}>
+        <div id="bidang" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: "var(--gap)", scrollMarginTop: "6rem" }}>
           {bidang.map((b, i) => (
             <div key={b.nama}>
               <Kartu orang={b.kabid} delay={i * 80} size="md" />
@@ -111,10 +111,13 @@ export default function Pengurus() {
 
       </div>
       <style>{`
+        @media(max-width:72em){
+          #pengurus [style*="repeat(5"]{grid-template-columns:repeat(3,1fr)!important}
+        }
         @media(max-width:48em){
           #pengurus .wrap>div:first-child{grid-template-columns:1fr!important;gap:2rem!important}
           #pengurus [style*="1fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important}
-          #pengurus [style*="repeat(4"]{grid-template-columns:1fr 1fr!important}
+          #pengurus [style*="repeat(5"]{grid-template-columns:1fr 1fr!important}
           #pengurus [style*="repeat(3"]{grid-template-columns:1fr 1fr!important}
         }
       `}</style>

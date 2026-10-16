@@ -19,7 +19,7 @@ export default function Sejarah() {
 
           <div>
             <h2 className="head reveal">Sejarah<br />HIMTI</h2>
-            <div aria-hidden style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--accent)", margin: "1.75rem 0" }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
             <p className="reveal muted" style={{ ["--d" as string]: "100ms" }}>
               Berdiri <strong style={{ color: "var(--ink)" }}>1 Oktober 2013</strong>. Bergabung PERMIKOMNAS
               pada <strong style={{ color: "var(--ink)" }}>16 Desember 2021</strong> dalam Musyawarah
