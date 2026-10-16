@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Moon, Sun } from "lucide-react"
 
 const MENU = [
   ["Beranda", "/#beranda"], ["Tentang", "/#tentang"], ["Sejarah", "/#sejarah"],
@@ -8,6 +9,18 @@ const MENU = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
+
+  const toggleTheme = () => {
+    const nextDarkMode = !darkMode
+    setDarkMode(nextDarkMode)
+    document.documentElement.dataset.theme = nextDarkMode ? "dark" : "light"
+    try {
+      window.localStorage.setItem("himti-una-theme", nextDarkMode ? "dark" : "light")
+    } catch {
+      // Theme still works for this session when browser storage is unavailable.
+    }
+  }
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false) }
@@ -30,6 +43,14 @@ export default function Navbar() {
             <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" style={{ height: 32, width: "auto", objectFit: "contain" }} />
           </a>
 
+          <a
+            href="https://una.ac.id/"
+            className="nav-una-logo"
+            aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)"
+          >
+            <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" />
+          </a>
+
           {/* Desktop links */}
           <ul className="nav-links" role="list">
             {MENU.map(([label, href]) => (
@@ -39,6 +60,19 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a href="/#kontak" className="btn nav-action hide-mobile">Hubungi</a>
+
+          <button
+            className={`theme-toggle ${darkMode ? "is-dark" : ""}`}
+            type="button"
+            role="switch"
+            aria-checked={darkMode}
+            aria-label={`Mode gelap ${darkMode ? "aktif" : "nonaktif"}. Aktifkan ${darkMode ? "mode terang" : "mode gelap"}`}
+            onClick={toggleTheme}
+          >
+            <span className="theme-toggle-thumb" aria-hidden="true">
+              {darkMode ? <Moon size={15} strokeWidth={2.2} /> : <Sun size={15} strokeWidth={2.2} />}
+            </span>
+          </button>
 
           {/* Hamburger — morphs to X */}
           <button

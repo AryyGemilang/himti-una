@@ -45,8 +45,10 @@ export default function Kontak() {
               </div>
             </div>
             <div className="reveal" style={{ marginTop: "2rem", ["--d" as string]: "240ms" }}>
-              <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan"
-                style={{ height: 40, width: "auto", objectFit: "contain", opacity: 0.65 }} />
+              <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
+                <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan"
+                  style={{ height: 40, width: "auto", objectFit: "contain", opacity: 0.65 }} />
+              </a>
             </div>
           </div>
 

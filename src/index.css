@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────
-   HIMTI UNA · Cyan Light Theme · Font: Jost
+   HIMTI UNA · Theme tokens · Font: Jost
    ────────────────────────────────────────────── */
 
 :root {
@@ -56,6 +56,35 @@
   --t-reveal:900ms;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:              #60A5FA;
+  --page-bg:         #0B1220;
+  --surface:         #111C30;
+  --surface-2:       #17243A;
+  --ink:             #F1F5F9;
+  --muted:           #B8C4D6;
+  --muted-2:         #A9B8CC;
+  --accent:          #60A5FA;
+  --accent-strong:   #93C5FD;
+  --accent-hover:    #93C5FD;
+  --accent-dim:      rgba(96,165,250,.14);
+  --accent-ink:      #091322;
+  --accent-2:        #B8C4D6;
+  --accent-ink-soft: rgba(9,19,34,.38);
+  --accent-chip:     rgba(9,19,34,.4);
+  --border:          #2B3B55;
+  --control-border:  #71839D;
+  --shadow:          rgba(0,0,0,.3);
+  --nav-surface:     #111C30;
+  --overlay-surface:rgba(11,18,32,.98);
+  --success:         #6EE7A8;
+  --warning:         #F7C66A;
+  --error:           #FDA4A4;
+  --disabled-bg:     #24334A;
+  --disabled-ink:    #B8C4D6;
+}
+
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; }
 html {
@@ -75,6 +104,7 @@ body {
   overflow-x: clip;
   max-width: 100%;
   width: 100%;
+  transition: background-color var(--t-med) ease, color var(--t-med) ease;
 }
 h1,h2,h3,h4,p,figure,ul,ol,dl { margin: 0; }
 ul[class],ol[class] { padding: 0; list-style: none; }
@@ -249,6 +279,15 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   text-decoration: none;
   flex-shrink: 0;
 }
+.nav-una-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+}
+.nav-una-logo img { height: 28px; width: auto; object-fit: contain; }
 .nav-logo img { height: 28px; width: 28px; object-fit: contain; border-radius: 4px; }
 .nav-wordmark {
   font-size: 0.8125rem;
@@ -278,6 +317,33 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 .nav-links a.active { color: var(--accent-strong); }
 .nav-action { font-size: var(--step-xs); min-height: 2.25rem; padding: 0 1.1rem; flex-shrink: 0; }
 .nav-hamburger { display: none; color: var(--ink); padding: 0.25rem; }
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 44px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  transition: background-color var(--t-med) ease, border-color var(--t-med) ease;
+}
+.theme-toggle-thumb {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  transform: translateX(0);
+  transition: transform 240ms var(--spring), background-color var(--t-med) ease, color var(--t-med) ease;
+}
+.theme-toggle.is-dark .theme-toggle-thumb { transform: translateX(24px); }
+.theme-toggle:focus-visible { outline-color: var(--accent-strong); }
 
 /* Mobile menu overlay */
 .nav-overlay {
@@ -314,6 +380,14 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 }
 .nav-overlay.open a { opacity: 1; transform: none; }
 .nav-overlay a:hover { color: var(--ink); }
+.nav-overlay, .nav-pill, .panel, .bezel-inner, footer, .coupon input, .coupon textarea {
+  transition-property: background-color, color, border-color, opacity, box-shadow;
+  transition-duration: var(--t-med);
+  transition-timing-function: ease;
+}
+.una-logo-link { display: inline-flex; align-items: center; width: fit-content; }
+.una-logo-link img { transition: opacity var(--t-fast) ease; }
+.una-logo-link:hover img { opacity: 1 !important; }
 
 /* ── Slide indicator ── */
 .slide-indicator {
@@ -512,7 +586,7 @@ img, svg, video { max-width: 100%; height: auto; }
   .slide-indicator { display: none !important; }
 
   /* Nav pill tidak overflow */
-  .nav-pill { gap: 0.75rem; padding: 0.5rem 0.375rem 0.5rem 0.75rem; }
+  .nav-pill { gap: 0.5rem; padding: 0.375rem 0.375rem 0.375rem 0.5rem; }
 
   /* Spacing section lebih padat di mobile */
   :root {

@@ -22,7 +22,9 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
 
           <div className="bidang-hero-top reveal">
             <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" className="bidang-hero-logo" />
-            <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" className="bidang-hero-logo-2" />
+            <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
+              <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" className="bidang-hero-logo-2" />
+            </a>
           </div>
 
           <p className="label reveal">Bidang Organisasi</p>
