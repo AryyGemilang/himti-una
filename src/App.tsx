@@ -114,7 +114,7 @@ export default function App() {
       <div className="grain" aria-hidden />
       <BgLogo />
 
-      <Navbar />
+      <Navbar path={path} />
       {!match && <SlideIndicator />}
 
       {bidang ? <BidangPage bidang={bidang} /> : <HomePage />}

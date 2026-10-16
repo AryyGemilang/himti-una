@@ -7,9 +7,27 @@ const MENU = [
   ["Kegiatan", "/#kegiatan"], ["Kontak", "/#kontak"],
 ] as const
 
-export default function Navbar() {
+function ThemeToggle({ darkMode, onToggle, mobile = false }: { darkMode: boolean; onToggle: () => void; mobile?: boolean }) {
+  return (
+    <button
+      className={`theme-toggle ${mobile ? "theme-toggle-mobile" : "theme-toggle-desktop"} ${darkMode ? "is-dark" : ""}`}
+      type="button"
+      role="switch"
+      aria-checked={darkMode}
+      aria-label={`Mode gelap ${darkMode ? "aktif" : "nonaktif"}. Aktifkan ${darkMode ? "mode terang" : "mode gelap"}`}
+      onClick={onToggle}
+    >
+      <span className="theme-toggle-thumb" aria-hidden="true">
+        {darkMode ? <Moon size={15} strokeWidth={2.2} /> : <Sun size={15} strokeWidth={2.2} />}
+      </span>
+    </button>
+  )
+}
+
+export default function Navbar({ path }: { path: string }) {
   const [open, setOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
+  const [navLogosVisible, setNavLogosVisible] = useState(false)
 
   const toggleTheme = () => {
     const nextDarkMode = !darkMode
@@ -21,6 +39,20 @@ export default function Navbar() {
       // Theme still works for this session when browser storage is unavailable.
     }
   }
+
+  useEffect(() => {
+    const source = document.querySelector(".hero-logos, .bidang-hero-top")
+    if (!source) {
+      setNavLogosVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setNavLogosVisible(entry.intersectionRatio < 0.8)
+    }, { threshold: [0, 0.8], rootMargin: "-72px 0px 0px 0px" })
+    observer.observe(source)
+    return () => observer.disconnect()
+  }, [path])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false) }
@@ -36,20 +68,16 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="nav" aria-label="Navigasi utama">
+      <header className={`nav ${navLogosVisible ? "nav-brand-visible" : ""}`} aria-label="Navigasi utama">
         <div className="nav-pill">
-          {/* Logo */}
-          <a href="/#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
-            <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" style={{ height: 32, width: "auto", objectFit: "contain" }} />
-          </a>
-
-          <a
-            href="https://una.ac.id/"
-            className="nav-una-logo"
-            aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)"
-          >
-            <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" />
-          </a>
+          <div className="nav-brand-group" aria-label="Logo HIMTI dan Universitas Asahan" aria-hidden={!navLogosVisible} inert={!navLogosVisible}>
+            <a href="/#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
+              <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" />
+            </a>
+            <a href="https://una.ac.id/" className="nav-una-logo" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)">
+              <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" />
+            </a>
+          </div>
 
           {/* Desktop links */}
           <ul className="nav-links" role="list">
@@ -61,18 +89,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <a href="/#kontak" className="btn nav-action hide-mobile">Hubungi</a>
 
-          <button
-            className={`theme-toggle ${darkMode ? "is-dark" : ""}`}
-            type="button"
-            role="switch"
-            aria-checked={darkMode}
-            aria-label={`Mode gelap ${darkMode ? "aktif" : "nonaktif"}. Aktifkan ${darkMode ? "mode terang" : "mode gelap"}`}
-            onClick={toggleTheme}
-          >
-            <span className="theme-toggle-thumb" aria-hidden="true">
-              {darkMode ? <Moon size={15} strokeWidth={2.2} /> : <Sun size={15} strokeWidth={2.2} />}
-            </span>
-          </button>
+          <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
 
           {/* Hamburger — morphs to X */}
           <button
@@ -105,6 +122,8 @@ export default function Navbar() {
           </button>
         </div>
       </header>
+
+      <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} mobile />
 
       {/* Full-screen mobile overlay */}
       <nav
