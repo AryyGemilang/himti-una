@@ -3,10 +3,12 @@ import { useEffect, useRef } from "react"
 /**
  * Logo HIMTI besar sebagai background global.
  * - Awal: di kanan viewport (hero), sebagian terlihat.
- * - Scroll 1 viewport: bergerak ke TITIK PUSAT viewport, lalu tetap terkunci di sana.
+ * - Scroll 1 viewport: bergerak ke TITIK PUSAT viewport, lalu terkunci di sana.
  *
- * Anchor: left:50% / top:50% + translate(-50%,-50%) = pusat elemen di pusat viewport.
- * Offset awal digeser via CSS var --ox (px) yang dihitung dari lebar elemen.
+ * CSS: left:50% top:50% + translate(-50%,-50%) → pusat elemen = pusat viewport.
+ * JS hanya menggeser offset horizontal (px) dari kanan menuju 0. Offset awal
+ * memakai lebar viewport dan logo agar logo mulai terlihat dari sisi kanan;
+ * elemen tetap fixed dan terpotong pada layer-nya, bukan menambah lebar dokumen.
  */
 export default function BgLogo() {
   const ref = useRef<HTMLDivElement>(null)
@@ -18,22 +20,15 @@ export default function BgLogo() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     let raf = 0
-    let startOffset = 0
-    let size = 0
-
-    // Ukur lebar elemen → offset awal (kanan) dalam px
-    const measure = () => {
-      size = el.offsetWidth
-      // awal: pusat elemen di 100% viewport → offset dari pusat = setengah viewport + setengah elemen
-      startOffset = window.innerWidth / 2 + size / 2
-    }
 
     const update = () => {
+      const vw = window.innerWidth
       const vh = window.innerHeight || 1
+      const startOffset = (vw + el.offsetWidth) / 2
+      // Saat p=1 offset 0, sehingga pusat logo tepat di tengah viewport.
       const p = reduce ? 1 : Math.min(window.scrollY / vh, 1)
-      // ease-out agar perpindahan terasa halus
-      const e = 1 - Math.pow(1 - p, 3)
-      const ox = startOffset * (1 - e) // px → 0 saat p=1
+      const e = 1 - Math.pow(1 - p, 3) // ease-out cubic
+      const ox = startOffset * (1 - e)
       const scale = 1 - e * 0.06
       el.style.transform =
         `translate(calc(-50% + ${ox.toFixed(2)}px), -50%) scale(${scale.toFixed(4)})`
@@ -43,18 +38,13 @@ export default function BgLogo() {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(update)
     }
-    const onResize = () => {
-      measure()
-      onScroll()
-    }
 
-    measure()
     update()
     window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onResize, { passive: true })
+    window.addEventListener("resize", onScroll, { passive: true })
     return () => {
       window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onResize)
+      window.removeEventListener("resize", onScroll)
       cancelAnimationFrame(raf)
     }
   }, [])

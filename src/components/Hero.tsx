@@ -23,13 +23,7 @@ export default function Hero() {
     <section
       id="beranda"
       ref={sectionRef}
-      style={{
-        minHeight: "100dvh",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        alignItems: "center",
-      }}
+      className="hero-section"
     >
       {/* Ambient glow */}
       <div aria-hidden style={{
@@ -44,8 +38,8 @@ export default function Hero() {
       }} />
 
       {/* Content */}
-      <div className="wrap" style={{ position: "relative", zIndex: 1, width: "100%", paddingTop: "8rem", paddingBottom: "5rem" }}>
-        <div style={{ maxWidth: "min(55%, 680px)" }}>
+      <div className="wrap hero-wrap">
+        <div className="hero-content">
 
           {/* Logos — identitas utama hero */}
           <div className="hero-logos reveal">

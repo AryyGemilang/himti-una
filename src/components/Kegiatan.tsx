@@ -42,7 +42,7 @@ export default function Kegiatan() {
           <div>
             <p className="label reveal">Kegiatan</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Kegiatan<br />HIMTI</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ marginBottom: "2.5rem", ["--d" as string]: "120ms" }}>
               Kegiatan besar yang pernah HIMTI UNA laksanakan mencakup pengembangan akademik,
               kepemimpinan, dan kebersamaan civitas mahasiswa.

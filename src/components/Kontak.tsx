@@ -17,7 +17,7 @@ export default function Kontak() {
   }
 
   return (
-    <section id="kontak" ref={ref} className="section" style={{ position: "relative" }}>
+    <section id="kontak" ref={ref} className="section" style={{ position: "relative", overflow: "hidden" }}>
       <div className="motif" aria-hidden style={{ width: "40vh", height: "40vh", right: "-10vh", bottom: "-10vh", opacity: 0.05 }} />
 
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
@@ -27,8 +27,7 @@ export default function Kontak() {
           <div>
             <p className="label reveal">Kontak</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Hubungi<br />Kami</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden
-              style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ ["--d" as string]: "120ms" }}>
               Punya pertanyaan atau ingin bergabung bersama HIMTI UNA? Kirim pesan dan kami akan
               segera menghubungi kamu.

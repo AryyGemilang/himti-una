@@ -21,7 +21,7 @@ export default function VisiMisi() {
           <div>
             <p className="label reveal">Visi</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Membantu<br />Mahasiswa IT</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ ["--d" as string]: "160ms" }}>
               HIMTI UNA mempunyai visi untuk membantu Mahasiswa Teknik Informatika baik dalam hal akademik
               maupun lainnya yang menyangkut ilmu Teknologi, dan juga sebagai wadah untuk menampung
@@ -33,7 +33,7 @@ export default function VisiMisi() {
           <div>
             <p className="label reveal">Misi</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Tiga Pilar<br />Utama</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               {MISI.map((m, i) => (
                 <li key={i} className="reveal" style={{ display: "flex", gap: "0.875rem", alignItems: "flex-start", ["--d" as string]: `${(i + 1) * 100}ms` }}>

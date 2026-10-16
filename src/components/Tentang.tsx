@@ -24,7 +24,7 @@ export default function Tentang() {
               <img
                 src="/himti-una/Logo-Himti.svg"
                 alt="" aria-hidden
-                style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0 1.25rem", display: "block", opacity: 0.85 }}
+                className="section-logo"
               />
               <p className="reveal muted tentang-p" style={{ ["--d" as string]: "100ms" }}>
                 HIMTI adalah wadah penampung aspirasi, prestasi, dan skill mahasiswa Teknik Informatika

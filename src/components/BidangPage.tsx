@@ -32,8 +32,8 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           <img
             src="/himti-una/Logo-Himti.svg"
             alt="" aria-hidden
-            className="reveal"
-            style={{ width: 44, height: 44, objectFit: "contain", margin: "1.5rem 0", display: "block", opacity: 0.85, ["--d" as string]: "120ms" }}
+            className="section-logo reveal"
+            style={{ ["--d" as string]: "120ms" }}
           />
           <p className="reveal muted bidang-hero-desc" style={{ ["--d" as string]: "160ms" }}>
             {bidang.deskripsi}
@@ -46,8 +46,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section">
         <div className="wrap">
           <h2 className="head reveal">Struktur<br />Bidang</h2>
-          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden
-            style={{ width: 40, height: 40, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
 
           {/* Kepala bidang */}
           <div className="bidang-head-card reveal bezel">
@@ -96,8 +95,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section bidang-section-alt">
         <div className="wrap">
           <h2 className="head reveal">Tugas &<br />Fungsi</h2>
-          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden
-            style={{ width: 40, height: 40, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
 
           <ul className="bidang-tugas">
             {bidang.tugas.map((t, i) => (
@@ -120,8 +118,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section">
         <div className="wrap">
           <h2 className="head reveal">Dokumentasi<br />Kegiatan</h2>
-          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden
-            style={{ width: 40, height: 40, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
 
           {bidang.galeri.length > 0 ? (
             <div className="bidang-galeri">
