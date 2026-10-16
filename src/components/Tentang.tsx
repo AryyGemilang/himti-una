@@ -21,7 +21,7 @@ export default function Tentang() {
                 Universitas Asahan untuk terus berkembang dan maju.
               </p>
               <p className="reveal muted" style={{ ["--d" as string]: "180ms", marginTop: "1rem" }}>
-                Organisasi ini berada di bawah naungan Fakultas Teknik dan{" "}
+                HIMTI berada di bawah naungan Fakultas Teknik dan{" "}
                 <strong style={{ color: "var(--ink)", fontWeight: 700 }}>PERMIKOMNAS</strong>{" "}
                 (Perhimpunan Mahasiswa Informatika dan Komputer Nasional).
               </p>
