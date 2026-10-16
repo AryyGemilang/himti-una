@@ -114,23 +114,23 @@ export default function Navbar({ path }: { path: string }) {
             aria-label={open ? "Tutup menu" : "Buka menu"}
             aria-expanded={open}
             aria-controls="nav-mobile-overlay"
-            style={{ position: "relative", width: 28, height: 20 }}
+            style={{ position: "relative", width: 44, height: 44 }}
           >
             <span style={{
-              position: "absolute", left: 0, top: open ? "50%" : 0,
+              position: "absolute", left: 8, top: open ? "50%" : 11,
               width: 28, height: 2, background: "var(--ink)", borderRadius: 1,
               transform: open ? "translateY(-50%) rotate(45deg)" : "none",
               transition: "top 200ms ease, transform 200ms ease",
             }} />
             <span style={{
-              position: "absolute", left: 0, top: "50%",
+              position: "absolute", left: 8, top: "50%",
               width: 28, height: 2, background: "var(--ink)", borderRadius: 1,
               transform: "translateY(-50%)",
               opacity: open ? 0 : 1,
               transition: "opacity 150ms ease",
             }} />
             <span style={{
-              position: "absolute", left: 0, bottom: open ? "50%" : 0,
+              position: "absolute", left: 8, bottom: open ? "50%" : 11,
               width: 28, height: 2, background: "var(--ink)", borderRadius: 1,
               transform: open ? "translateY(50%) rotate(-45deg)" : "none",
               transition: "bottom 200ms ease, transform 200ms ease",
