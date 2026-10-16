@@ -458,8 +458,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   /* Konten hero tidak overflow */
   #beranda .wrap > div { max-width: 100% !important; }
 
-  /* Tentang single column */
-  #tentang .panel > div:first-of-type { grid-template-columns: 1fr !important; }
+  /* Tentang ditangani via class .tentang-grid */
 
   /* VisiMisi single column */
   #visimisi .wrap > div:first-of-type { grid-template-columns: 1fr !important; }
