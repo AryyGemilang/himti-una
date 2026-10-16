@@ -593,8 +593,8 @@ img, svg, video { max-width: 100%; height: auto; }
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
-.hero-logo-himti { height: 88px; width: auto; object-fit: contain; display: block; }
-.hero-logo-una   { height: 72px; width: auto; object-fit: contain; opacity: 0.9; display: block; }
+.hero-logo-himti { height: 146px; width: auto; object-fit: contain; display: block; }
+.hero-logo-una   { height: 130px; width: auto; object-fit: contain; opacity: 0.9; display: block; }
 @media (max-width: 48em) {
   .hero-logos { gap: 1rem; margin-bottom: 2rem; }
   .hero-logo-himti { height: 56px; }
