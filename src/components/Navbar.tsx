@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
 const MENU = [
@@ -28,6 +28,8 @@ export default function Navbar({ path }: { path: string }) {
   const [open, setOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
   const [navLogosVisible, setNavLogosVisible] = useState(false)
+  const menuRef = useRef<HTMLElement>(null)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   const toggleTheme = () => {
     const nextDarkMode = !darkMode
@@ -59,6 +61,19 @@ export default function Navbar({ path }: { path: string }) {
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target
+      if (!(target instanceof Node)) return
+      if (menuRef.current?.contains(target) || hamburgerRef.current?.contains(target)) return
+      if (target instanceof Element && target.closest(".theme-toggle")) return
+      setOpen(false)
+    }
+    document.addEventListener("pointerdown", onPointerDown)
+    return () => document.removeEventListener("pointerdown", onPointerDown)
+  }, [open])
 
   // Lock body scroll when menu open
   useEffect(() => {
@@ -94,6 +109,7 @@ export default function Navbar({ path }: { path: string }) {
           {/* Hamburger — morphs to X */}
           <button
             className="nav-hamburger"
+            ref={hamburgerRef}
             onClick={() => setOpen(o => !o)}
             aria-label={open ? "Tutup menu" : "Buka menu"}
             aria-expanded={open}
@@ -128,6 +144,7 @@ export default function Navbar({ path }: { path: string }) {
       {/* Full-screen mobile overlay */}
       <nav
         id="nav-mobile-overlay"
+        ref={menuRef}
         className={`nav-overlay ${open ? "open" : ""}`}
         aria-hidden={!open}
         inert={!open}
@@ -144,14 +161,10 @@ export default function Navbar({ path }: { path: string }) {
         ))}
         <a
           href="/#kontak"
-          className="btn"
+          className="btn nav-overlay-action"
           onClick={() => setOpen(false)}
           style={{
-            marginTop: "2rem",
             transitionDelay: open ? `${MENU.length * 60}ms` : "0ms",
-            opacity: open ? 1 : 0,
-            transform: open ? "none" : "translateY(16px)",
-            transition: `opacity 320ms var(--spring) ${open ? MENU.length * 60 : 0}ms, transform 320ms var(--spring) ${open ? MENU.length * 60 : 0}ms`,
           }}
         >
           Hubungi Kami
