@@ -438,6 +438,57 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   .nav-action.hide-mobile { display: none !important; }
   .nav-hamburger { display: flex !important; }
   .slide-indicator { display: none !important; }
+
+  /* Nav pill tidak overflow */
+  .nav-pill { gap: 1rem; padding: 0.5rem 1rem; }
+
+  /* Section padding lebih kecil di mobile */
+  :root { --section: clamp(4rem, 10vw, 8rem); }
+
+  /* Hero heading lebih kecil */
+  .display {
+    font-size: clamp(2.5rem, 12vw, 5rem);
+    line-height: 0.92;
+  }
+  .head {
+    font-size: clamp(1.75rem, 8vw, 3rem);
+    line-height: 0.95;
+  }
+
+  /* Konten hero tidak overflow */
+  #beranda .wrap > div { max-width: 100% !important; }
+
+  /* Tentang single column */
+  #tentang .panel > div:first-of-type { grid-template-columns: 1fr !important; }
+
+  /* VisiMisi single column */
+  #visimisi .wrap > div:first-of-type { grid-template-columns: 1fr !important; }
+  #visimisi .bezel-inner { grid-template-columns: 1fr !important; }
+
+  /* Kegiatan single column */
+  #kegiatan .wrap > div { grid-template-columns: 1fr !important; }
+  /* Gallery circle lebih kecil di mobile */
+  #kegiatan [style*="aspect-ratio"] { max-width: 80vw; margin-inline: auto; }
+
+  /* Wrap padding lebih ketat di mobile sangat kecil */
+  @media (max-width: 23.5em) {
+    :root { --margin: 1rem; }
+  }
+}
+
+/* ── Hero background logo ── */
+.hero-bg-logo {
+  width: min(85vh, 85vw);
+  height: min(85vh, 85vw);
+  right: calc(min(85vh, 85vw) * -0.18);
+}
+@media (max-width: 48em) {
+  .hero-bg-logo {
+    width: 75vw;
+    height: 75vw;
+    right: -20vw;
+    opacity: 0.55; /* gambar sudah punya opacity 0.22, ini pada container */
+  }
 }
 
 /* ── Reduced motion ── */

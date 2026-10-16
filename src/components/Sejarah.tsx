@@ -1,12 +1,12 @@
 import { useReveal } from "../hooks/useReveal"
 
 const KETUA = [
-  { periode: "1 Okt 2013", label: "Berdiri",      nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA",            foto: "/himti-una/Rahmat irawan ST..jpg" },
-  { periode: "2020–2021",  label: "Periode III",   nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim",                           foto: "/himti-una/Reza Fahlevi S.Kom.jpg" },
-  { periode: "2021–2022",  label: "Periode IV",    nama: "Ibnu Haykal Lubis",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/Ibnu Haykal Lubis S.Kom.jpg" },
-  { periode: "2022–2023",  label: "Periode V",     nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/Mhd Zikri Ansyari.jpg" },
-  { periode: "2023–2024",  label: "Periode VI",    nama: "Mhd Fikri Gunawan",    ket: "PJ Kahim, Mhd Risky Al Faridz",     foto: "/himti-una/Mhd Fikri Gunawan.jpg" },
-  { periode: "2024–2025",  label: "Periode VII",   nama: "Bintang Fajar R Putra", ket: "Ketua aktif",                       foto: "/himti-una/Bintang Fajar R Putra.jpg" },
+  { periode: "1 Okt 2013", label: "Berdiri",    nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA",            foto: "/himti-una/Rahmat irawan ST..jpg" },
+  { periode: "2020–2021",  label: "Periode III", nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim",                           foto: "/himti-una/Reza Fahlevi S.Kom.jpg" },
+  { periode: "2021–2022",  label: "Periode IV",  nama: "Ibnu Haykal Lubis",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/Ibnu Haykal Lubis S.Kom.jpg" },
+  { periode: "2022–2023",  label: "Periode V",   nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/Mhd Zikri Ansyari.jpg" },
+  { periode: "2023–2024",  label: "Periode VI",  nama: "Mhd Fikri Gunawan",    ket: "PJ Kahim, Mhd Risky Al Faridz",     foto: "/himti-una/Mhd Fikri Gunawan.jpg" },
+  { periode: "2024–2025",  label: "Periode VII", nama: "Bintang Fajar R Putra", ket: "Ketua aktif",                       foto: "/himti-una/Bintang Fajar R Putra.jpg" },
 ]
 
 export default function Sejarah() {
@@ -15,11 +15,13 @@ export default function Sejarah() {
   return (
     <section id="sejarah" ref={ref} className="section" style={{ background: "var(--surface)" }}>
       <div className="wrap">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "clamp(2rem, 7vw, 7rem)", alignItems: "start" }}>
+        <div className="sejarah-grid">
 
+          {/* Sidebar kiri */}
           <div>
             <h2 className="head reveal">Sejarah<br />HIMTI</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden
+              style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
             <p className="reveal muted" style={{ ["--d" as string]: "100ms" }}>
               Berdiri <strong style={{ color: "var(--ink)" }}>1 Oktober 2013</strong>. Bergabung PERMIKOMNAS
               pada <strong style={{ color: "var(--ink)" }}>16 Desember 2021</strong> dalam Musyawarah
@@ -28,46 +30,150 @@ export default function Sejarah() {
           </div>
 
           {/* Timeline */}
-          <ol style={{ listStyle: "none", padding: 0, margin: 0, position: "relative" }}>
+          <ol className="timeline-list">
             <div className="timeline-line" aria-hidden />
             {KETUA.map((k, i) => (
-              <li key={k.periode} className="reveal" style={{
-                display: "flex", gap: "2rem", alignItems: "flex-start",
-                paddingBottom: i < KETUA.length - 1 ? "2.5rem" : 0,
-                position: "relative",
-                ["--d" as string]: `${i * 80}ms`,
-              }}>
-                <div style={{ minWidth: 88, textAlign: "right", paddingRight: "2rem", position: "relative" }}>
-                  <span style={{ fontSize: "var(--step-xs)", color: "var(--muted)", fontWeight: 600 }}>{k.periode}</span>
-                  <div style={{
-                    position: "absolute", right: -5, top: 4,
-                    width: 10, height: 10, borderRadius: "50%",
+              <li key={k.periode} className="reveal timeline-item" style={{ ["--d" as string]: `${i * 80}ms` }}>
+
+                {/* Tanggal + dot */}
+                <div className="timeline-date">
+                  <span>{k.periode}</span>
+                  <div className="timeline-dot" style={{
                     background: i === KETUA.length - 1 ? "var(--accent)" : "var(--muted-2)",
                   }} />
                 </div>
-                <div style={{ paddingTop: 2, display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+
+                {/* Foto + info */}
+                <div className="timeline-body">
                   <img
                     src={k.foto}
                     alt={k.nama}
-                    style={{
-                      width: 56, height: 56, borderRadius: 8,
-                      objectFit: "cover", flexShrink: 0,
-                      background: "var(--surface-2)",
-                    }}
+                    loading="lazy"
+                    className="timeline-foto"
                   />
                   <div>
-                    <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem", fontWeight: 700 }}>{k.label}</p>
-                    <p style={{ fontWeight: 800, fontSize: "var(--step-lg)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>{k.nama}</p>
-                    {k.ket && <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", marginTop: "0.25rem" }}>{k.ket}</p>}
+                    <p className="timeline-label">{k.label}</p>
+                    <p className="timeline-nama">{k.nama}</p>
+                    {k.ket && <p className="timeline-ket">{k.ket}</p>}
                   </div>
                 </div>
+
               </li>
             ))}
           </ol>
 
         </div>
       </div>
-      <style>{`@media(max-width:48em){#sejarah .wrap>div{grid-template-columns:1fr!important}}`}</style>
+
+      <style>{`
+        .sejarah-grid {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          gap: clamp(2rem, 7vw, 7rem);
+          align-items: start;
+        }
+        .timeline-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          position: relative;
+        }
+        .timeline-item {
+          display: flex;
+          gap: 1.5rem;
+          align-items: flex-start;
+          padding-bottom: 2.5rem;
+          position: relative;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-date {
+          min-width: 88px;
+          text-align: right;
+          padding-right: 2rem;
+          position: relative;
+          flex-shrink: 0;
+        }
+        .timeline-date span {
+          font-size: var(--step-xs);
+          color: var(--muted);
+          font-weight: 600;
+          display: block;
+          padding-top: 4px;
+        }
+        .timeline-dot {
+          position: absolute;
+          right: -5px;
+          top: 6px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+        .timeline-body {
+          display: flex;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+        .timeline-foto {
+          width: 96px;
+          height: 96px;
+          border-radius: 10px;
+          object-fit: cover;
+          flex-shrink: 0;
+          background: var(--surface-2);
+        }
+        .timeline-label {
+          font-size: var(--step-xs);
+          color: var(--muted);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin-bottom: 0.2rem;
+          font-weight: 700;
+        }
+        .timeline-nama {
+          font-weight: 800;
+          font-size: var(--step-lg);
+          line-height: 1.05;
+          letter-spacing: -0.02em;
+        }
+        .timeline-ket {
+          font-size: var(--step-xs);
+          color: var(--muted);
+          margin-top: 0.25rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 48em) {
+          .sejarah-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .timeline-line {
+            left: 0 !important;
+          }
+          .timeline-item {
+            flex-direction: column;
+            gap: 0.75rem;
+            padding-left: 1rem;
+          }
+          .timeline-date {
+            min-width: unset;
+            text-align: left;
+            padding-right: 0;
+            padding-left: 0.5rem;
+          }
+          .timeline-dot {
+            right: unset;
+            left: -1.25rem;
+            top: 6px;
+          }
+          .timeline-foto {
+            width: 120px;
+            height: 120px;
+          }
+          .timeline-nama {
+            font-size: var(--step-md);
+          }
+        }
+      `}</style>
     </section>
   )
 }

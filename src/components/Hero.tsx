@@ -63,11 +63,9 @@ export default function Hero() {
       <div
         ref={bgLogoRef}
         aria-hidden
+        className="hero-bg-logo"
         style={{
           position: "absolute",
-          width: "min(85vh, 85vw)",
-          height: "min(85vh, 85vw)",
-          right: "calc(min(85vh, 85vw) * -0.18)",
           top: "50%",
           transform: "translateY(-50%) translateX(0%) scale(1)",
           zIndex: 0,

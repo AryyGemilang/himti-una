@@ -11,7 +11,6 @@ export default function Kontak() {
     const data = new FormData(form)
     const nama  = encodeURIComponent((data.get("nama")  as string) || "")
     const pesan = encodeURIComponent((data.get("pesan") as string) || "")
-    // taste-skill-ignore — mailto opens email client, no dead link
     window.location.href = `mailto:email-resmi@una.ac.id?subject=Pesan dari ${nama}&body=${pesan}`
     setSent(true)
     setTimeout(() => setSent(false), 5000)
@@ -22,13 +21,14 @@ export default function Kontak() {
       <div className="motif" aria-hidden style={{ width: "40vh", height: "40vh", right: "-10vh", bottom: "-10vh", opacity: 0.05 }} />
 
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "clamp(2rem, 6vw, 6rem)", alignItems: "center" }}>
+        <div className="kontak-grid">
 
           {/* Left */}
           <div>
             <p className="label reveal">Kontak</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Hubungi<br />Kami</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
+            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden
+              style={{ width: 36, height: 36, objectFit: "contain", margin: "1.75rem 0", display: "block", opacity: 0.85 }} />
             <p className="reveal muted" style={{ ["--d" as string]: "120ms" }}>
               Punya pertanyaan atau ingin bergabung bersama HIMTI UNA? Kirim pesan dan kami akan
               segera menghubungi kamu.
@@ -46,27 +46,23 @@ export default function Kontak() {
               </div>
             </div>
             <div className="reveal" style={{ marginTop: "2rem", ["--d" as string]: "240ms" }}>
-              <img src="/images/logo-una.jpg" alt="Logo Universitas Asahan" style={{ height: 40, objectFit: "contain", opacity: 0.6 }} />
+              <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan"
+                style={{ height: 40, width: "auto", objectFit: "contain", opacity: 0.65 }} />
             </div>
           </div>
 
           {/* Right — coupon form */}
           <div className="reveal coupon" style={{ ["--d" as string]: "160ms", overflow: "hidden" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr" }}>
+            <div className="coupon-inner">
 
-              {/* Left of perf */}
-              <div style={{
-                padding: "2.5rem 2rem",
-                display: "flex", flexDirection: "column", justifyContent: "space-between",
-                position: "relative",
-              }}>
-                {/* Perforated line — subtle dotted */}
-                <div aria-hidden style={{ position: "absolute", right: 0, top: "10%", bottom: "10%", width: 0, borderRight: "2px dashed rgba(10,10,10,0.2)" }} />
+              {/* Label side */}
+              <div className="coupon-label">
+                <div aria-hidden style={{ position: "absolute", right: 0, top: "10%", bottom: "10%", width: 0, borderRight: "2px dashed rgba(255,255,255,0.15)" }} />
                 <div>
-                  <h3 style={{ fontWeight: 900, fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", lineHeight: 1.0, textTransform: "uppercase", letterSpacing: "-0.035em", margin: 0 }}>
+                  <h3 style={{ fontWeight: 900, fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)", lineHeight: 1.0, textTransform: "uppercase", letterSpacing: "-0.035em", margin: 0 }}>
                     Kirim<br />Pesan
                   </h3>
-                  <p style={{ fontSize: "var(--step-xs)", marginTop: "1rem", opacity: 0.6 }}>
+                  <p style={{ fontSize: "var(--step-xs)", marginTop: "1rem", opacity: 0.7 }}>
                     Isi formulir untuk mengirim pesan langsung.
                   </p>
                 </div>
@@ -75,8 +71,8 @@ export default function Kontak() {
                 </p>
               </div>
 
-              {/* Right — inputs */}
-              <form onSubmit={handleSubmit} style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="coupon-form">
                 <label htmlFor="nama" className="sr-only">Nama lengkap</label>
                 <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required autoComplete="name" />
 
@@ -84,7 +80,7 @@ export default function Kontak() {
                 <input id="email-k" name="email" type="email" placeholder="Email kamu" autoComplete="email" />
 
                 <label htmlFor="pesan" className="sr-only">Pesan</label>
-                <textarea id="pesan" name="pesan" placeholder="Pesan kamu..." rows={3} required />
+                <textarea id="pesan" name="pesan" placeholder="Pesan kamu..." rows={4} required />
 
                 <button type="submit" className="coupon-submit" disabled={sent}>
                   {sent ? "Membuka email..." : "Kirim Pesan"}
@@ -96,10 +92,47 @@ export default function Kontak() {
 
         </div>
       </div>
+
       <style>{`
-        @media(max-width:48em){
-          #kontak .wrap>div{grid-template-columns:1fr!important}
-          #kontak .coupon>div{grid-template-columns:1fr!important}
+        .kontak-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.5fr;
+          gap: clamp(2rem, 6vw, 6rem);
+          align-items: center;
+        }
+        .coupon-inner {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+        }
+        .coupon-label {
+          padding: 2.5rem 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          position: relative;
+          min-height: 200px;
+        }
+        .coupon-form {
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.625rem;
+        }
+
+        @media (max-width: 48em) {
+          .kontak-grid { grid-template-columns: 1fr !important; }
+          .coupon-inner { grid-template-columns: 1fr !important; }
+          .coupon-label {
+            min-height: unset;
+            padding: 1.75rem 1.5rem 1rem;
+          }
+          .coupon-form {
+            padding: 1rem 1.5rem 1.75rem;
+          }
+          .coupon input,
+          .coupon textarea {
+            font-size: 1rem; /* prevent zoom on iOS */
+          }
         }
       `}</style>
     </section>
