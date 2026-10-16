@@ -530,10 +530,11 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 .bg-logo-img {
   position: absolute;
   top: 50%;
-  left: 100%; /* mulai di kanan viewport */
+  left: 50%;
+  /* Pusat elemen = pusat viewport. Offset awal (kanan) digeser via JS translate. */
+  transform: translate(-50%, -50%);
   width: min(70vh, 70vw);
   height: min(70vh, 70vw);
-  transform: translate(0%, -50%);
   will-change: transform;
 }
 @media (max-width: 48em) {
