@@ -44,13 +44,13 @@ export default function Hero() {
           {/* Logos — identitas utama hero */}
           <div className="hero-logos reveal">
             <img
-              src="/himti-una/Logo-Himti.svg"
+              src="/himti-una/images/logos/logo-himti.svg"
               alt="Logo HIMTI UNA"
               className="hero-logo-himti"
             />
             <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
               <img
-                src="/himti-una/Logo-Una.svg"
+                src="/himti-una/images/logos/logo-una.svg"
                 alt="Logo Universitas Asahan"
                 className="hero-logo-una"
               />

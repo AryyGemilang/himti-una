@@ -53,7 +53,7 @@ export default function BgLogo() {
     <div className="bg-logo-layer" aria-hidden>
       <div ref={ref} className="bg-logo-img">
         <img
-          src="/himti-una/Logo-Himti.svg"
+          src="/himti-una/images/logos/logo-himti.svg"
           alt=""
           style={{
             width: "100%",

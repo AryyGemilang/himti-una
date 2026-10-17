@@ -87,10 +87,10 @@ export default function Navbar({ path }: { path: string }) {
         <div className="nav-pill">
           <div className="nav-brand-group" aria-label="Logo HIMTI dan Universitas Asahan" aria-hidden={!navLogosVisible} inert={!navLogosVisible}>
             <a href="/#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
-              <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" />
+              <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI UNA" />
             </a>
             <a href="https://una.ac.id/" className="nav-una-logo" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)">
-              <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" />
+              <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" />
             </a>
           </div>
 

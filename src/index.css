@@ -251,7 +251,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   max-width: calc(100vw - 2.5rem);
 }
 
-/* Mobile: hamburger stays anchored at the left while the logos expand to its right. */
+/* Mobile: hamburger tetap di kiri; ruang untuk logo bertambah ke arah kanan. */
 @media (max-width: 48em) {
   .nav {
     top: calc(env(safe-area-inset-top) + 0.5rem);
@@ -304,6 +304,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 }
 .nav-brand-group .nav-logo,
 .nav-brand-group .nav-una-logo { min-width: 36px; min-height: 44px; }
+/* Tinggi logo sama agar seimbang; width auto mempertahankan rasio masing-masing. */
 .nav-brand-group .nav-logo img { height: 28px; width: 28px; object-fit: contain; }
 .nav-brand-group .nav-una-logo img { height: 28px; width: auto; object-fit: contain; }
 .hero-logos.reveal {
@@ -775,12 +776,13 @@ img, svg, video { max-width: 100%; height: auto; }
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
+/* Tinggi pasangan logo disamakan; lebar otomatis menjaga rasio asli tiap aset. */
 .hero-logo-himti { height: 146px; width: auto; object-fit: contain; display: block; }
-.hero-logo-una   { height: 130px; width: auto; object-fit: contain; opacity: 0.9; display: block; }
+.hero-logo-una   { height: 146px; width: auto; object-fit: contain; display: block; }
 @media (max-width: 48em) {
   .hero-logos { gap: 1rem; margin-bottom: 2rem; }
   .hero-logo-himti { height: 56px; }
-  .hero-logo-una   { height: 46px; }
+  .hero-logo-una   { height: 56px; }
   .section-logo {
     width: 4rem;
     height: 4rem;
@@ -789,7 +791,7 @@ img, svg, video { max-width: 100%; height: auto; }
 }
 @media (max-width: 23.5em) {
   .hero-logo-himti { height: 48px; }
-  .hero-logo-una   { height: 40px; }
+  .hero-logo-una   { height: 48px; }
 }
 
 /* ── Global background logo (fixed layer, semua section) ── */

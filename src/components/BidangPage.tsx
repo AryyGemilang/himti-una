@@ -21,9 +21,9 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           </a>
 
           <div className="bidang-hero-top reveal">
-            <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI UNA" className="bidang-hero-logo" />
+            <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI UNA" className="bidang-hero-logo" />
             <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-              <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan" className="bidang-hero-logo-2" />
+              <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" className="bidang-hero-logo-2" />
             </a>
           </div>
 
@@ -32,7 +32,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
             {bidang.nama}
           </h1>
           <img
-            src="/himti-una/Logo-Himti.svg"
+            src="/himti-una/images/logos/logo-himti.svg"
             alt="" aria-hidden
             className="section-logo reveal"
             style={{ ["--d" as string]: "120ms" }}
@@ -48,7 +48,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section">
         <div className="wrap">
           <h2 className="head reveal">Struktur<br />Bidang</h2>
-          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
+          <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
 
           {/* Kepala bidang */}
           <div className="bidang-head-card reveal bezel">
@@ -97,7 +97,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section bidang-section-alt">
         <div className="wrap">
           <h2 className="head reveal">Tugas &<br />Fungsi</h2>
-          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
+          <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
 
           <ul className="bidang-tugas">
             {bidang.tugas.map((t, i) => (
@@ -120,7 +120,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section">
         <div className="wrap">
           <h2 className="head reveal">Dokumentasi<br />Kegiatan</h2>
-          <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
+          <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
 
           {bidang.galeri.length > 0 ? (
             <div className="bidang-galeri">
@@ -192,8 +192,8 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           gap: 1.25rem;
           margin-bottom: 2rem;
         }
-        .bidang-hero-logo { height: 72px; width: auto; object-fit: contain; }
-        .bidang-hero-logo-2 { height: 60px; width: auto; object-fit: contain; opacity: 0.85; }
+        /* Samakan tinggi tampilan kedua logo tanpa memaksa rasio lebarnya. */
+        .bidang-hero-logo, .bidang-hero-logo-2 { height: 72px; width: auto; object-fit: contain; }
         .bidang-hero-title { margin-top: 1rem; }
         .bidang-hero-desc { max-width: 55ch; font-size: var(--step-lg); line-height: 1.5; margin-top: 0.5rem; }
 
@@ -339,8 +339,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
         .bidang-nav-link:hover .bidang-nav-nama { color: var(--accent-strong); }
 
         @media (max-width: 48em) {
-          .bidang-hero-logo { height: 52px; }
-          .bidang-hero-logo-2 { height: 44px; }
+          .bidang-hero-logo, .bidang-hero-logo-2 { height: 52px; }
           .bidang-head-inner {
             flex-direction: column;
             text-align: center;

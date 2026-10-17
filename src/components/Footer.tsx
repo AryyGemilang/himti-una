@@ -42,11 +42,11 @@ export default function Footer() {
 
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-              <img src="/himti-una/Logo-Himti.svg" alt="Logo HIMTI"
+              <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI"
                 style={{ height: 32, width: "auto", objectFit: "contain" }} />
               <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-                <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan"
-                  style={{ height: 28, width: "auto", objectFit: "contain", opacity: 0.7 }} />
+                <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan"
+                  style={{ height: 32, width: "auto", objectFit: "contain" }} />
               </a>
             </div>
             <p style={{ fontSize: "var(--step-sm)", color: "var(--muted)", maxWidth: "36ch", margin: 0 }}>

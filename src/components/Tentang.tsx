@@ -22,7 +22,7 @@ export default function Tentang() {
             <div>
               <h2 className="head reveal">Apa itu<br />HIMTI?</h2>
               <img
-                src="/himti-una/Logo-Himti.svg"
+                src="/himti-una/images/logos/logo-himti.svg"
                 alt="" aria-hidden
                 className="section-logo"
               />

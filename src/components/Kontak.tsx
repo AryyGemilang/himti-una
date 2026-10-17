@@ -27,7 +27,7 @@ export default function Kontak() {
           <div>
             <p className="label reveal">Kontak</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Hubungi<br />Kami</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ ["--d" as string]: "120ms" }}>
               Punya pertanyaan atau ingin bergabung bersama HIMTI UNA? Kirim pesan dan kami akan
               segera menghubungi kamu.
@@ -46,8 +46,8 @@ export default function Kontak() {
             </div>
             <div className="reveal" style={{ marginTop: "2rem", ["--d" as string]: "240ms" }}>
               <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-                <img src="/himti-una/Logo-Una.svg" alt="Logo Universitas Asahan"
-                  style={{ height: 40, width: "auto", objectFit: "contain", opacity: 0.65 }} />
+                <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan"
+                  style={{ height: 40, width: "auto", objectFit: "contain" }} />
               </a>
             </div>
           </div>

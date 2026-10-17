@@ -21,7 +21,7 @@ export default function VisiMisi() {
           <div>
             <p className="label reveal">Visi</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Membantu<br />Mahasiswa IT</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ ["--d" as string]: "160ms" }}>
               HIMTI UNA mempunyai visi untuk membantu Mahasiswa Teknik Informatika baik dalam hal akademik
               maupun lainnya yang menyangkut ilmu Teknologi, dan juga sebagai wadah untuk menampung
@@ -33,7 +33,7 @@ export default function VisiMisi() {
           <div>
             <p className="label reveal">Misi</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Tiga Pilar<br />Utama</h2>
-            <img src="/himti-una/Logo-Himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               {MISI.map((m, i) => (
                 <li key={i} className="reveal" style={{ display: "flex", gap: "0.875rem", alignItems: "flex-start", ["--d" as string]: `${(i + 1) * 100}ms` }}>
@@ -50,7 +50,7 @@ export default function VisiMisi() {
         <div className="reveal bezel" style={{ marginTop: "5rem", ["--d" as string]: "300ms" }}>
           <div className="bezel-inner" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "2rem", alignItems: "center", padding: "2rem 2.5rem" }}>
             <div style={{ width: 64, height: 64, borderRadius: 8, overflow: "hidden", flexShrink: 0, background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src="/himti-una/PERMIKOMNAS.png" alt="Logo PERMIKOMNAS" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              <img src="/himti-una/images/affiliations/logo-permikomnas.png" alt="Logo PERMIKOMNAS" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
             <div>
               <h3 style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "0.5rem" }}>PERMIKOMNAS</h3>

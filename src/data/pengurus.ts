@@ -6,12 +6,13 @@ const P = (label: string) =>
 export const PLACEHOLDER_FOTO = P("Foto+Pengurus")
 export const PERIODE = "Periode Kepengurusan 2025/2026" // ganti sesuai periode resmi
 
+// Foto pengurus periode berjalan belum tersedia di aset proyek, jadi gunakan placeholder bersama.
 export const pengurus = {
-  ketua: { nama: "Nama Ketua", jabatan: "Ketua Himpunan Mahasiswa Teknik Informatika", foto: "/images/pengurus/ketua.jpg" } as Orang,
-  sekretaris: { nama: "Nama Sekretaris", jabatan: "Sekretaris", foto: "/images/pengurus/sekretaris.jpg" } as Orang,
-  wakilSekretaris: { nama: "Nama Wakil Sekretaris", jabatan: "Wakil Sekretaris", foto: "/images/pengurus/wakil-sekretaris.jpg" } as Orang,
-  bendahara: { nama: "Nama Bendahara", jabatan: "Bendahara", foto: "/images/pengurus/bendahara.jpg" } as Orang,
-  wakilBendahara: { nama: "Nama Wakil Bendahara", jabatan: "Wakil Bendahara", foto: "/images/pengurus/wakil-bendahara.jpg" } as Orang,
+  ketua: { nama: "Nama Ketua", jabatan: "Ketua Himpunan Mahasiswa Teknik Informatika", foto: PLACEHOLDER_FOTO } as Orang,
+  sekretaris: { nama: "Nama Sekretaris", jabatan: "Sekretaris", foto: PLACEHOLDER_FOTO } as Orang,
+  wakilSekretaris: { nama: "Nama Wakil Sekretaris", jabatan: "Wakil Sekretaris", foto: PLACEHOLDER_FOTO } as Orang,
+  bendahara: { nama: "Nama Bendahara", jabatan: "Bendahara", foto: PLACEHOLDER_FOTO } as Orang,
+  wakilBendahara: { nama: "Nama Wakil Bendahara", jabatan: "Wakil Bendahara", foto: PLACEHOLDER_FOTO } as Orang,
 }
 
 export { P }
