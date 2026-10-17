@@ -199,6 +199,39 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 }
 .member-portrait-large { width: min(86%, 13rem); }
 .member-portrait-image { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 18%; }
+.member-portrait-circle-overlap {
+  aspect-ratio: 1;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.member-portrait-circle-window {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface-2);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 16%);
+}
+.member-portrait-circle-image,
+.member-portrait-circle-upper {
+  position: absolute;
+  top: -18%;
+  left: 0;
+  width: 100%;
+  height: 132%;
+  display: block;
+  object-fit: cover;
+  object-position: center 18%;
+}
+.member-portrait-circle-upper {
+  z-index: 2;
+  clip-path: inset(0 0 54% 0 round 14px 14px 0 0);
+}
 .member-portrait-badge {
   position: absolute;
   right: 0.7rem;
@@ -216,6 +249,8 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 @media (max-width: 48em) {
   .member-portrait { width: min(88%, 10rem); margin-bottom: -2.15rem; transform: translateY(-1.25rem); border-radius: 13px; }
   .member-portrait-large { width: min(84%, 13rem); }
+  .member-portrait-circle-overlap { aspect-ratio: 1; border-radius: 0; }
+  .member-portrait-circle-upper { clip-path: inset(0 0 54% 0 round 12px 12px 0 0); }
   .member-card-content { min-height: 6.5rem; padding: 2.9rem 0.65rem 1rem; }
   .member-card-lg .member-card-content { padding-top: 3.35rem; }
   .member-card-member .member-card-content { padding-top: 2.75rem; }

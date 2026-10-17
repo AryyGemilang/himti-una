@@ -12,6 +12,7 @@ function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number
         alt={`${orang.jabatan}, ${orang.nama}`}
         size={size === "lg" ? "large" : "regular"}
         badge={size === "lg"}
+        shape="circle-overlap"
       />
       <div className="bezel member-card-panel">
         <div className="bezel-inner member-card-content">
