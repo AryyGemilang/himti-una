@@ -31,7 +31,7 @@ function Kartu({ orang, delay = 0, size = "md", onSelect }: {
               src={orang.foto}
               alt=""
               className="pengurus-photo"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 38%", display: "block" }}
             />
           </span>
           <span className="pengurus-card-overlay">
@@ -223,8 +223,8 @@ export default function Pengurus() {
         }
         .pengurus-card-button:focus-visible { outline:3px solid var(--accent-strong); outline-offset:3px; }
         .pengurus-photo-frame { position:absolute; inset:0; z-index:0; display:block; }
-        .pengurus-photo { width:100%; height:100%; object-fit:cover; transition:transform 260ms ease; }
-        .pengurus-card-button:hover .pengurus-photo { transform:scale(1.035); }
+        .pengurus-photo { width:100%; height:100%; object-fit:cover; transform:scale(1.1) translateY(-1.5%); transform-origin:center 42%; transition:transform 260ms ease; }
+        .pengurus-card-button:hover .pengurus-photo { transform:scale(1.14) translateY(-1.5%); }
         .pengurus-card-overlay {
           position:absolute; inset:0; z-index:1; display:flex; flex-direction:column; justify-content:flex-end; gap:0.35rem;
           padding:clamp(1rem,2vw,1.4rem); color:#fff;
@@ -290,8 +290,8 @@ export default function Pengurus() {
           .pengurus-modal-close { top:0.6rem; right:0.6rem; }
         }
         @media (prefers-reduced-motion:reduce) {
-          .pengurus-card-button:hover .pengurus-photo { transform:none; }
           .pengurus-photo { transition:none; }
+          .pengurus-card-button:hover .pengurus-photo { transform:scale(1.1) translateY(-1.5%); }
           .pengurus-modal-backdrop,.pengurus-modal { animation-duration:1ms; }
         }
       `}</style>

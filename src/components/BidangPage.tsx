@@ -56,7 +56,8 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
               <Foto
                 src={bidang.head.foto}
                 alt={`${bidang.head.jabatan}, ${bidang.head.nama}`}
-                style={{ width: 160, height: 160, borderRadius: "50%", objectFit: "cover", display: "block", flexShrink: 0 }}
+                className="bidang-head-photo"
+                style={{ borderRadius: "50%", objectFit: "cover", display: "block", flexShrink: 0 }}
               />
               <div>
                 <p className="label">Kepala Bidang</p>
@@ -199,13 +200,16 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
 
         .bidang-section-alt { background: var(--surface); }
 
-        .bidang-head-card { max-width: 640px; margin-bottom: 3rem; }
+        .bidang-head-card { width:min(100%, 48rem); margin:0 auto 3rem; }
         .bidang-head-inner {
           display: flex;
-          align-items: center;
-          gap: 2rem;
-          padding: 2rem;
+          flex-direction:column;
+          align-items:center;
+          text-align:center;
+          gap:1.25rem;
+          padding:2.5rem;
         }
+        .bidang-head-photo { width:clamp(12rem, 19vw, 14rem); height:clamp(12rem, 19vw, 14rem); }
         .bidang-head-nama {
           font-weight: 800;
           font-size: var(--step-xl);
@@ -340,12 +344,8 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
 
         @media (max-width: 48em) {
           .bidang-hero-logo, .bidang-hero-logo-2 { height: 52px; }
-          .bidang-head-inner {
-            flex-direction: column;
-            text-align: center;
-            gap: 1.25rem;
-            padding: 1.75rem;
-          }
+          .bidang-head-inner { gap:1.25rem; padding:1.75rem; }
+          .bidang-head-photo { width:clamp(10rem, 42vw, 12rem); height:clamp(10rem, 42vw, 12rem); }
           .bidang-head-nama { font-size: var(--step-lg); }
           .bidang-head-card { margin-bottom: 2rem; }
           .bidang-tugas { grid-template-columns: 1fr; }
