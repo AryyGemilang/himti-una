@@ -54,7 +54,7 @@ export default function VisiMisi() {
             </div>
             <div className="permikomnas-copy">
               <h3 style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "0.5rem" }}>PERMIKOMNAS</h3>
-              <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0, maxWidth: "65ch" }}>
+              <p className="permikomnas-description" style={{ color: "var(--muted)", fontSize: "var(--step-sm)" }}>
                 Perhimpunan Mahasiswa Informatika dan Komputer Nasional, didirikan tahun 2002, mempersatukan
                 mahasiswa informatika seluruh Indonesia. HIMTI bergabung sejak 16 Desember 2021.
               </p>
@@ -73,7 +73,8 @@ export default function VisiMisi() {
           background:var(--surface); display:grid; place-items:center; justify-self:center;
         }
         .permikomnas-logo-wrap img { width:92%; height:92%; object-fit:contain; }
-        .permikomnas-copy { width:min(100%, 65ch); }
+        .permikomnas-copy { width:100%; text-align:center; }
+        .permikomnas-description { width:min(100%, 65ch); margin:0 auto; text-align:center; }
         @media(max-width:48em) {
           #visimisi .wrap>div:first-of-type { grid-template-columns:1fr!important; }
           #visimisi .bezel-inner { grid-template-columns:1fr!important; }
