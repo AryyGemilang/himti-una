@@ -8,13 +8,15 @@ function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number
   return (
     <div className="reveal bezel" style={{ ["--d" as string]: `${delay}ms` }}>
       <div className="bezel-inner pengurus-card-inner" style={{ padding: size === "lg" ? "2rem" : "1.25rem", textAlign: "center" }}>
-        <div className={`pengurus-photo-frame pengurus-photo-frame-${size}`} style={{ position: "relative", display: "inline-block", marginBottom: "0.875rem" }}>
-          <Foto
-            src={orang.foto}
-            alt={`${orang.jabatan}, ${orang.nama}`}
-            className={`pengurus-photo pengurus-photo-${size}`}
-            style={{ borderRadius: "50%", objectFit: "cover", objectPosition: "center 20%", display: "block" }}
-          />
+        <div className="pengurus-photo-frame" style={{ position: "relative", display: "inline-block", marginBottom: "0.875rem" }}>
+          <div className="pengurus-photo-clip">
+            <Foto
+              src={orang.foto}
+              alt={`${orang.jabatan}, ${orang.nama}`}
+              className={`pengurus-photo pengurus-photo-${size}`}
+              style={{ borderRadius: "50%", objectFit: "cover", objectPosition: "center 35%", display: "block" }}
+            />
+          </div>
           {size === "lg" && (
             <div aria-hidden style={{ position: "absolute", bottom: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "var(--accent)" }} />
           )}
@@ -131,8 +133,8 @@ export default function Pengurus() {
           gap: 0.75rem;
         }
         .pengurus-card-inner { overflow: visible; }
-        .pengurus-photo-frame { top: -2rem; }
-        .pengurus-photo-frame-lg { top: -3rem; }
+        .pengurus-photo-frame { top: 0.25rem; }
+        .pengurus-photo-clip { border-radius: 50%; overflow: hidden; }
 
         /* Tablet */
         @media (max-width: 72em) {
@@ -141,8 +143,6 @@ export default function Pengurus() {
 
         /* Mobile */
         @media (max-width: 48em) {
-          .pengurus-photo-frame { top: -1.75rem; }
-          .pengurus-photo-frame-lg { top: -2.5rem; }
           .pengurus-header {
             grid-template-columns: 1fr !important;
             gap: 1.5rem !important;
