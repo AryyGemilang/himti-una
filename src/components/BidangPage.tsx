@@ -1,5 +1,5 @@
 import { useReveal } from "../hooks/useReveal"
-import MemberPortrait from "./MemberPortrait"
+import Foto from "./Foto"
 import type { BidangDetail } from "../data/bidang"
 import { bidangList } from "../data/bidang"
 
@@ -51,14 +51,14 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
 
           {/* Kepala bidang */}
-          <div className="bidang-head-card reveal member-card">
-            <MemberPortrait
+          <div className="bidang-head-card reveal bezel">
+            <div className="bezel-inner bidang-head-inner">
+              <Foto
                 src={bidang.head.foto}
                 alt={`${bidang.head.jabatan}, ${bidang.head.nama}`}
-                size="large"
+                style={{ width: 160, height: 160, borderRadius: "50%", objectFit: "cover", display: "block", flexShrink: 0 }}
               />
-            <div className="bezel member-card-panel">
-              <div className="bezel-inner bidang-head-inner member-card-content">
+              <div>
                 <p className="label">Kepala Bidang</p>
                 <p className="bidang-head-nama">{bidang.head.nama}</p>
                 <p className="bidang-head-jabatan">{bidang.head.jabatan}</p>
@@ -71,16 +71,15 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           {bidang.anggota.length > 0 ? (
             <div className="bidang-anggota-grid">
               {bidang.anggota.map((a, i) => (
-                <div key={i} className="reveal member-card member-card-member" style={{ ["--d" as string]: `${i * 60}ms` }}>
-                  <MemberPortrait
+                <div key={i} className="reveal bezel" style={{ ["--d" as string]: `${i * 60}ms` }}>
+                  <div className="bezel-inner bidang-anggota-inner">
+                    <Foto
                       src={a.foto}
                       alt={`${a.jabatan}, ${a.nama}`}
+                      style={{ width: 96, height: 96, borderRadius: "50%", objectFit: "cover", display: "block" }}
                     />
-                  <div className="bezel member-card-panel">
-                    <div className="bezel-inner bidang-anggota-inner member-card-content">
-                      <p className="bidang-anggota-nama">{a.nama}</p>
-                      <p className="bidang-anggota-jabatan">{a.jabatan}</p>
-                    </div>
+                    <p className="bidang-anggota-nama">{a.nama}</p>
+                    <p className="bidang-anggota-jabatan">{a.jabatan}</p>
                   </div>
                 </div>
               ))}
@@ -200,13 +199,12 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
 
         .bidang-section-alt { background: var(--surface); }
 
-        .bidang-head-card { max-width: 360px; margin: 2rem auto 3rem; }
+        .bidang-head-card { max-width: 640px; margin-bottom: 3rem; }
         .bidang-head-inner {
           display: flex;
-          flex-direction: column;
           align-items: center;
-          text-align: center;
-          padding: 3.5rem 1.5rem 1.75rem;
+          gap: 2rem;
+          padding: 2rem;
         }
         .bidang-head-nama {
           font-weight: 800;
@@ -231,15 +229,14 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
           gap: var(--gap);
-          align-items: start;
         }
         .bidang-anggota-inner {
-          padding: 3.25rem 1.25rem 1.5rem;
+          padding: 1.5rem;
           text-align: center;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.4rem;
+          gap: 0.6rem;
         }
         .bidang-anggota-nama { font-weight: 800; font-size: var(--step-md); line-height: 1.1; }
         .bidang-anggota-jabatan { font-size: var(--step-xs); color: var(--muted); }
@@ -343,18 +340,18 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
 
         @media (max-width: 48em) {
           .bidang-hero-logo, .bidang-hero-logo-2 { height: 52px; }
-          .bidang-head-inner { padding: 3.25rem 1.25rem 1.5rem; }
+          .bidang-head-inner {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.25rem;
+            padding: 1.75rem;
+          }
           .bidang-head-nama { font-size: var(--step-lg); }
           .bidang-head-card { margin-bottom: 2rem; }
-          .bidang-anggota-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .bidang-tugas { grid-template-columns: 1fr; }
           .bidang-galeri { grid-template-columns: 1fr; }
           .bidang-nav { flex-direction: column; gap: 0.5rem; }
           .bidang-nav-link-right { text-align: left; }
-        }
-
-        @media (max-width: 22em) {
-          .bidang-anggota-grid { grid-template-columns: 1fr; }
         }
       `}</style>
     </main>
