@@ -12,6 +12,7 @@ export default function Foto({
       src={err ? PLACEHOLDER_FOTO : src}
       alt={alt}
       loading="lazy"
+      decoding="async"
       onError={() => setErr(true)}
       className={className}
       style={style}

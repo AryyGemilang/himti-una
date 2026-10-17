@@ -1,5 +1,5 @@
 import type { Orang } from "./pengurus"
-import { PLACEHOLDER_FOTO } from "./pengurus"
+import { FOTO_PENGURUS, PLACEHOLDER_FOTO } from "./pengurus"
 
 export type GaleriItem = {
   foto: string
@@ -41,7 +41,7 @@ export const bidangList: BidangDetail[] = [
     namaPendek: "Humas",
     deskripsi:
       "Bidang yang mengelola komunikasi organisasi dan membangun hubungan baik dengan pihak internal maupun eksternal.",
-    head: { nama: "Kepala Bidang", jabatan: "Kepala Bidang Humas", foto: PLACEHOLDER_FOTO },
+    head: { nama: "Yudha", jabatan: "Kepala Bidang Humas", foto: FOTO_PENGURUS.kepalaBidangHumas },
     anggota: [],
     tugas: [
       "Menjalin komunikasi organisasi dengan pihak internal dan eksternal.",
