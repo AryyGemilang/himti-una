@@ -34,7 +34,7 @@ export default function Sejarah() {
           <ol className="timeline-list">
             <div className="timeline-line" aria-hidden />
             {KETUA.map((k, i) => (
-              <li key={k.periode} className="reveal timeline-item" style={{ ["--d" as string]: `${i * 80}ms` }}>
+              <li key={`${k.periode}-${k.nama}`} className="reveal timeline-item" style={{ ["--d" as string]: `${i * 80}ms` }}>
 
                 {/* Tanggal + dot */}
                 <div className="timeline-date">
@@ -107,7 +107,7 @@ export default function Sejarah() {
         }
         .timeline-dot {
           position: absolute;
-          right: -5px;
+          left: 83px;
           top: 6px;
           width: 10px;
           height: 10px;
@@ -166,7 +166,6 @@ export default function Sejarah() {
             padding-left: 0.5rem;
           }
           .timeline-dot {
-            right: unset;
             left: -1.25rem;
             top: 6px;
           }

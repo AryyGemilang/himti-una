@@ -435,7 +435,7 @@ body:has(.nav-brand-visible) .hero-logos {
 .nav-overlay a:hover { color: var(--ink); }
 .nav-overlay a:focus-visible { color: var(--ink); background: var(--accent-dim); }
 .nav-overlay .nav-overlay-action { margin-top: 0.375rem; }
-.nav-overlay, .nav-pill, .panel, .bezel-inner, footer, .coupon input, .coupon textarea {
+.nav-overlay, .nav-pill, .panel, .bezel-inner, footer {
   transition-property: background-color, color, border-color, opacity, box-shadow;
   transition-duration: var(--t-med);
   transition-timing-function: ease;
@@ -597,59 +597,6 @@ body:has(.nav-brand-visible) .hero-logos {
   object-fit: cover;
   transition: opacity 700ms ease;
 }
-
-/* ── Coupon form ── */
-.coupon {
-  position: relative;
-  background: var(--accent);
-  color: var(--accent-ink);
-  border-radius: var(--r-card);
-  overflow: visible;
-}
-.coupon input,
-.coupon textarea {
-  width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--control-border);
-  border-radius: 6px;
-  padding: 0.875rem 1rem;
-  font-size: var(--step-md);
-  font-family: var(--font);
-  color: var(--ink);
-  outline: none;
-  transition: background var(--t-fast) ease;
-  resize: vertical;
-}
-.coupon input::placeholder,
-.coupon textarea::placeholder { color: var(--muted); opacity: 1; }
-.coupon input:focus,
-.coupon textarea:focus {
-  background: var(--surface);
-  border-color: var(--accent-strong);
-}
-.coupon input:focus-visible,
-.coupon textarea:focus-visible {
-  outline: 2px solid var(--accent-strong);
-  outline-offset: 2px;
-}
-.coupon-label p { color: var(--accent-ink); opacity: 1 !important; }
-.coupon-submit {
-  width: 100%;
-  background: var(--surface);
-  color: var(--accent-strong);
-  font-family: var(--font);
-  font-weight: 800;
-  font-size: var(--step-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: opacity var(--t-fast) ease, transform var(--t-fast) var(--spring);
-}
-.coupon-submit:hover { background: var(--surface-2); }
-.coupon-submit:active { transform: scale(0.98); }
 
 /* ── Footer mark band ── */
 .mark-band {

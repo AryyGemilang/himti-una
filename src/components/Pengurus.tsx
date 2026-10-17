@@ -31,7 +31,7 @@ function Kartu({ orang, delay = 0, size = "md", onSelect }: {
               src={orang.foto}
               alt=""
               className="pengurus-photo"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 38%", display: "block" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 48%", display: "block" }}
             />
           </span>
           <span className="pengurus-card-overlay">

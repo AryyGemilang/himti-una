@@ -48,9 +48,9 @@ export default function VisiMisi() {
 
         {/* PERMIKOMNAS block */}
         <div className="reveal bezel" style={{ marginTop: "5rem", ["--d" as string]: "300ms" }}>
-          <div className="bezel-inner" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "2rem", alignItems: "center", padding: "2rem 2.5rem" }}>
-            <div style={{ width: 64, height: 64, borderRadius: 8, overflow: "hidden", flexShrink: 0, background: "var(--surface)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src="/himti-una/images/affiliations/logo-permikomnas.png" alt="Logo PERMIKOMNAS" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          <div className="bezel-inner permikomnas-inner">
+            <div className="permikomnas-logo-wrap">
+              <img src="/himti-una/images/affiliations/logo-permikomnas.png" alt="Logo PERMIKOMNAS" />
             </div>
             <div>
               <h3 style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "0.5rem" }}>PERMIKOMNAS</h3>
@@ -63,7 +63,19 @@ export default function VisiMisi() {
         </div>
 
       </div>
-      <style>{`@media(max-width:48em){#visimisi .wrap>div:first-of-type{grid-template-columns:1fr!important}#visimisi .bezel-inner{grid-template-columns:1fr!important}}`}</style>
+      <style>{`
+        .permikomnas-inner { display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:center; padding:2rem 2.5rem; }
+        .permikomnas-logo-wrap {
+          width:96px; height:96px; border-radius:8px; overflow:hidden; flex-shrink:0;
+          background:var(--surface); display:grid; place-items:center; justify-self:center;
+        }
+        .permikomnas-logo-wrap img { width:92%; height:92%; object-fit:contain; }
+        @media(max-width:48em) {
+          #visimisi .wrap>div:first-of-type { grid-template-columns:1fr!important; }
+          #visimisi .bezel-inner { grid-template-columns:1fr!important; }
+          .permikomnas-inner { gap:1.25rem; padding:1.75rem; }
+        }
+      `}</style>
     </section>
   )
 }
