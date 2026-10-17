@@ -1,26 +1,23 @@
 import { useReveal } from "../hooks/useReveal"
 import { pengurus, PERIODE, type Orang } from "../data/pengurus"
 import { bidangList } from "../data/bidang"
-import Foto from "./Foto"
+import MemberPortrait from "./MemberPortrait"
 
 function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number; size?: "lg" | "md" | "sm" }) {
-  const dim = { lg: 160, md: 100, sm: 72 }[size]
   const nameSz = size === "lg" ? "var(--step-lg)" : size === "md" ? "var(--step-md)" : "var(--step-sm)"
   return (
-    <div className="reveal bezel" style={{ ["--d" as string]: `${delay}ms` }}>
-      <div className="bezel-inner" style={{ padding: size === "lg" ? "2rem" : "1.25rem", textAlign: "center" }}>
-        <div style={{ position: "relative", display: "inline-block", marginBottom: "0.875rem" }}>
-          <Foto
-            src={orang.foto}
-            alt={`${orang.jabatan}, ${orang.nama}`}
-            style={{ width: dim, height: dim, borderRadius: "50%", objectFit: "cover", display: "block" }}
-          />
-          {size === "lg" && (
-            <div aria-hidden style={{ position: "absolute", bottom: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "var(--accent)" }} />
-          )}
+    <div className={`reveal member-card member-card-${size}`} style={{ ["--d" as string]: `${delay}ms` }}>
+      <MemberPortrait
+        src={orang.foto}
+        alt={`${orang.jabatan}, ${orang.nama}`}
+        size={size === "lg" ? "large" : "regular"}
+        badge={size === "lg"}
+      />
+      <div className="bezel member-card-panel">
+        <div className="bezel-inner member-card-content">
+          <p style={{ fontWeight: 800, fontSize: nameSz, margin: 0, lineHeight: 1.1 }}>{orang.nama}</p>
+          <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", marginTop: "0.3rem" }}>{orang.jabatan}</p>
         </div>
-        <p style={{ fontWeight: 800, fontSize: nameSz, margin: 0, lineHeight: 1.1 }}>{orang.nama}</p>
-        <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", marginTop: "0.3rem" }}>{orang.jabatan}</p>
       </div>
     </div>
   )
@@ -97,12 +94,14 @@ export default function Pengurus() {
           grid-template-columns: repeat(4, 1fr);
           gap: var(--gap);
           margin-bottom: 3rem;
+          align-items: start;
         }
         .pengurus-bidang-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           gap: var(--gap);
           scroll-margin-top: 6rem;
+          align-items: start;
         }
         .bidang-btn {
           width: 100%;
@@ -144,9 +143,13 @@ export default function Pengurus() {
             margin-bottom: 2.5rem !important;
           }
           .pengurus-header-desc { padding-left: 0 !important; }
-          .pengurus-inti-grid { grid-template-columns: 1fr 1fr !important; }
-          .pengurus-bidang-grid { grid-template-columns: 1fr 1fr !important; }
+          .pengurus-inti-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .pengurus-bidang-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .anggota-grid { grid-template-columns: 1fr !important; }
+        }
+
+        @media (max-width: 22em) {
+          .pengurus-inti-grid, .pengurus-bidang-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
