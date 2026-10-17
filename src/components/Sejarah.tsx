@@ -3,7 +3,7 @@ import { useReveal } from "../hooks/useReveal"
 const KETUA = [
   { periode: "1 Okt 2013", label: "Berdiri",    nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA",            foto: "/himti-una/images/people/rahmat-irawan.jpg" },
   { periode: "2020–2021",  label: "Periode III", nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim",                           foto: "/himti-una/images/people/reza-fahlevi.jpg" },
-  { periode: "2021–2022",  label: "Periode IV",  nama: "Ibnu Haykal Lubis S.kom",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/images/people/ibnu-haykal-lubis.jpg" },
+  { periode: "2021–2022",  label: "Periode IV",  nama: "Ibnu Haykal Lubis S.Kom",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/images/people/ibnu-haykal-lubis.jpg" },
   { periode: "2022–2023",  label: "Periode V",   nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/images/people/mhd-zikri-ansyari.jpg" },
   { periode: "2023–2024",  label: "Periode VI",  nama: "Mhd Fikri Gunawan S.Kom",    ket: "PJ Kahim, Mhd Risky Al Faridz",     foto: "/himti-una/images/people/mhd-fikri-gunawan.jpg" },
   { periode: "2024–2025",  label: "Periode VII", nama: "Bintang Fajar R Putra", ket: "Ketua aktif",                       foto: "/himti-una/images/people/bintang-fajar-r-putra.jpg" },
