@@ -44,15 +44,6 @@ export default function Kontak() {
                 <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0 }}>PERMIKOMNAS, anggota sejak 2021</p>
               </div>
             </div>
-            <div className="reveal" style={{ marginTop: "2rem", ["--d" as string]: "240ms" }}>
-              <a href="/#calon-mahasiswa" className="kontak-recruitment-link">
-                <span>
-                  <span className="kontak-recruitment-label">Calon mahasiswa baru</span>
-                  <span className="kontak-recruitment-title">Kenali Teknik Informatika UNA</span>
-                </span>
-                <span aria-hidden="true" className="kontak-recruitment-arrow">↗</span>
-              </a>
-            </div>
           </div>
 
           {/* Right — coupon form */}
@@ -122,26 +113,6 @@ export default function Kontak() {
           flex-direction: column;
           gap: 0.625rem;
         }
-        .kontak-recruitment-link {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 1rem;
-          width: min(100%, 24rem);
-          min-height: 76px;
-          padding: 0.875rem 1rem;
-          border: 1px solid var(--border);
-          border-radius: var(--r-card);
-          background: var(--surface);
-          text-decoration: none;
-          transition: border-color var(--t-fast) ease, transform var(--t-fast) var(--spring);
-        }
-        .kontak-recruitment-link:hover { border-color: var(--accent-strong); transform: translateY(-2px); }
-        .kontak-recruitment-label, .kontak-recruitment-title { display: block; }
-        .kontak-recruitment-label { color: var(--muted); font-size: var(--step-xs); }
-        .kontak-recruitment-title { margin-top: 0.15rem; color: var(--ink); font-size: var(--step-sm); font-weight: 800; }
-        .kontak-recruitment-arrow { color: var(--accent-strong); font-size: 1.5rem; line-height: 1; }
-
         @media (max-width: 48em) {
           .kontak-grid { grid-template-columns: 1fr !important; }
           .coupon-inner { grid-template-columns: 1fr !important; }

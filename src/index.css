@@ -257,7 +257,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 }
 
 /* Mobile: hamburger tetap di kiri; ruang untuk logo bertambah ke arah kanan. */
-@media (max-width: 48em) {
+@media (max-width: 60em) {
   .nav {
     top: calc(env(safe-area-inset-top) + 0.5rem);
     left: 0;
@@ -392,7 +392,7 @@ body:has(.nav-brand-visible) .hero-logos {
 .theme-toggle.is-dark .theme-toggle-thumb { transform: translateX(24px); }
 .theme-toggle:focus-visible { outline-color: var(--accent-strong); }
 .theme-toggle-mobile { display: none; }
-@media (max-width: 48em) {
+@media (max-width: 60em) {
   .theme-toggle-desktop { display: none; }
   .theme-toggle-mobile {
     position: fixed;
@@ -449,7 +449,7 @@ body:has(.nav-brand-visible) .hero-logos {
 .una-logo-link img { transition: opacity var(--t-fast) ease; }
 .una-logo-link:hover img { opacity: 1 !important; }
 
-@media (max-width: 48em) {
+@media (max-width: 60em) {
   .nav-overlay {
     inset: auto max(1rem, env(safe-area-inset-right)) auto auto;
     top: calc(env(safe-area-inset-top) + 3.75rem);

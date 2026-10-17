@@ -64,6 +64,14 @@ function HomePage() {
   useActiveSection(SECTIONS)
 
   useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "instant" as ScrollBehavior })
+    })
+  }, [])
+
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement).tagName
       if (["INPUT","TEXTAREA","SELECT"].includes(tag)) return
