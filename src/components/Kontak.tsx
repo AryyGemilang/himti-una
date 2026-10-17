@@ -23,8 +23,15 @@ export default function Kontak() {
               <div>
                 <p style={{ fontWeight: 700, fontSize: "var(--step-sm)", marginBottom: "0.2rem" }}>Lokasi</p>
                 <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0 }}>
-                  Fakultas Teknik, Universitas Asahan<br />Kisaran, Sumatera Utara
+                  Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara
                 </p>
+                <a className="contact-link" href="https://share.google/kIGBHkUtAg1HOTBd7" target="_blank" rel="noopener noreferrer">
+                  Lihat lokasi di peta
+                </a>
+              </div>
+              <div>
+                <p style={{ fontWeight: 700, fontSize: "var(--step-sm)", marginBottom: "0.2rem" }}>Email HIMTI UNA</p>
+                <a className="contact-link" href="mailto:himti.universitasasahan@gmail.com">himti.universitasasahan@gmail.com</a>
               </div>
               <div>
                 <p style={{ fontWeight: 700, fontSize: "var(--step-sm)", marginBottom: "0.2rem" }}>Naungan</p>
@@ -41,6 +48,16 @@ export default function Kontak() {
           width:100%;
         }
         .kontak-content { max-width:62rem; }
+        .contact-link {
+          display: inline-block;
+          min-height: 2.75rem;
+          padding-block: 0.5rem;
+          color: var(--accent-strong);
+          font-size: var(--step-sm);
+          overflow-wrap: anywhere;
+          text-underline-offset: 0.2em;
+        }
+        .contact-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
         @media (max-width: 48em) {
           .kontak-content { width:100%; }
         }

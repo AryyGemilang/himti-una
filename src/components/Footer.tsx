@@ -1,3 +1,5 @@
+import { Mail, MapPin } from "lucide-react"
+
 const LETTERS = "HIMTI".split("")
 const HEIGHTS = [85, 100, 92, 76, 95]
 const UNA_L   = "UNA".split("")
@@ -7,6 +9,29 @@ const NAV = [
   ["Beranda","/#beranda"],["Tentang","/#tentang"],["Sejarah","/#sejarah"],
   ["Visi Misi","/#visimisi"],["Pengurus","/#pengurus"],["Kegiatan","/#kegiatan"],["Kontak","/#kontak"],
   ["Calon Mahasiswa Baru","/#calon-mahasiswa"],
+]
+
+const SOCIAL_LINKS = [
+  {
+    label: "Instagram HIMTI UNA",
+    href: "https://www.instagram.com/himtiuna_?utm_source=ig_web_button_share_sheet&dlrf=ZDNlZDc0MzIxNw==",
+    icon: (
+      <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.8" r=".8" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  {
+    label: "TikTok HIMTI UNA",
+    href: "https://www.tiktok.com/@himtiuna_?is_from_webapp=1&sender_device=pc",
+    icon: (
+      <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.6 7.1a6.7 6.7 0 0 1-4.1-1.4v8.1a6.2 6.2 0 1 1-5.4-6.1v3.4a2.9 2.9 0 1 0 2.1 2.8V2.8h3.3c.2 2 1.8 3.6 4.1 3.9v.4Z" />
+      </svg>
+    ),
+  },
 ]
 
 export default function Footer() {
@@ -70,9 +95,30 @@ export default function Footer() {
 
           <div>
             <p className="label" style={{ marginBottom: "1.25rem" }}>Lokasi</p>
-            <p style={{ fontSize: "var(--step-sm)", color: "var(--muted)" }}>
+            <address className="footer-address">
               Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara
-            </p>
+            </address>
+            <a className="footer-info-link" href="https://share.google/kIGBHkUtAg1HOTBd7" target="_blank" rel="noopener noreferrer">
+              <MapPin aria-hidden size={16} /> Lihat lokasi
+            </a>
+          </div>
+
+          <div>
+            <p className="label" style={{ marginBottom: "1.25rem" }}>Hubungi</p>
+            <a className="footer-info-link" href="mailto:himti.universitasasahan@gmail.com">
+              <Mail aria-hidden size={16} /> Email HIMTI UNA
+            </a>
+            <div className="footer-socials" aria-label="Media sosial HIMTI UNA">
+              {SOCIAL_LINKS.map(({ label, href, icon }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
+                  {icon}
+                </a>
+              ))}
+            </div>
+            <p className="footer-developer-label">Contact Developer</p>
+            <a className="footer-developer-link" href="mailto:aryagemilangsinuhaji@gmail.com">
+              aryagemilangsinuhaji@gmail.com
+            </a>
           </div>
 
         </div>
@@ -91,10 +137,49 @@ export default function Footer() {
       <style>{`
         .footer-grid {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
+          grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
           gap: 3rem;
           padding-top: 2.5rem;
         }
+        .footer-address {
+          margin: 0 0 0.75rem;
+          color: var(--muted);
+          font-size: var(--step-sm);
+          font-style: normal;
+          line-height: 1.7;
+        }
+        .footer-info-link {
+          display: inline-flex;
+          min-height: 2.75rem;
+          align-items: center;
+          gap: 0.55rem;
+          color: var(--muted);
+          font-size: var(--step-sm);
+          text-decoration: none;
+          overflow-wrap: anywhere;
+          transition: color 160ms ease;
+        }
+        .footer-info-link:hover, .footer-info-link:focus-visible,
+        .footer-developer-link:hover, .footer-developer-link:focus-visible { color: var(--ink); }
+        .footer-info-link:focus-visible, .footer-socials a:focus-visible,
+        .footer-developer-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        .footer-socials { display: flex; gap: 0.5rem; margin: 0.25rem 0 1.25rem; }
+        .footer-socials a {
+          display: inline-flex;
+          width: 2.75rem;
+          height: 2.75rem;
+          align-items: center;
+          justify-content: center;
+          color: var(--muted);
+          border-radius: 50%;
+          transition: color 160ms ease, background 160ms ease;
+        }
+        .footer-socials a:hover, .footer-socials a:focus-visible {
+          color: var(--accent-strong);
+          background: var(--accent-dim);
+        }
+        .footer-developer-label { margin: 0 0 0.35rem; color: var(--muted-2); font-size: var(--step-xs); }
+        .footer-developer-link { color: var(--muted); font-size: var(--step-xs); overflow-wrap: anywhere; text-underline-offset: 0.2em; }
         .footer-brand-logos {
           display: flex;
           align-items: center;
@@ -120,6 +205,9 @@ export default function Footer() {
           .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
           .footer-brand-logos { gap: 1rem; }
           .footer-brand-logo { height: clamp(3.5rem, 16vw, 4.25rem); max-width: 6rem; }
+        }
+        @media (min-width: 48.01em) and (max-width: 64em) {
+          .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
         }
       `}</style>
     </footer>
