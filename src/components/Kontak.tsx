@@ -45,7 +45,7 @@ export default function Kontak() {
               </div>
             </div>
             <div className="reveal" style={{ marginTop: "2rem", ["--d" as string]: "240ms" }}>
-              <a href="/pendaftaran/" className="kontak-recruitment-link">
+              <a href="/#calon-mahasiswa" className="kontak-recruitment-link">
                 <span>
                   <span className="kontak-recruitment-label">Calon mahasiswa baru</span>
                   <span className="kontak-recruitment-title">Kenali Teknik Informatika UNA</span>

@@ -9,14 +9,14 @@ import VisiMisi from "./components/VisiMisi"
 import Pengurus from "./components/Pengurus"
 import Kegiatan from "./components/Kegiatan"
 import Kontak from "./components/Kontak"
+import CalonMahasiswa from "./components/CalonMahasiswa"
 import Footer from "./components/Footer"
 import BidangPage from "./components/BidangPage"
-import PendaftaranPage from "./components/PendaftaranPage"
 import { useActiveSection } from "./hooks/useReveal"
 import { useRoute, navigate, currentPath } from "./lib/router"
 import { getBidang } from "./data/bidang"
 
-const SECTIONS = ["beranda","tentang","sejarah","visimisi","pengurus","kegiatan","kontak"]
+const SECTIONS = ["beranda","tentang","sejarah","visimisi","pengurus","kegiatan","kontak","calon-mahasiswa"]
 
 /** Intersep klik anchor internal agar pakai client-side routing */
 function useLinkInterceptor() {
@@ -93,6 +93,7 @@ function HomePage() {
       <Pengurus />
       <Kegiatan />
       <Kontak />
+      <CalonMahasiswa />
     </main>
   )
 }
@@ -104,7 +105,6 @@ export default function App() {
   // Route: /bidang/:slug/
   const match = path.match(/^\/bidang\/([^/]+)\/?$/)
   const bidang = match ? getBidang(match[1]) : undefined
-  const isPendaftaran = path === "/pendaftaran" || path === "/pendaftaran/"
 
   // 404 → beranda
   useEffect(() => {
@@ -117,9 +117,9 @@ export default function App() {
       <BgLogo />
 
       <Navbar path={path} />
-      {!match && !isPendaftaran && <SlideIndicator />}
+      {!match && <SlideIndicator />}
 
-      {bidang ? <BidangPage bidang={bidang} /> : isPendaftaran ? <PendaftaranPage /> : <HomePage />}
+      {bidang ? <BidangPage bidang={bidang} /> : <HomePage />}
 
       <Footer />
     </>

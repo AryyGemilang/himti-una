@@ -7,8 +7,8 @@ function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number
   const nameSz = size === "lg" ? "var(--step-lg)" : size === "md" ? "var(--step-md)" : "var(--step-sm)"
   return (
     <div className="reveal bezel" style={{ ["--d" as string]: `${delay}ms` }}>
-      <div className="bezel-inner" style={{ padding: size === "lg" ? "2rem" : "1.25rem", textAlign: "center" }}>
-        <div style={{ position: "relative", display: "inline-block", marginBottom: "0.875rem" }}>
+      <div className="bezel-inner pengurus-card-inner" style={{ padding: size === "lg" ? "2rem" : "1.25rem", textAlign: "center" }}>
+        <div className="pengurus-photo-frame" style={{ position: "relative", display: "inline-block", marginBottom: "0.875rem" }}>
           <Foto
             src={orang.foto}
             alt={`${orang.jabatan}, ${orang.nama}`}
@@ -130,6 +130,8 @@ export default function Pengurus() {
           grid-template-columns: repeat(3, 1fr);
           gap: 0.75rem;
         }
+        .pengurus-card-inner { overflow: visible; }
+        .pengurus-photo-frame { top: -1rem; }
 
         /* Tablet */
         @media (max-width: 72em) {
@@ -138,6 +140,7 @@ export default function Pengurus() {
 
         /* Mobile */
         @media (max-width: 48em) {
+          .pengurus-photo-frame { top: -0.75rem; }
           .pengurus-header {
             grid-template-columns: 1fr !important;
             gap: 1.5rem !important;

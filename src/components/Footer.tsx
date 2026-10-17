@@ -6,7 +6,7 @@ const UNA_H   = [80, 100, 70]
 const NAV = [
   ["Beranda","/#beranda"],["Tentang","/#tentang"],["Sejarah","/#sejarah"],
   ["Visi Misi","/#visimisi"],["Pengurus","/#pengurus"],["Kegiatan","/#kegiatan"],["Kontak","/#kontak"],
-  ["Pendaftaran","/pendaftaran/"],
+  ["Calon Mahasiswa Baru","/#calon-mahasiswa"],
 ]
 
 export default function Footer() {

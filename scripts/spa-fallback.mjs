@@ -24,7 +24,6 @@ const PAGES = {
   "bidang/kominfo": "Bidang Kominfo",
   "bidang/agama-sosial": "Bidang Agama & Sosial",
   "bidang/minat-bakat": "Bidang Minat & Bakat",
-  pendaftaran: "Pendaftaran Teknik Informatika — HIMTI UNA",
 }
 
 for (const [route, title] of Object.entries(PAGES)) {
