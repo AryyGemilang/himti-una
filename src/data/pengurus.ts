@@ -12,7 +12,7 @@ export const FOTO_PENGURUS = {
 } as const
 
 export const pengurus = {
-  ketua: { nama: "Mhd Kenichiro Athallah", jabatan: "Ketua Himpunan Mahasiswa Teknik Informatika", foto: FOTO_PENGURUS.ketua } as Orang,
+  ketua: { nama: "Keni", jabatan: "Ketua Himpunan Mahasiswa Teknik Informatika", foto: FOTO_PENGURUS.ketua } as Orang,
   sekretaris: { nama: "Pasya", jabatan: "Sekretaris Umum", foto: FOTO_PENGURUS.sekretaris } as Orang,
   wakilSekretaris: { nama: "Nama Wakil Sekretaris", jabatan: "Wakil Sekretaris", foto: PLACEHOLDER_FOTO } as Orang,
   bendahara: { nama: "Natalie", jabatan: "Bendahara Umum", foto: FOTO_PENGURUS.bendahara } as Orang,
