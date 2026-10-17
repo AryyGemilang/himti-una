@@ -1,7 +1,6 @@
 // GitHub Pages SPA support:
 // - 404.html sebagai fallback umum
-// - dist/bidang/<slug>/index.html per halaman detail agar deep-link
-//   mengembalikan HTTP 200 (bukan 404) dan tetap SEO-friendly.
+// - direktori route statis agar deep-link GitHub Pages mengembalikan HTTP 200.
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 
@@ -18,24 +17,24 @@ const html = readFileSync(index, "utf8")
 // Fallback umum
 copyFileSync(index, join(dist, "404.html"))
 
-// Slug harus sinkron dengan src/data/bidang.ts
-const SLUGS = ["kaderisasi", "humas", "kominfo", "agama-sosial", "minat-bakat"]
-const TITLES = {
-  kaderisasi: "Bidang Kaderisasi",
-  humas: "Bidang Humas",
-  kominfo: "Bidang Kominfo",
-  "agama-sosial": "Bidang Agama & Sosial",
-  "minat-bakat": "Bidang Minat & Bakat",
+// Route ini harus sinkron dengan src/App.tsx dan src/data/bidang.ts.
+const PAGES = {
+  "bidang/kaderisasi": "Bidang Kaderisasi",
+  "bidang/humas": "Bidang Humas",
+  "bidang/kominfo": "Bidang Kominfo",
+  "bidang/agama-sosial": "Bidang Agama & Sosial",
+  "bidang/minat-bakat": "Bidang Minat & Bakat",
+  pendaftaran: "Pendaftaran Teknik Informatika — HIMTI UNA",
 }
 
-for (const slug of SLUGS) {
-  const dir = join(dist, "bidang", slug)
+for (const [route, title] of Object.entries(PAGES)) {
+  const dir = join(dist, route)
   mkdirSync(dir, { recursive: true })
   const page = html.replace(
     /<title>.*?<\/title>/,
-    `<title>${TITLES[slug]} — HIMTI UNA</title>`
+    `<title>${title}</title>`
   )
   writeFileSync(join(dir, "index.html"), page)
 }
 
-console.log(`spa-fallback: 404.html + ${SLUGS.length} halaman bidang dibuat`)
+console.log(`spa-fallback: 404.html + ${Object.keys(PAGES).length} halaman route dibuat`)

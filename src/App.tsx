@@ -11,6 +11,7 @@ import Kegiatan from "./components/Kegiatan"
 import Kontak from "./components/Kontak"
 import Footer from "./components/Footer"
 import BidangPage from "./components/BidangPage"
+import PendaftaranPage from "./components/PendaftaranPage"
 import { useActiveSection } from "./hooks/useReveal"
 import { useRoute, navigate, currentPath } from "./lib/router"
 import { getBidang } from "./data/bidang"
@@ -103,6 +104,7 @@ export default function App() {
   // Route: /bidang/:slug/
   const match = path.match(/^\/bidang\/([^/]+)\/?$/)
   const bidang = match ? getBidang(match[1]) : undefined
+  const isPendaftaran = path === "/pendaftaran" || path === "/pendaftaran/"
 
   // 404 → beranda
   useEffect(() => {
@@ -115,9 +117,9 @@ export default function App() {
       <BgLogo />
 
       <Navbar path={path} />
-      {!match && <SlideIndicator />}
+      {!match && !isPendaftaran && <SlideIndicator />}
 
-      {bidang ? <BidangPage bidang={bidang} /> : <HomePage />}
+      {bidang ? <BidangPage bidang={bidang} /> : isPendaftaran ? <PendaftaranPage /> : <HomePage />}
 
       <Footer />
     </>

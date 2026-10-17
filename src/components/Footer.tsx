@@ -4,8 +4,9 @@ const UNA_L   = "UNA".split("")
 const UNA_H   = [80, 100, 70]
 
 const NAV = [
-  ["Beranda","#beranda"],["Tentang","#tentang"],["Sejarah","#sejarah"],
-  ["Visi Misi","#visimisi"],["Pengurus","#pengurus"],["Kegiatan","#kegiatan"],["Kontak","#kontak"],
+  ["Beranda","/#beranda"],["Tentang","/#tentang"],["Sejarah","/#sejarah"],
+  ["Visi Misi","/#visimisi"],["Pengurus","/#pengurus"],["Kegiatan","/#kegiatan"],["Kontak","/#kontak"],
+  ["Pendaftaran","/pendaftaran/"],
 ]
 
 export default function Footer() {
@@ -41,12 +42,10 @@ export default function Footer() {
         <div className="footer-grid">
 
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-              <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI"
-                style={{ height: 32, width: "auto", objectFit: "contain" }} />
+            <div className="footer-brand-logos">
+              <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI" className="footer-brand-logo" />
               <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-                <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan"
-                  style={{ height: 32, width: "auto", objectFit: "contain" }} />
+                <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" className="footer-brand-logo" />
               </a>
             </div>
             <p style={{ fontSize: "var(--step-sm)", color: "var(--muted)", maxWidth: "36ch", margin: 0 }}>
@@ -96,6 +95,18 @@ export default function Footer() {
           gap: 3rem;
           padding-top: 2.5rem;
         }
+        .footer-brand-logos {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          margin-bottom: 1.25rem;
+        }
+        .footer-brand-logo {
+          width: auto;
+          height: clamp(3.75rem, 6vw, 5rem);
+          max-width: 7rem;
+          object-fit: contain;
+        }
         .footer-bottom {
           margin-top: 3rem;
           padding-top: 1.5rem;
@@ -107,6 +118,8 @@ export default function Footer() {
         }
         @media (max-width: 48em) {
           .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .footer-brand-logos { gap: 1rem; }
+          .footer-brand-logo { height: clamp(3.5rem, 16vw, 4.25rem); max-width: 6rem; }
         }
       `}</style>
     </footer>

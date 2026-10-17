@@ -4,7 +4,6 @@ import { bidangList } from "../data/bidang"
 import Foto from "./Foto"
 
 function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number; size?: "lg" | "md" | "sm" }) {
-  const dim = { lg: 160, md: 100, sm: 72 }[size]
   const nameSz = size === "lg" ? "var(--step-lg)" : size === "md" ? "var(--step-md)" : "var(--step-sm)"
   return (
     <div className="reveal bezel" style={{ ["--d" as string]: `${delay}ms` }}>
@@ -13,7 +12,8 @@ function Kartu({ orang, delay = 0, size = "md" }: { orang: Orang; delay?: number
           <Foto
             src={orang.foto}
             alt={`${orang.jabatan}, ${orang.nama}`}
-            style={{ width: dim, height: dim, borderRadius: "50%", objectFit: "cover", display: "block" }}
+            className={`pengurus-photo pengurus-photo-${size}`}
+            style={{ borderRadius: "50%", objectFit: "cover", objectPosition: "center 20%", display: "block" }}
           />
           {size === "lg" && (
             <div aria-hidden style={{ position: "absolute", bottom: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "var(--accent)" }} />
