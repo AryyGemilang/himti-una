@@ -52,7 +52,7 @@ export default function VisiMisi() {
             <div className="permikomnas-logo-wrap">
               <img src="/himti-una/images/affiliations/logo-permikomnas.png" alt="Logo PERMIKOMNAS" />
             </div>
-            <div>
+            <div className="permikomnas-copy">
               <h3 style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "0.5rem" }}>PERMIKOMNAS</h3>
               <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0, maxWidth: "65ch" }}>
                 Perhimpunan Mahasiswa Informatika dan Komputer Nasional, didirikan tahun 2002, mempersatukan
@@ -64,16 +64,20 @@ export default function VisiMisi() {
 
       </div>
       <style>{`
-        .permikomnas-inner { display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:center; padding:2rem 2.5rem; }
+        .permikomnas-inner {
+          display:flex; flex-direction:column; align-items:center; gap:1.25rem;
+          padding:2.5rem; text-align:center;
+        }
         .permikomnas-logo-wrap {
-          width:96px; height:96px; border-radius:8px; overflow:hidden; flex-shrink:0;
+          width:clamp(7rem, 10vw, 9rem); height:clamp(7rem, 10vw, 9rem); border-radius:8px; overflow:hidden; flex-shrink:0;
           background:var(--surface); display:grid; place-items:center; justify-self:center;
         }
         .permikomnas-logo-wrap img { width:92%; height:92%; object-fit:contain; }
+        .permikomnas-copy { width:min(100%, 65ch); }
         @media(max-width:48em) {
           #visimisi .wrap>div:first-of-type { grid-template-columns:1fr!important; }
           #visimisi .bezel-inner { grid-template-columns:1fr!important; }
-          .permikomnas-inner { gap:1.25rem; padding:1.75rem; }
+          .permikomnas-inner { gap:1rem; padding:1.75rem; }
         }
       `}</style>
     </section>

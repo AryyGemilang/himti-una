@@ -11,7 +11,7 @@ export default function Kontak() {
         <div className="kontak-grid">
 
           {/* Left */}
-          <div>
+          <div className="kontak-content">
             <p className="label reveal">Kontak</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Hubungi<br />Kami</h2>
             <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
@@ -38,11 +38,11 @@ export default function Kontak() {
 
       <style>{`
         .kontak-grid {
-          max-width:52rem;
-          margin-inline:auto;
+          width:100%;
         }
+        .kontak-content { max-width:62rem; }
         @media (max-width: 48em) {
-          .kontak-grid { width:100%; }
+          .kontak-content { width:100%; }
         }
       `}</style>
     </section>
