@@ -103,7 +103,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           </ul>
 
           <p className="bidang-disclaimer reveal">
-            Uraian di atas merupakan deskripsi fungsi umum bidang, bukan ketetapan resmi organisasi.
+            Uraian di atas merupakan deskripsi fungsi umum bidang.
           </p>
         </div>
       </section>
