@@ -2,24 +2,34 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { useReveal } from "../hooks/useReveal"
 
 const MEDIA_PATH = "/himti-una/images/dokumentasi/Screening%20Text-Himtiuna"
-
-const PHOTOS = [
-  "WhatsApp Image 2026-10-17 at 15.13.24.jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.25.jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.25(1).jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.25(2).jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.26.jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.26(1).jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.27.jpeg",
-  "WhatsApp Image 2026-10-17 at 15.13.53.jpeg",
-]
-
-const VIDEOS = [
-  "WhatsApp Video 2026-10-17 at 15.13.27.mp4",
-  "WhatsApp Video 2026-10-17 at 15.13.29.mp4",
-]
-
 const assetUrl = (filename: string) => `${MEDIA_PATH}/${encodeURIComponent(filename)}`
+
+type ActivityMedia =
+  | { type: "image"; src: string; alt: string }
+  | { type: "video"; src: string; poster: string; alt: string }
+
+const MEDIA: ActivityMedia[] = [
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.24.jpeg"), alt: "Sesi screening test calon anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.25.jpeg"), alt: "Wawancara screening test HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.25(1).jpeg"), alt: "Dokumentasi wawancara calon anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.25(2).jpeg"), alt: "Proses tanya jawab screening test HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.26.jpeg"), alt: "Sesi screening test di ruang kegiatan HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.26(1).jpeg"), alt: "Dokumentasi rekrutmen anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.27.jpeg"), alt: "Kegiatan screening test calon anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.53.jpeg"), alt: "Suasana screening test HIMTI UNA" },
+  {
+    type: "video",
+    src: assetUrl("WhatsApp Video 2026-10-17 at 15.13.27.mp4"),
+    poster: assetUrl("screening-video-1-poster.jpg"),
+    alt: "Video dokumentasi screening test HIMTI UNA",
+  },
+  {
+    type: "video",
+    src: assetUrl("WhatsApp Video 2026-10-17 at 15.13.29.mp4"),
+    poster: assetUrl("screening-video-2-poster.jpg"),
+    alt: "Video sesi rekrutmen anggota HIMTI UNA",
+  },
+]
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   return (
@@ -37,6 +47,14 @@ function CloseIcon() {
   )
 }
 
+function PlayIcon() {
+  return (
+    <svg aria-hidden width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5.8c0-.8.9-1.3 1.6-.9l10.1 6.2a1 1 0 0 1 0 1.8L9.6 19.1c-.7.4-1.6-.1-1.6-.9V5.8Z" />
+    </svg>
+  )
+}
+
 export default function Kegiatan() {
   const ref = useReveal()
   const [active, setActive] = useState(0)
@@ -44,17 +62,35 @@ export default function Kegiatan() {
   const [hovered, setHovered] = useState(false)
   const [focused, setFocused] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
-  const [imageFailed, setImageFailed] = useState(false)
+  const [mediaFailed, setMediaFailed] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const pointerStart = useRef<number | null>(null)
   const swiped = useRef(false)
+  const currentMedia = MEDIA[active]
+
+  const stopVideo = useCallback(() => {
+    const video = videoRef.current
+    if (!video) return
+    video.pause()
+    video.removeAttribute("src")
+    video.querySelectorAll("source").forEach(source => source.removeAttribute("src"))
+    video.load()
+    videoRef.current = null
+  }, [])
 
   const move = useCallback((direction: number) => {
-    setImageFailed(false)
-    setActive(index => (index + direction + PHOTOS.length) % PHOTOS.length)
-  }, [])
+    stopVideo()
+    setMediaFailed(false)
+    setActive(index => (index + direction + MEDIA.length) % MEDIA.length)
+  }, [stopVideo])
+
+  const closeLightbox = useCallback(() => {
+    stopVideo()
+    setLightboxOpen(false)
+  }, [stopVideo])
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -65,7 +101,7 @@ export default function Kegiatan() {
   }, [])
 
   useEffect(() => {
-    if (reducedMotion || hovered || focused || lightboxOpen || PHOTOS.length < 2) return
+    if (reducedMotion || hovered || focused || lightboxOpen || MEDIA.length < 2) return
     const timer = window.setInterval(() => move(1), 5000)
     return () => window.clearInterval(timer)
   }, [active, focused, hovered, lightboxOpen, move, reducedMotion])
@@ -80,7 +116,7 @@ export default function Kegiatan() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault()
-        setLightboxOpen(false)
+        closeLightbox()
       } else if (event.key === "ArrowLeft") {
         event.preventDefault()
         move(-1)
@@ -88,10 +124,10 @@ export default function Kegiatan() {
         event.preventDefault()
         move(1)
       } else if (event.key === "Tab" && dialogRef.current) {
-        const buttons = Array.from(dialogRef.current.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"))
-        if (!buttons.length) return
-        const first = buttons[0]
-        const last = buttons[buttons.length - 1]
+        const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>("button:not(:disabled), video[controls]"))
+        if (!focusable.length) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
         if (event.shiftKey && document.activeElement === first) {
           event.preventDefault()
           last.focus()
@@ -106,13 +142,12 @@ export default function Kegiatan() {
     return () => {
       window.removeEventListener("keydown", onKeyDown)
       document.body.style.overflow = previousOverflow
+      stopVideo()
       returnFocusTarget?.focus()
     }
-  }, [lightboxOpen, move])
+  }, [closeLightbox, lightboxOpen, move, stopVideo])
 
-  const openLightbox = () => {
-    setLightboxOpen(true)
-  }
+  const openLightbox = () => setLightboxOpen(true)
 
   return (
     <section id="kegiatan" ref={ref} className="section">
@@ -132,7 +167,8 @@ export default function Kegiatan() {
           <div
             className="kegiatan-content"
             role="group"
-            aria-label="Dokumentasi Screening Test Rekrutmen Anggota HIMTI"
+            aria-label="Carousel foto dan video Screening Test Rekrutmen Anggota HIMTI"
+            aria-roledescription="carousel"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onFocusCapture={() => setFocused(true)}
@@ -144,80 +180,86 @@ export default function Kegiatan() {
               if (event.key === "ArrowLeft") move(-1)
               if (event.key === "ArrowRight") move(1)
             }}
-            aria-roledescription="carousel"
           >
-            <div
-              className="kegiatan-stage"
-              onPointerDown={event => {
-                pointerStart.current = event.clientX
-                swiped.current = false
-                event.currentTarget.setPointerCapture(event.pointerId)
-              }}
-              onPointerUp={event => {
-                if (pointerStart.current === null) return
-                const distance = event.clientX - pointerStart.current
-                pointerStart.current = null
-                if (Math.abs(distance) > 48) {
-                  swiped.current = true
-                  move(distance > 0 ? -1 : 1)
-                }
-              }}
-              onPointerCancel={() => { pointerStart.current = null; swiped.current = false }}
-            >
+            <div className="kegiatan-stage">
               <button
                 ref={triggerRef}
-                className="kegiatan-photo-trigger"
+                className="kegiatan-media-trigger"
                 type="button"
-                disabled={imageFailed}
-                aria-label={`Perbesar foto ${active + 1} dari ${PHOTOS.length}`}
+                disabled={mediaFailed && currentMedia.type === "image"}
+                aria-label={currentMedia.type === "video" ? `Putar video: ${currentMedia.alt}` : `Perbesar foto ${active + 1} dari ${MEDIA.length}`}
+                onPointerDown={event => {
+                  pointerStart.current = event.clientX
+                  swiped.current = false
+                  event.currentTarget.setPointerCapture(event.pointerId)
+                }}
+                onPointerUp={event => {
+                  if (pointerStart.current === null) return
+                  const distance = event.clientX - pointerStart.current
+                  pointerStart.current = null
+                  if (Math.abs(distance) > 48) {
+                    swiped.current = true
+                    move(distance > 0 ? -1 : 1)
+                  }
+                }}
+                onPointerCancel={() => { pointerStart.current = null; swiped.current = false }}
                 onClick={() => {
                   if (swiped.current) { swiped.current = false; return }
                   openLightbox()
                 }}
               >
-                {imageFailed ? (
-                  <span className="kegiatan-image-fallback">Foto dokumentasi tidak dapat dimuat.</span>
+                {currentMedia.type === "image" ? (
+                  mediaFailed ? (
+                    <span className="kegiatan-media-fallback">Foto dokumentasi tidak dapat dimuat.</span>
+                  ) : (
+                    <img
+                      key={currentMedia.src}
+                      src={currentMedia.src}
+                      alt={currentMedia.alt}
+                      width={1280}
+                      height={720}
+                      fetchPriority="high"
+                      onError={() => setMediaFailed(true)}
+                    />
+                  )
                 ) : (
-                  <img
-                    key={PHOTOS[active]}
-                    src={assetUrl(PHOTOS[active])}
-                    alt={`Dokumentasi screening test HIMTI UNA, foto ${active + 1} dari ${PHOTOS.length}`}
-                    width={1280}
-                    height={720}
-                    fetchPriority="high"
-                    onError={() => setImageFailed(true)}
-                  />
+                  <>
+                    {mediaFailed ? (
+                      <span className="kegiatan-media-fallback">Video dokumentasi HIMTI UNA</span>
+                    ) : (
+                      <img
+                        src={currentMedia.poster}
+                        alt=""
+                        aria-hidden
+                        width={1280}
+                        height={720}
+                        onError={() => setMediaFailed(true)}
+                      />
+                    )}
+                    <span className="kegiatan-play-indicator"><PlayIcon /></span>
+                  </>
                 )}
               </button>
-              <button className="kegiatan-arrow kegiatan-arrow-prev" type="button" aria-label="Foto sebelumnya" onClick={() => move(-1)}><ArrowIcon direction="left" /></button>
-              <button className="kegiatan-arrow kegiatan-arrow-next" type="button" aria-label="Foto berikutnya" onClick={() => move(1)}><ArrowIcon direction="right" /></button>
+              <button className="kegiatan-arrow kegiatan-arrow-prev" type="button" aria-label="Media sebelumnya" onClick={() => move(-1)}><ArrowIcon direction="left" /></button>
+              <button className="kegiatan-arrow kegiatan-arrow-next" type="button" aria-label="Media berikutnya" onClick={() => move(1)}><ArrowIcon direction="right" /></button>
             </div>
 
             <div className="kegiatan-slider-meta">
-              <p aria-live="polite" aria-atomic="true">Dokumentasi screening test · {active + 1} / {PHOTOS.length}</p>
-              <div className="kegiatan-dots" role="group" aria-label="Pilih foto dokumentasi">
-                {PHOTOS.map((photo, index) => (
+              <p aria-live="polite" aria-atomic="true">
+                {currentMedia.type === "video" ? "Video" : "Foto"} dokumentasi · {active + 1} / {MEDIA.length}
+              </p>
+              <div className="kegiatan-dots" role="group" aria-label="Pilih dokumentasi media">
+                {MEDIA.map((item, index) => (
                   <button
-                    key={photo}
+                    key={item.src}
                     type="button"
-                    aria-label={`Tampilkan foto ${index + 1}`}
+                    aria-label={`Tampilkan ${item.type === "video" ? "video" : "foto"} ${index + 1}`}
                     aria-pressed={active === index}
                     className={active === index ? "is-active" : ""}
-                    onClick={() => { setImageFailed(false); setActive(index) }}
+                    onClick={() => { stopVideo(); setMediaFailed(false); setActive(index) }}
                   />
                 ))}
               </div>
-            </div>
-
-            <div className="kegiatan-videos" aria-label="Video dokumentasi screening test">
-              {VIDEOS.map((video, index) => (
-                <figure className="kegiatan-video" key={video}>
-                  <video controls preload="metadata" playsInline aria-label={`Video dokumentasi screening test HIMTI UNA ${index + 1}`}>
-                    <source src={assetUrl(video)} type="video/mp4" />
-                    Browser Anda tidak mendukung pemutaran video.
-                  </video>
-                </figure>
-              ))}
             </div>
           </div>
         </div>
@@ -227,15 +269,30 @@ export default function Kegiatan() {
         <div
           className="kegiatan-lightbox"
           onClick={event => {
-            if (event.target === event.currentTarget) setLightboxOpen(false)
+            if (event.target === event.currentTarget) closeLightbox()
           }}
         >
-          <div className="kegiatan-lightbox-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-label="Galeri foto kegiatan HIMTI">
-            <button ref={closeRef} type="button" className="kegiatan-lightbox-close" aria-label="Tutup galeri" onClick={() => setLightboxOpen(false)}><CloseIcon /></button>
-            <button type="button" className="kegiatan-lightbox-arrow kegiatan-lightbox-prev" aria-label="Foto sebelumnya" onClick={() => move(-1)}><ArrowIcon direction="left" /></button>
-            <img src={assetUrl(PHOTOS[active])} alt={`Dokumentasi screening test HIMTI UNA, foto ${active + 1} dari ${PHOTOS.length}`} />
-            <button type="button" className="kegiatan-lightbox-arrow kegiatan-lightbox-next" aria-label="Foto berikutnya" onClick={() => move(1)}><ArrowIcon direction="right" /></button>
-            <p aria-live="polite" aria-atomic="true">Foto {active + 1} dari {PHOTOS.length}</p>
+          <div className="kegiatan-lightbox-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-label={`${currentMedia.type === "video" ? "Video" : "Foto"} dokumentasi kegiatan HIMTI`}>
+            <button ref={closeRef} type="button" className="kegiatan-lightbox-close" aria-label="Tutup galeri" onClick={closeLightbox}><CloseIcon /></button>
+            <button type="button" className="kegiatan-lightbox-arrow kegiatan-lightbox-prev" aria-label="Media sebelumnya" onClick={() => move(-1)}><ArrowIcon direction="left" /></button>
+            {currentMedia.type === "image" ? (
+              <img className="kegiatan-lightbox-media" src={currentMedia.src} alt={currentMedia.alt} />
+            ) : (
+              <video
+                ref={videoRef}
+                className="kegiatan-lightbox-media kegiatan-lightbox-video"
+                controls
+                preload="metadata"
+                playsInline
+                poster={currentMedia.poster}
+                aria-label={currentMedia.alt}
+              >
+                <source src={currentMedia.src} type="video/mp4" />
+                Browser Anda tidak mendukung pemutaran video.
+              </video>
+            )}
+            <button type="button" className="kegiatan-lightbox-arrow kegiatan-lightbox-next" aria-label="Media berikutnya" onClick={() => move(1)}><ArrowIcon direction="right" /></button>
+            <p aria-live="polite" aria-atomic="true">{active + 1} / {MEDIA.length} · {currentMedia.type === "video" ? "Video" : "Foto"}</p>
           </div>
         </div>
       )}
@@ -255,9 +312,9 @@ export default function Kegiatan() {
           aspect-ratio: 16 / 9;
           border-radius: var(--r-card);
           background: var(--surface-2);
-          touch-action: pan-y;
         }
-        .kegiatan-photo-trigger {
+        .kegiatan-media-trigger {
+          position: relative;
           display: grid;
           width: 100%;
           height: 100%;
@@ -266,16 +323,28 @@ export default function Kegiatan() {
           border: 0;
           background: transparent;
           cursor: zoom-in;
+          touch-action: pan-y;
         }
-        .kegiatan-photo-trigger:disabled { cursor: default; }
-        .kegiatan-photo-trigger img {
+        .kegiatan-media-trigger:disabled { cursor: default; }
+        .kegiatan-media-trigger > img {
           display: block;
           width: 100%;
           height: 100%;
           object-fit: cover;
           animation: kegiatan-fade 320ms ease both;
         }
-        .kegiatan-image-fallback { padding: 1rem; color: var(--muted); }
+        .kegiatan-media-fallback { padding: 1rem; color: var(--muted); }
+        .kegiatan-play-indicator {
+          position: absolute;
+          display: grid;
+          width: 4rem;
+          height: 4rem;
+          place-items: center;
+          padding-left: 0.2rem;
+          border-radius: 50%;
+          background: rgba(4, 11, 20, 0.72);
+          color: white;
+        }
         .kegiatan-arrow, .kegiatan-lightbox-arrow, .kegiatan-lightbox-close {
           position: absolute;
           z-index: 1;
@@ -294,7 +363,7 @@ export default function Kegiatan() {
         }
         .kegiatan-arrow:hover, .kegiatan-lightbox-arrow:hover, .kegiatan-lightbox-close:hover { transform: scale(1.06); background: var(--accent-dim); }
         .kegiatan-arrow:focus-visible, .kegiatan-dots button:focus-visible,
-        .kegiatan-photo-trigger:focus-visible, .kegiatan-lightbox button:focus-visible {
+        .kegiatan-media-trigger:focus-visible, .kegiatan-lightbox button:focus-visible {
           outline: 3px solid var(--accent);
           outline-offset: 3px;
         }
@@ -308,26 +377,23 @@ export default function Kegiatan() {
         .kegiatan-dots button { position: relative; display: grid; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
         .kegiatan-dots button::before { content: ""; width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--muted-2); transition: transform 160ms ease, background 160ms ease; }
         .kegiatan-dots button.is-active::before { background: var(--accent); transform: scale(1.25); }
-        .kegiatan-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1.25rem; }
-        .kegiatan-video { min-width: 0; overflow: hidden; margin: 0; aspect-ratio: 16 / 9; border-radius: var(--r-card); background: #071321; }
-        .kegiatan-video video { display: block; width: 100%; height: 100%; object-fit: contain; }
         .kegiatan-lightbox { position: fixed; z-index: 500; inset: 0; display: grid; place-items: center; padding: clamp(0.75rem, 3vw, 2rem); background: rgba(4, 11, 20, 0.92); }
         .kegiatan-lightbox-dialog { position: relative; display: grid; width: min(100%, 76rem); height: min(100%, 52rem); grid-template-columns: 3.5rem minmax(0, 1fr) 3.5rem; grid-template-rows: minmax(0, 1fr) auto; align-items: center; justify-items: center; gap: 0.75rem; }
-        .kegiatan-lightbox-dialog img { grid-column: 2; grid-row: 1; display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+        .kegiatan-lightbox-media { grid-column: 2; grid-row: 1; display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+        .kegiatan-lightbox-video { width: 100%; max-height: 100%; aspect-ratio: 16 / 9; background: #071321; }
         .kegiatan-lightbox-dialog > p { grid-column: 2; grid-row: 2; margin: 0; color: #fff; font-size: var(--step-sm); }
-        .kegiatan-lightbox-close { top: 0; right: 0; font-size: 1.5rem; }
+        .kegiatan-lightbox-close { top: 0; right: 0; }
         .kegiatan-lightbox-arrow { position: static; }
         .kegiatan-lightbox-prev { grid-column: 1; grid-row: 1; }
         .kegiatan-lightbox-next { grid-column: 3; grid-row: 1; }
         @keyframes kegiatan-fade { from { opacity: 0.55; } to { opacity: 1; } }
         @media (max-width: 48em) {
           .kegiatan-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-          .kegiatan-videos { gap: 0.5rem; }
           .kegiatan-lightbox-dialog { grid-template-columns: 2.75rem minmax(0, 1fr) 2.75rem; gap: 0.25rem; }
           .kegiatan-lightbox-arrow, .kegiatan-lightbox-close { width: 2.75rem; height: 2.75rem; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .kegiatan-photo-trigger img { animation: none; }
+          .kegiatan-media-trigger > img { animation: none; }
           .kegiatan-arrow, .kegiatan-lightbox-arrow, .kegiatan-lightbox-close { transition: none; }
         }
       `}</style>
