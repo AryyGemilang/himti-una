@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
-import { Moon, Sun } from "lucide-react"
+import { ChevronDown, Moon, Sun } from "lucide-react"
+import { bidangList } from "../data/bidang"
 
 const MENU = [
   ["Beranda", "/#beranda"], ["Tentang", "/#tentang"], ["Sejarah", "/#sejarah"],
@@ -26,10 +27,14 @@ function ThemeToggle({ darkMode, onToggle, mobile = false }: { darkMode: boolean
 
 export default function Navbar({ path }: { path: string }) {
   const [open, setOpen] = useState(false)
+  const [mobilePengurusOpen, setMobilePengurusOpen] = useState(false)
+  const [desktopPengurusOpen, setDesktopPengurusOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
   const [navLogosVisible, setNavLogosVisible] = useState(false)
   const menuRef = useRef<HTMLElement>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
+  const desktopPengurusRef = useRef<HTMLLIElement>(null)
+  const suppressDropdownFocusRef = useRef(false)
 
   const toggleTheme = () => {
     const nextDarkMode = !darkMode
@@ -57,10 +62,28 @@ export default function Navbar({ path }: { path: string }) {
   }, [path])
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false) }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false)
+        setMobilePengurusOpen(false)
+        setDesktopPengurusOpen(false)
+        if (open) hamburgerRef.current?.focus()
+      }
+    }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
-  }, [])
+  }, [open])
+
+  useEffect(() => {
+    if (!desktopPengurusOpen) return
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.target instanceof Node && !desktopPengurusRef.current?.contains(event.target)) {
+        setDesktopPengurusOpen(false)
+      }
+    }
+    document.addEventListener("pointerdown", onPointerDown)
+    return () => document.removeEventListener("pointerdown", onPointerDown)
+  }, [desktopPengurusOpen])
 
   useEffect(() => {
     if (!open) return
@@ -70,6 +93,7 @@ export default function Navbar({ path }: { path: string }) {
       if (menuRef.current?.contains(target) || hamburgerRef.current?.contains(target)) return
       if (target instanceof Element && target.closest(".theme-toggle")) return
       setOpen(false)
+      setMobilePengurusOpen(false)
     }
     document.addEventListener("pointerdown", onPointerDown)
     return () => document.removeEventListener("pointerdown", onPointerDown)
@@ -96,7 +120,54 @@ export default function Navbar({ path }: { path: string }) {
 
           {/* Desktop links */}
           <ul className="nav-links" role="list">
-            {MENU.map(([label, href]) => (
+            {MENU.map(([label, href]) => label === "Pengurus" ? (
+              <li
+                key={href}
+                ref={desktopPengurusRef}
+                className={`nav-pengurus-item${desktopPengurusOpen ? " is-open" : ""}`}
+                onMouseEnter={() => setDesktopPengurusOpen(true)}
+                onMouseLeave={() => setDesktopPengurusOpen(false)}
+                onFocusCapture={() => {
+                  if (suppressDropdownFocusRef.current) {
+                    suppressDropdownFocusRef.current = false
+                    return
+                  }
+                  setDesktopPengurusOpen(true)
+                }}
+                onKeyDown={event => {
+                  if (event.key !== "Escape") return
+                  event.stopPropagation()
+                  const toggle = desktopPengurusRef.current?.querySelector<HTMLButtonElement>(".nav-pengurus-toggle")
+                  if (document.activeElement !== toggle) {
+                    suppressDropdownFocusRef.current = true
+                    toggle?.focus()
+                  }
+                  setDesktopPengurusOpen(false)
+                }}
+                onBlurCapture={event => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDesktopPengurusOpen(false)
+                }}
+              >
+                <a href={href}>Pengurus</a>
+                <button
+                  type="button"
+                  className="nav-pengurus-toggle"
+                  aria-label={desktopPengurusOpen ? "Sembunyikan daftar bidang" : "Tampilkan daftar bidang"}
+                  aria-expanded={desktopPengurusOpen}
+                  aria-controls="nav-pengurus-dropdown"
+                  onClick={() => setDesktopPengurusOpen(true)}
+                >
+                  <ChevronDown size={14} aria-hidden="true" />
+                </button>
+                <ul className="nav-pengurus-dropdown" id="nav-pengurus-dropdown" aria-label="Daftar bidang">
+                  {bidangList.map(bidang => (
+                    <li key={bidang.slug}>
+                      <a href={`/bidang/${bidang.slug}/`}>{bidang.namaPendek}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
               <li key={href}><a href={href}>{label}</a></li>
             ))}
           </ul>
@@ -110,7 +181,10 @@ export default function Navbar({ path }: { path: string }) {
           <button
             className="nav-hamburger"
             ref={hamburgerRef}
-            onClick={() => setOpen(o => !o)}
+            onClick={() => {
+              setOpen(o => !o)
+              setMobilePengurusOpen(false)
+            }}
             aria-label={open ? "Tutup menu" : "Buka menu"}
             aria-expanded={open}
             aria-controls="nav-mobile-overlay"
@@ -149,7 +223,38 @@ export default function Navbar({ path }: { path: string }) {
         aria-hidden={!open}
         inert={!open}
       >
-        {MENU.map(([label, href], i) => (
+        {MENU.map(([label, href], i) => label === "Pengurus" ? (
+          <div className="nav-mobile-pengurus" key={href}>
+            <div className="nav-mobile-pengurus-row">
+              <a href={href} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }} style={{ transitionDelay: open ? `${i * 60}ms` : "0ms" }}>
+                Pengurus
+              </a>
+              <button
+                type="button"
+                className="nav-mobile-pengurus-toggle"
+                aria-label={mobilePengurusOpen ? "Sembunyikan daftar bidang" : "Tampilkan daftar bidang"}
+                aria-expanded={mobilePengurusOpen}
+                aria-controls="nav-mobile-pengurus-dropdown"
+                onClick={() => setMobilePengurusOpen(value => !value)}
+              >
+                <ChevronDown size={19} aria-hidden="true" />
+              </button>
+            </div>
+            <div
+              className={`nav-mobile-pengurus-dropdown${mobilePengurusOpen ? " is-open" : ""}`}
+              id="nav-mobile-pengurus-dropdown"
+              aria-hidden={!mobilePengurusOpen}
+              inert={!mobilePengurusOpen}
+            >
+              <a href={href} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}>Struktur Pengurus</a>
+              {bidangList.map(bidang => (
+                <a key={bidang.slug} href={`/bidang/${bidang.slug}/`} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}>
+                  {bidang.namaPendek}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
           <a
             key={href}
             href={href}
@@ -162,7 +267,7 @@ export default function Navbar({ path }: { path: string }) {
         <a
           href="/#kontak"
           className="btn nav-overlay-action"
-          onClick={() => setOpen(false)}
+          onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}
           style={{
             transitionDelay: open ? `${MENU.length * 60}ms` : "0ms",
           }}

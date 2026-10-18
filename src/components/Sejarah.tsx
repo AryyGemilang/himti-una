@@ -7,7 +7,7 @@ const KETUA = [
   { periode: "2021–2022",  label: "Periode IV",  nama: "Ibnu Haykal Lubis S.Kom",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/images/people/ibnu-haykal-lubis.jpg" },
   { periode: "2022–2023",  label: "Periode V",   nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/images/people/mhd-zikri-ansyari.jpg" },
   { periode: "2023–2024",  label: "Periode VI",  nama: "Muhammad Fikri Gunawan", ket: "",     foto: "" },
-  { periode: "2023–2024",  label: "Periode VI",  nama: "Mhd Risky Al Faridz", ket: "PJ Kahim",     foto: "/himti-una/images/people/mhdrisky.jpg" },
+  { periode: "2023–2024",  label: "Periode VI",  nama: "Mhd Risky, S.Kom.", ket: "PJ Kahim",     foto: "/himti-una/images/people/mhdrisky.jpg" },
   { periode: "2024–2025",  label: "Periode VII", nama: "Bintang Fajar R Putra", ket: "",                              foto: "/himti-una/images/people/bintang-fajar-r-putra.jpg" },
 ]
 

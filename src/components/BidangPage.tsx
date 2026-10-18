@@ -1,5 +1,6 @@
 import { useReveal } from "../hooks/useReveal"
 import Foto from "./Foto"
+import KartuPengurus from "./KartuPengurus"
 import type { BidangDetail } from "../data/bidang"
 import { bidangList } from "../data/bidang"
 
@@ -71,18 +72,8 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           <h3 className="reveal bidang-subhead">Anggota Bidang</h3>
           {bidang.anggota.length > 0 ? (
             <div className="bidang-anggota-grid">
-              {bidang.anggota.map((a, i) => (
-                <div key={i} className="reveal bezel" style={{ ["--d" as string]: `${i * 60}ms` }}>
-                  <div className="bezel-inner bidang-anggota-inner">
-                    <Foto
-                      src={a.foto}
-                      alt={`${a.jabatan}, ${a.nama}`}
-                      style={{ width: 96, height: 96, borderRadius: "50%", objectFit: "cover", display: "block" }}
-                    />
-                    <p className="bidang-anggota-nama">{a.nama}</p>
-                    <p className="bidang-anggota-jabatan">{a.jabatan}</p>
-                  </div>
-                </div>
+              {bidang.anggota.map((anggota, i) => (
+                <KartuPengurus key={anggota.nama} orang={anggota} delay={i * 60} />
               ))}
             </div>
           ) : (
@@ -234,16 +225,6 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
           gap: var(--gap);
         }
-        .bidang-anggota-inner {
-          padding: 1.5rem;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.6rem;
-        }
-        .bidang-anggota-nama { font-weight: 800; font-size: var(--step-md); line-height: 1.1; }
-        .bidang-anggota-jabatan { font-size: var(--step-xs); color: var(--muted); }
 
         .bidang-tugas {
           list-style: none;
