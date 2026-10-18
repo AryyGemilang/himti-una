@@ -25,6 +25,7 @@ export default function Kontak() {
                 <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0 }}>
                   Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara
                 </p>
+                <p className="contact-address">Jl. Jend. A. Yani, Kisaran Naga, Kec. Kota Kisaran Timur, Kisaran, Sumatera Utara 21216</p>
                 <a className="contact-link" href="https://share.google/kIGBHkUtAg1HOTBd7" target="_blank" rel="noopener noreferrer">
                   Lihat lokasi di peta
                 </a>
@@ -56,6 +57,14 @@ export default function Kontak() {
           font-size: var(--step-sm);
           overflow-wrap: anywhere;
           text-underline-offset: 0.2em;
+        }
+        .contact-address {
+          max-width: 42ch;
+          margin: 0.5rem 0 0;
+          color: var(--muted);
+          font-size: var(--step-sm);
+          line-height: 1.65;
+          overflow-wrap: anywhere;
         }
         .contact-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
         @media (max-width: 48em) {

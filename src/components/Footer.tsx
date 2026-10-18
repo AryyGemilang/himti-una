@@ -1,5 +1,6 @@
 import { Mail, MapPin } from "lucide-react"
 
+const CURRENT_YEAR = new Date().getFullYear()
 const LETTERS = "HIMTI".split("")
 const HEIGHTS = [85, 100, 92, 76, 95]
 const UNA_L   = "UNA".split("")
@@ -96,7 +97,8 @@ export default function Footer() {
           <div>
             <p className="label" style={{ marginBottom: "1.25rem" }}>Lokasi</p>
             <address className="footer-address">
-              Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara
+              Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara<br />
+              Jl. Jend. A. Yani, Kisaran Naga, Kec. Kota Kisaran Timur, Kisaran, Sumatera Utara 21216
             </address>
             <a className="footer-info-link" href="https://share.google/kIGBHkUtAg1HOTBd7" target="_blank" rel="noopener noreferrer">
               <MapPin aria-hidden size={16} /> Lihat lokasi
@@ -126,7 +128,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="footer-bottom">
           <p style={{ fontSize: "var(--step-xs)", color: "var(--muted-2)", margin: 0 }}>
-            © {new Date().getFullYear()} HIMTI Universitas Asahan
+            © {CURRENT_YEAR} HIMTI Universitas Asahan
           </p>
           <a href="/#beranda" className="btn" style={{ fontSize: "var(--step-xs)", minHeight: "2.25rem", padding: "0 1.1rem" }}>
             Kembali ke atas
@@ -147,6 +149,7 @@ export default function Footer() {
           font-size: var(--step-sm);
           font-style: normal;
           line-height: 1.7;
+          overflow-wrap: anywhere;
         }
         .footer-info-link {
           display: inline-flex;
