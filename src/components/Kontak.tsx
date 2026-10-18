@@ -26,7 +26,7 @@ export default function Kontak() {
                   Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara
                 </p>
                 <p className="contact-address">Jl. Jend. A. Yani, Kisaran Naga, Kec. Kota Kisaran Timur, Kisaran, Sumatera Utara 21216</p>
-                <a className="contact-link" href="https://share.google/kIGBHkUtAg1HOTBd7" target="_blank" rel="noopener noreferrer">
+                <a className="contact-link" href="https://www.google.com/maps/place/Universitas+Asahan+(UNA)/@2.9662091,99.6219396,17z/data=!3m1!4b1!4m6!3m5!1s0x3032495abfd9eb8d:0x9473c0d893d71d28!8m2!3d2.9662091!4d99.6219396!16s%2Fg%2F1hm5b9k0x?authuser=0&entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
                   Lihat lokasi di peta
                 </a>
               </div>
