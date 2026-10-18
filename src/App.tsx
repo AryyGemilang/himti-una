@@ -116,8 +116,8 @@ export default function App() {
 
   // 404 → beranda
   useEffect(() => {
-    if (match && !bidang) navigate("/", { replace: true })
-  }, [path])
+    if (path.startsWith("/bidang/") && !bidang) navigate("/", { replace: true })
+  }, [path, bidang])
 
   return (
     <>
