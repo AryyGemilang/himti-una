@@ -156,9 +156,7 @@ export default function Navbar({ path }: { path: string }) {
                   aria-expanded={desktopPengurusOpen}
                   aria-controls="nav-pengurus-dropdown"
                   onClick={() => setDesktopPengurusOpen(true)}
-                >
-                  <ChevronDown size={14} aria-hidden="true" />
-                </button>
+                />
                 <ul className="nav-pengurus-dropdown" id="nav-pengurus-dropdown" aria-label="Daftar bidang">
                   {bidangList.map(bidang => (
                     <li key={bidang.slug}>

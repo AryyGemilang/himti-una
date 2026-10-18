@@ -346,6 +346,11 @@ body:has(.nav-brand-visible) .hero-logos {
   padding: 0;
   margin: 0;
 }
+.nav-links > li {
+  display: flex;
+  align-items: center;
+  min-height: 2.25rem;
+}
 .nav-links a {
   font-size: var(--step-xs);
   font-weight: 600;
@@ -361,15 +366,15 @@ body:has(.nav-brand-visible) .hero-logos {
 .nav-pengurus-toggle {
   display: grid;
   place-items: center;
-  width: 1.5rem;
-  height: 2.25rem;
+  width: 1rem;
+  height: 1.25rem;
+  flex: 0 0 1rem;
   color: var(--muted);
   border-radius: 0.35rem;
-  transition: color var(--t-fast) ease, transform var(--t-fast) ease;
+  transition: color var(--t-fast) ease;
 }
 .nav-pengurus-toggle:hover,
 .nav-pengurus-item.is-open .nav-pengurus-toggle { color: var(--accent-strong); }
-.nav-pengurus-item.is-open .nav-pengurus-toggle { transform: rotate(180deg); }
 .nav-pengurus-dropdown {
   position: absolute;
   top: calc(100% + 0.75rem);
@@ -394,6 +399,14 @@ body:has(.nav-brand-visible) .hero-logos {
   pointer-events: auto;
   transform: none;
   transition-delay: 0s;
+}
+.nav-pengurus-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -0.75rem;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
 }
 .nav-pengurus-dropdown li + li { margin-top: 0.125rem; }
 .nav-pengurus-dropdown a {
