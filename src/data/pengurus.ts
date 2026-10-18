@@ -9,7 +9,22 @@ export const FOTO_PENGURUS = {
   sekretaris: "/himti-una/images/pengurus/Pasya - Sekretaris Umum.svg",
   bendahara: "/himti-una/images/pengurus/Natalie - Bendahara Umum.svg",
   kepalaBidangHumas: "/himti-una/images/pengurus/kabid/Yudha - Kabid Humas .svg",
+  kepalaBidangKaderisasi: "/himti-una/images/pengurus/kabid/Milhan - kabid Kaderisasi.svg",
+  kepalaBidangAgamaSosial: "/himti-una/images/pengurus/kabid/Bagus - kabid Agama & sosial.svg",
 } as const
+
+export const dewanPengawas: Orang[] = [
+  {
+    nama: "Bintang",
+    jabatan: "Dewan Pengawas Organisasi",
+    foto: "/himti-una/images/pengurus/dewan_pengawas_organisasi/Bintang - dewan pengawas organisasi.svg",
+  },
+  {
+    nama: "Farhan",
+    jabatan: "Dewan Pengawas Organisasi",
+    foto: "/himti-una/images/pengurus/dewan_pengawas_organisasi/Farhan - dewan pengawas organisasi.svg",
+  },
+]
 
 export const pengurus = {
   ketua: { nama: "Keni", jabatan: "Ketua Himpunan Mahasiswa Teknik Informatika", foto: FOTO_PENGURUS.ketua } as Orang,

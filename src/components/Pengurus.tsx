@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { X } from "lucide-react"
 import { useReveal } from "../hooks/useReveal"
-import { pengurus, PERIODE, type Orang } from "../data/pengurus"
+import { dewanPengawas, pengurus, PERIODE, type Orang } from "../data/pengurus"
 import { bidangList } from "../data/bidang"
 import Foto from "./Foto"
 
@@ -169,6 +169,15 @@ export default function Pengurus() {
             </div>
           ))}
         </div>
+
+        <section className="pengurus-dpo" aria-labelledby="pengurus-dpo-title">
+          <h3 className="pengurus-subhead reveal" id="pengurus-dpo-title">Dewan Pengawas Organisasi</h3>
+          <div className="pengurus-dpo-grid">
+            {dewanPengawas.map((orang, i) => (
+              <Kartu key={orang.nama} orang={orang} delay={i * 80} size="md" onSelect={openProfile} />
+            ))}
+          </div>
+        </section>
       </div>
 
       {selected && createPortal(
@@ -215,6 +224,8 @@ export default function Pengurus() {
         .pengurus-lead-card { width:min(100%, 19rem); margin:0 auto 3rem; }
         .pengurus-inti-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--gap); margin-bottom:3rem; }
         .pengurus-bidang-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--gap); scroll-margin-top:6rem; }
+        .pengurus-dpo { margin-top:4rem; }
+        .pengurus-dpo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--gap); max-width:38rem; }
         .pengurus-card-inner { padding:0; overflow:hidden; }
         .pengurus-card-button {
           position:relative; display:block; width:100%; aspect-ratio:4/5; padding:0;
@@ -275,6 +286,8 @@ export default function Pengurus() {
           .pengurus-header { grid-template-columns:1fr; gap:1.5rem; margin-bottom:2.5rem; }
           .pengurus-header-desc { padding-left:0; }
           .pengurus-lead-card { width:min(100%,19rem); margin-bottom:2rem; }
+          .pengurus-dpo { margin-top:3rem; }
+          .pengurus-dpo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
           .pengurus-inti-grid,.pengurus-bidang-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
           .pengurus-card-button { min-height:11rem; }
           .pengurus-card-overlay { padding:0.85rem; }
