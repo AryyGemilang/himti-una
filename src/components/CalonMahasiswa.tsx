@@ -29,6 +29,7 @@ export default function CalonMahasiswa() {
               <li>Pemrograman dan logika</li>
               <li>Pengembangan perangkat lunak</li>
               <li>Teknologi dan inovasi digital</li>
+              <li>Berpikir Kritis</li>
             </ul>
           </div>
         </div>

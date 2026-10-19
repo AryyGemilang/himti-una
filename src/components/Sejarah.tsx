@@ -92,7 +92,8 @@ export default function Sejarah() {
         }
         .timeline-item:last-child { padding-bottom: 0; }
         .timeline-date {
-          min-width: 88px;
+          width: 6.3125rem;
+          min-width: 6.3125rem;
           text-align: right;
           padding-right: 2rem;
           position: relative;
@@ -103,11 +104,12 @@ export default function Sejarah() {
           color: var(--muted);
           font-weight: 600;
           display: block;
+          white-space: nowrap;
           padding-top: 4px;
         }
         .timeline-dot {
           position: absolute;
-          left: 83px;
+          left: 84px;
           top: 6px;
           width: 10px;
           height: 10px;
@@ -160,6 +162,7 @@ export default function Sejarah() {
             padding-left: 1rem;
           }
           .timeline-date {
+            width: auto;
             min-width: unset;
             text-align: left;
             padding-right: 0;
