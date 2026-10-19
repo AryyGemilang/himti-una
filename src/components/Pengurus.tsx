@@ -35,7 +35,7 @@ export default function Pengurus() {
           <KartuPengurus orang={wakilBendahara} delay={260} />
         </div>
 
-        <h3 className="pengurus-subhead reveal">Kepala Bidang</h3>
+        <h3 className="pengurus-subhead reveal">Kepala Divisi</h3>
         <div className="pengurus-bidang-grid" id="bidang">
           {bidangList.map((b, i) => (
             <div key={b.slug}>

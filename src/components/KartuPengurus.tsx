@@ -93,7 +93,7 @@ export default function KartuPengurus({ orang, delay = 0, size = "md" }: {
             type="button"
             className="pengurus-card-button"
             aria-haspopup="dialog"
-            aria-label={`Lihat detail ${orang.nama}, ${orang.jabatan}`}
+            aria-label={`Lihat detail ${orang.namaLengkap}, ${orang.jabatan}`}
             onClick={() => {
               if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
               closeTimerRef.current = null
@@ -135,11 +135,11 @@ export default function KartuPengurus({ orang, delay = 0, size = "md" }: {
             tabIndex={-1}
           >
             <div className="pengurus-modal-photo-wrap">
-              <Foto src={orang.foto} alt={`Foto ${orang.nama}`} className="pengurus-modal-photo" />
+              <Foto src={orang.foto} alt={`Foto ${orang.namaLengkap}`} className="pengurus-modal-photo" />
             </div>
             <div className="pengurus-modal-info">
               <p className="label">Pengurus HIMTI UNA</p>
-              <h2 id="pengurus-profile-title">{orang.nama}</h2>
+              <h2 id="pengurus-profile-title">{orang.namaLengkap}</h2>
               <p id="pengurus-profile-role">{orang.jabatan}</p>
             </div>
             <button

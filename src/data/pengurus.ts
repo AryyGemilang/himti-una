@@ -1,9 +1,14 @@
-export type Orang = { nama: string; jabatan: string; foto: string }
+export type Orang = {
+  nama: string
+  namaLengkap: string
+  jabatan: string
+  foto: string
+}
 
 export const PLACEHOLDER_FOTO = "/himti-una/images/people/placeholder-person.svg"
-export const PERIODE = "Periode Kepengurusan 2025/2026" // ganti sesuai periode resmi
+export const PERIODE = "Periode Kepengurusan 2025/2026"
 
-// Pemetaan aset mengikuti nama dan jabatan yang tercantum pada nama berkas di public/images.
+// Pemetaan aset mengikuti nama dan jabatan pada berkas foto yang tersedia.
 export const FOTO_PENGURUS = {
   ketua: "/himti-una/images/people/Mhd Kenichiro Athallah - Ketua Himpunan.svg",
   sekretaris: "/himti-una/images/pengurus/Pasya - Sekretaris Umum.svg",
@@ -16,20 +21,53 @@ export const FOTO_PENGURUS = {
 export const dewanPengawas: Orang[] = [
   {
     nama: "Bintang",
+    namaLengkap: "Bintang Fajar Ruslita Putra",
     jabatan: "Dewan Pengawas Organisasi",
     foto: "/himti-una/images/pengurus/dewan_pengawas_organisasi/Bintang - dewan pengawas organisasi.svg",
   },
   {
     nama: "Farhan",
+    namaLengkap: "Farhan Fadli Manurung",
     jabatan: "Dewan Pengawas Organisasi",
     foto: "/himti-una/images/pengurus/dewan_pengawas_organisasi/Farhan - dewan pengawas organisasi.svg",
+  },
+  {
+    nama: "Intan",
+    namaLengkap: "Intan Nabila Sari",
+    jabatan: "Dewan Pengawas Organisasi",
+    foto: PLACEHOLDER_FOTO,
   },
 ]
 
 export const pengurus = {
-  ketua: { nama: "Keni", jabatan: "Ketua Himpunan Mahasiswa Teknik Informatika", foto: FOTO_PENGURUS.ketua } as Orang,
-  sekretaris: { nama: "Pasya", jabatan: "Sekretaris Umum", foto: FOTO_PENGURUS.sekretaris } as Orang,
-  wakilSekretaris: { nama: "Nama Wakil Sekretaris", jabatan: "Wakil Sekretaris", foto: PLACEHOLDER_FOTO } as Orang,
-  bendahara: { nama: "Natalie", jabatan: "Bendahara Umum", foto: FOTO_PENGURUS.bendahara } as Orang,
-  wakilBendahara: { nama: "Nama Wakil Bendahara", jabatan: "Wakil Bendahara", foto: PLACEHOLDER_FOTO } as Orang,
+  ketua: {
+    nama: "Keni",
+    namaLengkap: "Muhammad Kenichiro Athallah",
+    jabatan: "Ketua Umum",
+    foto: FOTO_PENGURUS.ketua,
+  } satisfies Orang,
+  sekretaris: {
+    nama: "Pasya",
+    namaLengkap: "Rizki Pasya Astani",
+    jabatan: "Sekretaris Umum",
+    foto: FOTO_PENGURUS.sekretaris,
+  } satisfies Orang,
+  wakilSekretaris: {
+    nama: "Arya",
+    namaLengkap: "Arya Gemilang Sinuhaji",
+    jabatan: "W. Sekretaris Umum",
+    foto: PLACEHOLDER_FOTO,
+  } satisfies Orang,
+  bendahara: {
+    nama: "Natalie",
+    namaLengkap: "Natalie Audrey Simanjuntak",
+    jabatan: "Bendahara Umum",
+    foto: FOTO_PENGURUS.bendahara,
+  } satisfies Orang,
+  wakilBendahara: {
+    nama: "Dewi",
+    namaLengkap: "Dewi Ayu Lestari Br.Saragih",
+    jabatan: "W. Bendahara Umum",
+    foto: PLACEHOLDER_FOTO,
+  } satisfies Orang,
 }

@@ -108,36 +108,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
         </div>
       </section>
 
-      {/* ── Section E: Dokumentasi ── */}
-      <section className="section bidang-section">
-        <div className="wrap">
-          <h2 className="head reveal">Dokumentasi<br />Kegiatan</h2>
-          <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
-
-          {bidang.galeri.length > 0 ? (
-            <div className="bidang-galeri">
-              {bidang.galeri.map((g, i) => (
-                <figure key={i} className="reveal" style={{ ["--d" as string]: `${i * 60}ms` }}>
-                  <img src={g.foto} alt={g.caption || `Dokumentasi ${bidang.nama}`} loading="lazy" />
-                  {g.caption && (
-                    <figcaption>
-                      <span className="bidang-caption-judul">{g.caption}</span>
-                      {g.tanggal && <span className="bidang-caption-tanggal">{g.tanggal}</span>}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
-          ) : (
-            <div className="bidang-empty reveal">
-              <p>Belum ada foto dokumentasi untuk bidang ini.</p>
-              <p className="muted">Galeri siap diisi setelah foto kegiatan tersedia.</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── Section F: Navigasi lanjutan ── */}
+      {/* ── Section E: Navigasi lanjutan ── */}
       <section className="bidang-nav-section">
         <div className="wrap bidang-nav">
           {prev ? (
@@ -257,29 +228,6 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           font-style: italic;
         }
 
-        .bidang-galeri {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-          gap: var(--gap);
-        }
-        .bidang-galeri figure { margin: 0; }
-        .bidang-galeri img {
-          width: 100%;
-          aspect-ratio: 4 / 3;
-          object-fit: cover;
-          border-radius: var(--r-card);
-          display: block;
-        }
-        .bidang-galeri figcaption {
-          display: flex;
-          justify-content: space-between;
-          gap: 0.5rem;
-          margin-top: 0.5rem;
-          font-size: var(--step-xs);
-        }
-        .bidang-caption-judul { color: var(--ink); font-weight: 600; }
-        .bidang-caption-tanggal { color: var(--muted); }
-
         .bidang-empty {
           padding: 2.5rem;
           background: var(--surface-2);
@@ -330,7 +278,6 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           .bidang-head-nama { font-size: var(--step-lg); }
           .bidang-head-card { margin-bottom: 2rem; }
           .bidang-tugas { grid-template-columns: 1fr; }
-          .bidang-galeri { grid-template-columns: 1fr; }
           .bidang-nav { flex-direction: column; gap: 0.5rem; }
           .bidang-nav-link-right { text-align: left; }
         }
