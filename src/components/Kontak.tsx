@@ -4,7 +4,7 @@ import { useReveal } from "../hooks/useReveal"
 
 type SubmissionState = "idle" | "sending" | "success" | "error"
 
-const BASIN_FORM_ENDPOINT = "https://usebasin.com/f/c82cced52daa"
+const BASIN_FORM_ENDPOINT = "https://usebasin.com/f/0ad417f4797b"
 
 export default function Kontak() {
   const ref = useReveal()
