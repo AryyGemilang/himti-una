@@ -6,6 +6,8 @@ const BASE = import.meta.env.BASE_URL // "/himti-una/"
 /** Ambil path relatif terhadap base. Contoh: "/himti-una/bidang/humas/" → "/bidang/humas/" */
 export function currentPath(): string {
   const p = window.location.pathname
+  const basePath = BASE.replace(/\/$/, "")
+  if (basePath && p === basePath) return "/"
   return p.startsWith(BASE) ? "/" + p.slice(BASE.length) : p
 }
 

@@ -34,13 +34,12 @@ function useLinkInterceptor() {
       const [path, hash] = href.split("#")
 
       if (path === "/" || path === "") {
-        const base = import.meta.env.BASE_URL
         const isHome = currentPath() === "/"
         if (isHome) {
           if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" })
           else window.scrollTo({ top: 0, behavior: "smooth" })
         } else {
-          navigate(base, { replace: false })
+          navigate("/", { replace: false })
           // Tunggu home render lalu scroll ke section
           requestAnimationFrame(() =>
             requestAnimationFrame(() => {
