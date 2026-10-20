@@ -5,17 +5,17 @@ export type Orang = {
   foto: string
 }
 
-export const PLACEHOLDER_FOTO = "/himti-una/images/people/placeholder-person.svg"
+export const PLACEHOLDER_FOTO = "/himti-una/images/pengurus/placeholder-person.svg"
 export const PERIODE = "Periode Kepengurusan 2025/2026"
 
 // Pemetaan aset mengikuti nama dan jabatan pada berkas foto yang tersedia.
 export const FOTO_PENGURUS = {
-  ketua: "/himti-una/images/people/Mhd Kenichiro Athallah - Ketua Himpunan.svg",
-  sekretaris: "/himti-una/images/pengurus/Pasya - Sekretaris Umum.svg",
-  bendahara: "/himti-una/images/pengurus/Natalie - Bendahara Umum.svg",
-  kepalaBidangHumas: "/himti-una/images/pengurus/kabid/Yudha - Kabid Humas .svg",
-  kepalaBidangKaderisasi: "/himti-una/images/pengurus/kabid/Milhan - kabid Kaderisasi.svg",
-  kepalaBidangAgamaSosial: "/himti-una/images/pengurus/kabid/Bagus - kabid Agama & sosial.svg",
+  ketua: "/himti-una/images/pengurus/inti/muhammad-kenichiro-athallah-ketua-umum.webp",
+  sekretaris: "/himti-una/images/pengurus/inti/pasya-sekretaris-umum.webp",
+  bendahara: "/himti-una/images/pengurus/inti/natalie-bendahara-umum.webp",
+  kepalaBidangHumas: "/himti-una/images/pengurus/kepala-bidang/yudha-kepala-bidang-humas.webp",
+  kepalaBidangKaderisasi: "/himti-una/images/pengurus/kepala-bidang/milhan-kepala-bidang-kaderisasi.webp",
+  kepalaBidangAgamaSosial: "/himti-una/images/pengurus/kepala-bidang/bagus-kepala-bidang-agama-sosial.webp",
 } as const
 
 export const dewanPengawas: Orang[] = [
@@ -23,13 +23,13 @@ export const dewanPengawas: Orang[] = [
     nama: "Bintang",
     namaLengkap: "Bintang Fajar Ruslita Putra",
     jabatan: "Dewan Pengawas Organisasi",
-    foto: "/himti-una/images/pengurus/dewan_pengawas_organisasi/Bintang - dewan pengawas organisasi.svg",
+    foto: "/himti-una/images/pengurus/dewan-pengawas/bintang-dewan-pengawas-organisasi.webp",
   },
   {
     nama: "Farhan",
     namaLengkap: "Farhan Fadli Manurung",
     jabatan: "Dewan Pengawas Organisasi",
-    foto: "/himti-una/images/pengurus/dewan_pengawas_organisasi/Farhan - dewan pengawas organisasi.svg",
+    foto: "/himti-una/images/pengurus/dewan-pengawas/farhan-dewan-pengawas-organisasi.webp",
   },
   {
     nama: "Intan",

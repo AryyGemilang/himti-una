@@ -1,3 +1,5 @@
+import { LOGO_UNA } from "../lib/assets"
+
 const UNA_WEBSITE = "https://una.ac.id/"
 const PMB_WEBSITE = "https://pmb.una.ac.id/"
 
@@ -7,7 +9,7 @@ export default function CalonMahasiswa() {
       <div className="wrap">
         <header className="calon-heading">
           <div className="calon-emblem">
-            <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" />
+            <img src={LOGO_UNA} alt="Logo Universitas Asahan" />
           </div>
           <h2>Ayo Daftar Jadi Mahasiswa Universitas Asahan Kenali Teknik Informatika UNA!</h2>
           <p className="calon-lead">

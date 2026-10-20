@@ -3,6 +3,7 @@ import Foto from "./Foto"
 import KartuPengurus from "./KartuPengurus"
 import type { BidangDetail } from "../data/bidang"
 import { bidangList } from "../data/bidang"
+import { LOGO_UNA } from "../lib/assets"
 
 export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
   const ref = useReveal()
@@ -17,23 +18,23 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="bidang-hero">
         <div className="wrap">
 
-          <a href="/#pengurus" className="bidang-back">
+          <a href="/pengurus" className="bidang-back">
             <span aria-hidden>←</span> Kembali ke Pengurus
           </a>
 
           <div className="bidang-hero-top reveal">
-            <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI UNA" className="bidang-hero-logo" />
+            <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI UNA" className="bidang-hero-logo" />
             <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-              <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" className="bidang-hero-logo-2" />
+              <img src={LOGO_UNA} alt="Logo Universitas Asahan" className="bidang-hero-logo-2" />
             </a>
           </div>
 
-          <p className="label reveal">Bidang Organisasi</p>
+          <p className="label reveal">Divisi Himpunan</p>
           <h1 className="head reveal bidang-hero-title" style={{ ["--d" as string]: "80ms" }}>
             {bidang.nama}
           </h1>
           <img
-            src="/himti-una/images/logos/logo-himti.svg"
+            src="/himti-una/images/branding/logo-himti.webp"
             alt="" aria-hidden
             className="section-logo reveal"
             style={{ ["--d" as string]: "120ms" }}
@@ -48,10 +49,10 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       {/* ── Section C: Struktur organisasi ── */}
       <section className="section bidang-section">
         <div className="wrap">
-          <h2 className="head reveal">Struktur<br />Bidang</h2>
-          <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
+          <h2 className="head reveal">Struktur<br />Divisi</h2>
+          <img src="/himti-una/images/branding/logo-himti.webp" alt="" aria-hidden className="section-logo" />
 
-          {/* Kepala bidang */}
+          {/* Kepala divisi */}
           <div className="bidang-head-card reveal bezel">
             <div className="bezel-inner bidang-head-inner">
               <Foto
@@ -61,7 +62,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
                 style={{ borderRadius: "50%", objectFit: "cover", display: "block", flexShrink: 0 }}
               />
               <div>
-                <p className="label">Kepala Bidang</p>
+                <p className="label">Kepala Divisi</p>
                 <p className="bidang-head-nama">{bidang.head.nama}</p>
                 <p className="bidang-head-jabatan">{bidang.head.jabatan}</p>
               </div>
@@ -69,7 +70,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           </div>
 
           {/* Anggota */}
-          <h3 className="reveal bidang-subhead">Anggota Bidang</h3>
+          <h3 className="reveal bidang-subhead">Anggota Divisi</h3>
           {bidang.anggota.length > 0 ? (
             <div className="bidang-anggota-grid">
               {bidang.anggota.map((anggota, i) => (
@@ -78,7 +79,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
             </div>
           ) : (
             <div className="bidang-empty reveal">
-              <p>Data anggota bidang ini belum tersedia.</p>
+              <p>Data anggota divisi ini belum tersedia.</p>
               <p className="muted">Informasi akan dilengkapi setelah data kepengurusan resmi diperbarui.</p>
             </div>
           )}
@@ -89,7 +90,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="section bidang-section bidang-section-alt">
         <div className="wrap">
           <h2 className="head reveal">Tugas &<br />Fungsi</h2>
-          <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
+          <img src="/himti-una/images/branding/logo-himti.webp" alt="" aria-hidden className="section-logo" />
 
           <ul className="bidang-tugas">
             {bidang.tugas.map((t, i) => (
@@ -103,7 +104,7 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
           </ul>
 
           <p className="bidang-disclaimer reveal">
-            Uraian di atas merupakan deskripsi fungsi umum bidang.
+            Uraian di atas merupakan deskripsi fungsi umum divisi.
           </p>
         </div>
       </section>
@@ -112,13 +113,13 @@ export default function BidangPage({ bidang }: { bidang: BidangDetail }) {
       <section className="bidang-nav-section">
         <div className="wrap bidang-nav">
           {prev ? (
-            <a href={`/bidang/${prev.slug}/`} className="bidang-nav-link">
+            <a href={`/divisi/${prev.slug}/`} className="bidang-nav-link">
               <span className="bidang-nav-label">← Sebelumnya</span>
               <span className="bidang-nav-nama">{prev.namaPendek}</span>
             </a>
           ) : <span />}
           {next ? (
-            <a href={`/bidang/${next.slug}/`} className="bidang-nav-link bidang-nav-link-right">
+            <a href={`/divisi/${next.slug}/`} className="bidang-nav-link bidang-nav-link-right">
               <span className="bidang-nav-label">Berikutnya →</span>
               <span className="bidang-nav-nama">{next.namaPendek}</span>
             </a>

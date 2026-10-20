@@ -1,14 +1,14 @@
 import { useReveal } from "../hooks/useReveal"
 
 const KETUA = [
-  { periode: "1 Okt 2013", label: "Berdiri",    nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA",            foto: "/himti-una/images/people/rahmat-irawan.jpg" },
+  { periode: "1 Okt 2013", label: "Berdiri",    nama: "Rahmat Irawan S.T.",    ket: "Ketua pertama HIMTI UNA",            foto: "/himti-una/images/sejarah/rahmat-irawan.jpg" },
   { periode: "2019–2020",  label: "Periode II", nama: "Dermawan S.Kom",        ket: "",                                    foto: "" },
-  { periode: "2020–2021",  label: "Periode III", nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim",                           foto: "/himti-una/images/people/reza-fahlevi.jpg" },
-  { periode: "2021–2022",  label: "Periode IV",  nama: "Ibnu Haykal Lubis S.Kom",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/images/people/ibnu-haykal-lubis.jpg" },
-  { periode: "2022–2023",  label: "Periode V",   nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/images/people/mhd-zikri-ansyari.jpg" },
+  { periode: "2020–2021",  label: "Periode III", nama: "Reza Fahlevi S.Kom",    ket: "PJ Kahim",                           foto: "/himti-una/images/sejarah/reza-fahlevi.jpg" },
+  { periode: "2021–2022",  label: "Periode IV",  nama: "Ibnu Haykal Lubis S.Kom",     ket: "Bergabung PERMIKOMNAS, 16 Des 2021", foto: "/himti-una/images/sejarah/ibnu-haykal-lubis.jpg" },
+  { periode: "2022–2023",  label: "Periode V",   nama: "Mhd Zikri Ansyari",    ket: "",                                   foto: "/himti-una/images/sejarah/mhd-zikri-ansyari.jpg" },
   { periode: "2023–2024",  label: "Periode VI",  nama: "Muhammad Fikri Gunawan", ket: "",     foto: "" },
-  { periode: "2023–2024",  label: "Periode VI",  nama: "Mhd Risky Al Faridz S.Kom", ket: "PJ Kahim",     foto: "/himti-una/images/people/mhdrisky.jpg" },
-  { periode: "2024–2025",  label: "Periode VII", nama: "Bintang Fajar R Putra", ket: "",                              foto: "/himti-una/images/people/bintang-fajar-r-putra.jpg" },
+  { periode: "2023–2024",  label: "Periode VI",  nama: "Mhd Risky Al Faridz S.Kom", ket: "PJ Kahim",     foto: "/himti-una/images/sejarah/mhd-risky-al-faridz.jpg" },
+  { periode: "2024–2025",  label: "Periode VII", nama: "Bintang Fajar R Putra", ket: "",                              foto: "/himti-una/images/sejarah/bintang-fajar-ruslita-putra.jpg" },
 ]
 
 export default function Sejarah() {
@@ -22,7 +22,7 @@ export default function Sejarah() {
           {/* Sidebar kiri */}
           <div>
             <h2 className="head reveal">Sejarah<br />HIMTI</h2>
-            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/branding/logo-himti.webp" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ ["--d" as string]: "100ms" }}>
               Berdiri <strong style={{ color: "var(--ink)" }}>1 Oktober 2013</strong>. Bergabung PERMIKOMNAS
               pada <strong style={{ color: "var(--ink)" }}>16 Desember 2021</strong> dalam Musyawarah

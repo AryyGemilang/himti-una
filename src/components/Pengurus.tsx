@@ -18,7 +18,7 @@ export default function Pengurus() {
           </div>
           <div className="pengurus-header-desc">
             <p className="reveal muted" style={{ ["--d" as string]: "120ms" }}>
-              Kepengurusan HIMTI UNA terdiri dari Ketua Umum, jajaran inti, dan lima bidang kerja
+              Kepengurusan HIMTI UNA terdiri dari Ketua Umum, jajaran inti, dan lima divisi
               yang memastikan program organisasi berjalan optimal.
             </p>
           </div>
@@ -36,11 +36,11 @@ export default function Pengurus() {
         </div>
 
         <h3 className="pengurus-subhead reveal">Kepala Divisi</h3>
-        <div className="pengurus-bidang-grid" id="bidang">
+        <div className="pengurus-bidang-grid" id="divisi">
           {bidangList.map((b, i) => (
             <div key={b.slug}>
               <KartuPengurus orang={b.head} delay={i * 80} />
-              <a href={`/bidang/${b.slug}/`} className="bidang-btn">
+              <a href={`/divisi/${b.slug}/`} className="bidang-btn">
                 {b.namaPendek}
                 <span aria-hidden style={{ flexShrink: 0 }}>→</span>
               </a>

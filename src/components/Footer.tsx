@@ -1,4 +1,5 @@
 import { Mail, MapPin } from "lucide-react"
+import { LOGO_UNA } from "../lib/assets"
 
 const CURRENT_YEAR = new Date().getFullYear()
 const LETTERS = "HIMTI".split("")
@@ -7,8 +8,8 @@ const UNA_L   = "UNA".split("")
 const UNA_H   = [80, 100, 70]
 
 const NAV = [
-  ["Beranda","/#beranda"],["Tentang","/#tentang"],["Sejarah","/#sejarah"],
-  ["Visi Misi","/#visimisi"],["Pengurus","/#pengurus"],["Kegiatan","/#kegiatan"],["Kontak","/#kontak"],
+  ["Beranda","/"],["Tentang","/tentang"],["Sejarah","/sejarah"],
+  ["Visi Misi","/visi-misi"],["Pengurus","/pengurus"],["Kegiatan","/kegiatan"],["Kontak","/kontak"],
   ["Calon Mahasiswa Baru","/#calon-mahasiswa"],
 ]
 
@@ -69,10 +70,11 @@ export default function Footer() {
 
           <div>
             <div className="footer-brand-logos">
-              <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI" className="footer-brand-logo" />
+              <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI" className="footer-brand-logo" />
               <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-                <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" className="footer-brand-logo" />
+                <img src={LOGO_UNA} alt="Logo Universitas Asahan" className="footer-brand-logo" />
               </a>
+              <span className="footer-faculty">Fakultas<br />Teknik</span>
             </div>
             <p style={{ fontSize: "var(--step-sm)", color: "var(--muted)", maxWidth: "36ch", margin: 0 }}>
               Himpunan Mahasiswa Teknik Informatika Universitas Asahan, wadah aspirasi,
@@ -130,8 +132,8 @@ export default function Footer() {
           <p style={{ fontSize: "var(--step-xs)", color: "var(--muted-2)", margin: 0 }}>
             © {CURRENT_YEAR} HIMTI Universitas Asahan
           </p>
-          <a href="/#beranda" className="btn" style={{ fontSize: "var(--step-xs)", minHeight: "2.25rem", padding: "0 1.1rem" }}>
-            Kembali ke atas
+          <a href="/" className="btn" style={{ fontSize: "var(--step-xs)", minHeight: "2.25rem", padding: "0 1.1rem" }}>
+            Ke Beranda
           </a>
         </div>
       </div>
@@ -186,14 +188,20 @@ export default function Footer() {
         .footer-brand-logos {
           display: flex;
           align-items: center;
-          gap: 1.25rem;
+          gap: 0.75rem;
           margin-bottom: 1.25rem;
         }
         .footer-brand-logo {
           width: auto;
-          height: clamp(3.75rem, 6vw, 5rem);
-          max-width: 7rem;
+          height: clamp(5rem, 7vw, 6rem);
+          max-width: 8rem;
           object-fit: contain;
+        }
+        .footer-faculty {
+          color: var(--muted);
+          font-size: var(--step-sm);
+          font-weight: 600;
+          line-height: 1.15;
         }
         .footer-bottom {
           margin-top: 3rem;
@@ -206,8 +214,8 @@ export default function Footer() {
         }
         @media (max-width: 48em) {
           .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-          .footer-brand-logos { gap: 1rem; }
-          .footer-brand-logo { height: clamp(3.5rem, 16vw, 4.25rem); max-width: 6rem; }
+          .footer-brand-logos { gap: 0.75rem; }
+          .footer-brand-logo { height: clamp(4.25rem, 18vw, 5rem); max-width: 6.75rem; }
         }
         @media (min-width: 48.01em) and (max-width: 64em) {
           .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }

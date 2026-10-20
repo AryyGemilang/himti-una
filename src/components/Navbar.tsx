@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react"
 import { ChevronDown, Moon, Sun } from "lucide-react"
 import { bidangList } from "../data/bidang"
+import { LOGO_UNA } from "../lib/assets"
 
 const MENU = [
-  ["Beranda", "/#beranda"], ["Tentang", "/#tentang"], ["Sejarah", "/#sejarah"],
-  ["Visi Misi", "/#visimisi"], ["Pengurus", "/#pengurus"],
-  ["Kegiatan", "/#kegiatan"], ["Kontak", "/#kontak"],
+  ["Beranda", "/"], ["Tentang", "/tentang"], ["Sejarah", "/sejarah"],
+  ["Visi Misi", "/visi-misi"], ["Pengurus", "/pengurus"],
+  ["Kegiatan", "/kegiatan"], ["Kontak", "/kontak"],
 ] as const
+
+const isActiveRoute = (path: string, href: string) => path === href || (href === "/pengurus" && /^\/(?:divisi|bidang)\//.test(path))
 
 function ThemeToggle({ darkMode, onToggle, mobile = false }: { darkMode: boolean; onToggle: () => void; mobile?: boolean }) {
   return (
@@ -29,12 +32,15 @@ export default function Navbar({ path }: { path: string }) {
   const [open, setOpen] = useState(false)
   const [mobilePengurusOpen, setMobilePengurusOpen] = useState(false)
   const [desktopPengurusOpen, setDesktopPengurusOpen] = useState(false)
+  const [navHidden, setNavHidden] = useState(false)
   const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
-  const [navLogosVisible, setNavLogosVisible] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+  const mobileThemeRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLElement>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
   const desktopPengurusRef = useRef<HTMLLIElement>(null)
   const suppressDropdownFocusRef = useRef(false)
+  const pointerInNavigationRef = useRef(false)
 
   const toggleTheme = () => {
     const nextDarkMode = !darkMode
@@ -48,18 +54,62 @@ export default function Navbar({ path }: { path: string }) {
   }
 
   useEffect(() => {
-    const source = document.querySelector(".hero-logos, .bidang-hero-top")
-    if (!source) {
-      setNavLogosVisible(true)
-      return
+    let frame = 0
+    let previousY = Math.max(0, window.scrollY)
+    let previousDirection = 0
+    let accumulatedDistance = 0
+    const threshold = 12
+    const topSafeZone = 80
+
+    const onScroll = () => {
+      if (frame) return
+      frame = window.requestAnimationFrame(() => {
+        frame = 0
+        const currentY = Math.max(0, window.scrollY)
+        const delta = currentY - previousY
+        previousY = currentY
+
+        if (currentY <= topSafeZone) {
+          accumulatedDistance = 0
+          previousDirection = 0
+          setNavHidden(false)
+          return
+        }
+        if (!delta) return
+
+        const direction = delta > 0 ? 1 : -1
+        accumulatedDistance = direction === previousDirection ? accumulatedDistance + Math.abs(delta) : Math.abs(delta)
+        previousDirection = direction
+        if (accumulatedDistance < threshold) return
+        accumulatedDistance = 0
+
+        const focused = headerRef.current?.contains(document.activeElement)
+          || mobileThemeRef.current?.contains(document.activeElement)
+        if (open || pointerInNavigationRef.current || focused) {
+          setNavHidden(false)
+          return
+        }
+        setNavHidden(direction > 0)
+      })
     }
 
-    const observer = new IntersectionObserver(([entry]) => {
-      setNavLogosVisible(entry.intersectionRatio < 0.8)
-    }, { threshold: [0, 0.8], rootMargin: "-72px 0px 0px 0px" })
-    observer.observe(source)
-    return () => observer.disconnect()
-  }, [path])
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [open])
+
+  const revealNavigation = () => setNavHidden(false)
+  const enterNavigation = (pointerType: string) => {
+    if (pointerType === "touch") return
+    pointerInNavigationRef.current = true
+    revealNavigation()
+  }
+  const leaveNavigation = (pointerType: string) => {
+    if (pointerType === "touch") return
+    pointerInNavigationRef.current = false
+  }
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -107,15 +157,30 @@ export default function Navbar({ path }: { path: string }) {
 
   return (
     <>
-      <header className={`nav ${navLogosVisible ? "nav-brand-visible" : ""}`} aria-label="Navigasi utama">
+      <div
+        className="nav-reveal-zone"
+        aria-hidden="true"
+        onPointerEnter={event => {
+          if (event.pointerType !== "touch") revealNavigation()
+        }}
+      />
+      <header
+        ref={headerRef}
+        className={`nav nav-brand-visible${navHidden ? " nav-hidden" : ""}`}
+        aria-label="Navigasi utama"
+        onPointerEnter={event => enterNavigation(event.pointerType)}
+        onPointerLeave={event => leaveNavigation(event.pointerType)}
+        onFocusCapture={revealNavigation}
+      >
         <div className="nav-pill">
-          <div className="nav-brand-group" aria-label="Logo HIMTI dan Universitas Asahan" aria-hidden={!navLogosVisible} inert={!navLogosVisible}>
-            <a href="/#beranda" className="nav-logo" aria-label="HIMTI UNA, ke atas halaman">
-              <img src="/himti-una/images/logos/logo-himti.svg" alt="Logo HIMTI UNA" />
+          <div className="nav-brand-group" aria-label="Logo HIMTI dan Universitas Asahan">
+            <a href="/" className="nav-logo" aria-label="HIMTI UNA, ke Beranda">
+              <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI UNA" />
             </a>
             <a href="https://una.ac.id/" className="nav-una-logo" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)">
-              <img src="/himti-una/images/logos/logo-una.svg" alt="Logo Universitas Asahan" />
+              <img src={LOGO_UNA} alt="Logo Universitas Asahan" />
             </a>
+            <span className="nav-brand-name"><strong>HIMTI</strong><small>Universitas Asahan</small></span>
           </div>
 
           {/* Desktop links */}
@@ -148,30 +213,27 @@ export default function Navbar({ path }: { path: string }) {
                   if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDesktopPengurusOpen(false)
                 }}
               >
-                <a href={href}>Pengurus</a>
+                <a href={href} className={isActiveRoute(path, href) ? "active" : undefined} aria-current={isActiveRoute(path, href) ? "page" : undefined}>Pengurus</a>
                 <button
                   type="button"
                   className="nav-pengurus-toggle"
-                  aria-label={desktopPengurusOpen ? "Sembunyikan daftar bidang" : "Tampilkan daftar bidang"}
+                  aria-label={desktopPengurusOpen ? "Sembunyikan daftar divisi" : "Tampilkan daftar divisi"}
                   aria-expanded={desktopPengurusOpen}
                   aria-controls="nav-pengurus-dropdown"
                   onClick={() => setDesktopPengurusOpen(true)}
                 />
-                <ul className="nav-pengurus-dropdown" id="nav-pengurus-dropdown" aria-label="Daftar bidang">
+                <ul className="nav-pengurus-dropdown" id="nav-pengurus-dropdown" aria-label="Daftar divisi">
                   {bidangList.map(bidang => (
                     <li key={bidang.slug}>
-                      <a href={`/bidang/${bidang.slug}/`}>{bidang.namaPendek}</a>
+                      <a href={`/divisi/${bidang.slug}/`}>{bidang.namaPendek}</a>
                     </li>
                   ))}
                 </ul>
               </li>
             ) : (
-              <li key={href}><a href={href}>{label}</a></li>
+              <li key={href}><a href={href} className={isActiveRoute(path, href) ? "active" : undefined} aria-current={isActiveRoute(path, href) ? "page" : undefined}>{label}</a></li>
             ))}
           </ul>
-
-          {/* Desktop CTA */}
-          <a href="/#kontak" className="btn nav-action hide-mobile">Hubungi</a>
 
           <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
 
@@ -180,7 +242,8 @@ export default function Navbar({ path }: { path: string }) {
             className="nav-hamburger"
             ref={hamburgerRef}
             onClick={() => {
-              setOpen(o => !o)
+              if (!open) setNavHidden(false)
+              setOpen(!open)
               setMobilePengurusOpen(false)
             }}
             aria-label={open ? "Tutup menu" : "Buka menu"}
@@ -211,7 +274,19 @@ export default function Navbar({ path }: { path: string }) {
         </div>
       </header>
 
-      <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} mobile />
+      <div
+        ref={mobileThemeRef}
+        className={`mobile-theme-holder${navHidden ? " nav-hidden" : ""}`}
+        onPointerEnter={event => enterNavigation(event.pointerType)}
+        onPointerLeave={event => leaveNavigation(event.pointerType)}
+        onFocusCapture={revealNavigation}
+      >
+        <ThemeToggle
+          darkMode={darkMode}
+          onToggle={toggleTheme}
+          mobile
+        />
+      </div>
 
       {/* Full-screen mobile overlay */}
       <nav
@@ -224,13 +299,13 @@ export default function Navbar({ path }: { path: string }) {
         {MENU.map(([label, href], i) => label === "Pengurus" ? (
           <div className="nav-mobile-pengurus" key={href}>
             <div className="nav-mobile-pengurus-row">
-              <a href={href} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }} style={{ transitionDelay: open ? `${i * 60}ms` : "0ms" }}>
+              <a href={href} className={isActiveRoute(path, href) ? "active" : undefined} aria-current={isActiveRoute(path, href) ? "page" : undefined} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }} style={{ transitionDelay: open ? `${i * 60}ms` : "0ms" }}>
                 Pengurus
               </a>
               <button
                 type="button"
                 className="nav-mobile-pengurus-toggle"
-                aria-label={mobilePengurusOpen ? "Sembunyikan daftar bidang" : "Tampilkan daftar bidang"}
+                aria-label={mobilePengurusOpen ? "Sembunyikan daftar divisi" : "Tampilkan daftar divisi"}
                 aria-expanded={mobilePengurusOpen}
                 aria-controls="nav-mobile-pengurus-dropdown"
                 onClick={() => setMobilePengurusOpen(value => !value)}
@@ -246,7 +321,7 @@ export default function Navbar({ path }: { path: string }) {
             >
               <a href={href} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}>Struktur Pengurus</a>
               {bidangList.map(bidang => (
-                <a key={bidang.slug} href={`/bidang/${bidang.slug}/`} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}>
+                <a key={bidang.slug} href={`/divisi/${bidang.slug}/`} onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}>
                   {bidang.namaPendek}
                 </a>
               ))}
@@ -256,22 +331,14 @@ export default function Navbar({ path }: { path: string }) {
           <a
             key={href}
             href={href}
+            className={isActiveRoute(path, href) ? "active" : undefined}
+            aria-current={isActiveRoute(path, href) ? "page" : undefined}
             onClick={() => setOpen(false)}
             style={{ transitionDelay: open ? `${i * 60}ms` : "0ms" }}
           >
             {label}
           </a>
         ))}
-        <a
-          href="/#kontak"
-          className="btn nav-overlay-action"
-          onClick={() => { setOpen(false); setMobilePengurusOpen(false) }}
-          style={{
-            transitionDelay: open ? `${MENU.length * 60}ms` : "0ms",
-          }}
-        >
-          Hubungi Kami
-        </a>
       </nav>
     </>
   )

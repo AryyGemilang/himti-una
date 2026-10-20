@@ -6,7 +6,7 @@ export default function Tentang() {
   return (
     <section id="tentang" ref={ref} className="section">
       <div className="wrap">
-        <div className="panel tentang-panel">
+        <div className="tentang-panel">
 
           {/* Motif dekoratif — hidden mobile */}
           <div
@@ -20,9 +20,9 @@ export default function Tentang() {
 
             {/* Kolom kiri */}
             <div>
-              <h2 className="head reveal">Apa itu<br />HIMTI?</h2>
+              <h2 className="head reveal">Mengenal<br />HIMTI</h2>
               <img
-                src="/himti-una/images/logos/logo-himti.svg"
+                src="/himti-una/images/branding/logo-himti.webp"
                 alt="" aria-hidden
                 className="section-logo"
               />
@@ -48,7 +48,7 @@ export default function Tentang() {
                   <p style={{ color: "var(--muted)", fontSize: "var(--step-sm)", margin: 0 }}>{body}</p>
                 </div>
               ))}
-              <a href="/#kegiatan" className="btn reveal" style={{ alignSelf: "flex-start", ["--d" as string]: "360ms" }}>
+              <a href="/kegiatan" className="btn reveal" style={{ alignSelf: "flex-start", ["--d" as string]: "360ms" }}>
                 Lihat Kegiatan
               </a>
             </div>
@@ -58,14 +58,12 @@ export default function Tentang() {
           {/* Photo strip */}
           <div className="reveal tentang-photo" style={{ ["--d" as string]: "200ms" }}>
             <img
-              src="https://picsum.photos/id/338/1600/500?grayscale"
-              alt="Suasana kegiatan mahasiswa"
-              width={1600} height={500} loading="lazy"
-              style={{ width: "100%", height: "clamp(120px, 18vw, 280px)", objectFit: "cover", borderRadius: 8, filter: "brightness(0.55)" }}
+              src="/himti-una/images/kegiatan/screening-test/foto-sesi-02.jpeg"
+              alt="Mahasiswa HIMTI UNA mengikuti sesi wawancara screening test"
+              width={1280} height={720} loading="lazy"
+              style={{ width: "100%", height: "clamp(180px, 30vw, 440px)", objectFit: "cover" }}
             />
-            <p style={{ fontSize: "var(--step-xs)", color: "var(--muted)", marginTop: "0.5rem" }}>
-              Photo: Patryk Sobczak, Unsplash licence
-            </p>
+            <p className="tentang-photo-caption">Screening test rekrutmen anggota · Dokumentasi HIMTI UNA</p>
           </div>
 
         </div>

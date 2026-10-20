@@ -21,7 +21,7 @@ export default function VisiMisi() {
           <div>
             <p className="label reveal">Visi</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Membantu<br />Mahasiswa IT</h2>
-            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/branding/logo-himti.webp" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted" style={{ ["--d" as string]: "160ms" }}>
               HIMTI UNA mempunyai visi untuk membantu Mahasiswa Teknik Informatika baik dalam hal akademik
               maupun lainnya yang menyangkut ilmu Teknologi, dan juga sebagai wadah untuk menampung
@@ -33,7 +33,7 @@ export default function VisiMisi() {
           <div>
             <p className="label reveal">Misi</p>
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>Tiga Pilar<br />Utama</h2>
-            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/branding/logo-himti.webp" alt="" aria-hidden className="section-logo" />
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               {MISI.map((m, i) => (
                 <li key={i} className="reveal" style={{ display: "flex", gap: "0.875rem", alignItems: "flex-start", ["--d" as string]: `${(i + 1) * 100}ms` }}>
@@ -50,7 +50,7 @@ export default function VisiMisi() {
         <div className="reveal bezel" style={{ marginTop: "5rem", ["--d" as string]: "300ms" }}>
           <div className="bezel-inner permikomnas-inner">
             <div className="permikomnas-logo-wrap">
-              <img src="/himti-una/images/affiliations/logo-permikomnas.png" alt="Logo PERMIKOMNAS" />
+              <img src="/himti-una/images/branding/mitra/logo-permikomnas.png" alt="Logo PERMIKOMNAS" />
             </div>
             <div className="permikomnas-copy">
               <h3 style={{ fontWeight: 800, fontSize: "var(--step-lg)", textTransform: "uppercase", letterSpacing: "-0.025em", marginBottom: "0.5rem" }}>PERMIKOMNAS</h3>

@@ -3,12 +3,13 @@ import { useEffect, useState } from "react"
 // Base path dari Vite (GitHub Pages subpath)
 const BASE = import.meta.env.BASE_URL // "/himti-una/"
 
-/** Ambil path relatif terhadap base. Contoh: "/himti-una/bidang/humas/" → "/bidang/humas/" */
+/** Ambil path relatif terhadap base. Contoh: "/himti-una/divisi/humas/" → "/divisi/humas/" */
 export function currentPath(): string {
   const p = window.location.pathname
   const basePath = BASE.replace(/\/$/, "")
   if (basePath && p === basePath) return "/"
-  return p.startsWith(BASE) ? "/" + p.slice(BASE.length) : p
+  const path = p.startsWith(BASE) ? "/" + p.slice(BASE.length) : p
+  return path === "/" ? "/" : path.replace(/\/+$/, "") || "/"
 }
 
 /** Navigasi client-side tanpa reload */

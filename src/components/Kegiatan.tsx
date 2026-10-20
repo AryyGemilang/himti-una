@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { useReveal } from "../hooks/useReveal"
 
-const MEDIA_PATH = "/himti-una/images/dokumentasi/Screening%20Text-Himtiuna"
+const MEDIA_PATH = "/himti-una/images/kegiatan/screening-test"
 const assetUrl = (filename: string) => `${MEDIA_PATH}/${encodeURIComponent(filename)}`
 
 type ActivityMedia =
@@ -9,24 +9,24 @@ type ActivityMedia =
   | { type: "video"; src: string; poster: string; alt: string }
 
 const MEDIA: ActivityMedia[] = [
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.24.jpeg"), alt: "Sesi screening test calon anggota HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.25.jpeg"), alt: "Wawancara screening test HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.25(1).jpeg"), alt: "Dokumentasi wawancara calon anggota HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.25(2).jpeg"), alt: "Proses tanya jawab screening test HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.26.jpeg"), alt: "Sesi screening test di ruang kegiatan HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.26(1).jpeg"), alt: "Dokumentasi rekrutmen anggota HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.27.jpeg"), alt: "Kegiatan screening test calon anggota HIMTI UNA" },
-  { type: "image", src: assetUrl("WhatsApp Image 2026-10-17 at 15.13.53.jpeg"), alt: "Suasana screening test HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-01.jpeg"), alt: "Sesi screening test calon anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-02.jpeg"), alt: "Wawancara screening test HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-03.jpeg"), alt: "Dokumentasi wawancara calon anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-04.jpeg"), alt: "Proses tanya jawab screening test HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-05.jpeg"), alt: "Sesi screening test di ruang kegiatan HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-06.jpeg"), alt: "Dokumentasi rekrutmen anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-07.jpeg"), alt: "Kegiatan screening test calon anggota HIMTI UNA" },
+  { type: "image", src: assetUrl("foto-sesi-08.jpeg"), alt: "Suasana screening test HIMTI UNA" },
   {
     type: "video",
-    src: assetUrl("WhatsApp Video 2026-10-17 at 15.13.27.mp4"),
-    poster: assetUrl("screening-video-1-poster.jpg"),
+    src: assetUrl("video-sesi-01.mp4"),
+    poster: assetUrl("video-sesi-01-poster.jpg"),
     alt: "Video dokumentasi screening test HIMTI UNA",
   },
   {
     type: "video",
-    src: assetUrl("WhatsApp Video 2026-10-17 at 15.13.29.mp4"),
-    poster: assetUrl("screening-video-2-poster.jpg"),
+    src: assetUrl("video-sesi-02.mp4"),
+    poster: assetUrl("video-sesi-02-poster.jpg"),
     alt: "Video sesi rekrutmen anggota HIMTI UNA",
   },
 ]
@@ -158,7 +158,7 @@ export default function Kegiatan() {
             <h2 className="head reveal" style={{ marginTop: "1rem", ["--d" as string]: "80ms" }}>
               Screening Test<br />Rekrutmen Anggota HIMTI
             </h2>
-            <img src="/himti-una/images/logos/logo-himti.svg" alt="" aria-hidden className="section-logo" />
+            <img src="/himti-una/images/branding/logo-himti.webp" alt="" aria-hidden className="section-logo" />
             <p className="reveal muted kegiatan-description" style={{ ["--d" as string]: "120ms" }}>
               Dokumentasi proses screening test sebagai bagian dari rekrutmen anggota HIMTI UNA.
             </p>

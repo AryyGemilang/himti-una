@@ -19,6 +19,17 @@ copyFileSync(index, join(dist, "404.html"))
 
 // Route ini harus sinkron dengan src/App.tsx dan src/data/bidang.ts.
 const PAGES = {
+  "tentang": "Tentang HIMTI UNA",
+  "sejarah": "Sejarah HIMTI UNA",
+  "visi-misi": "Visi Misi HIMTI UNA",
+  "pengurus": "Pengurus HIMTI UNA",
+  "kegiatan": "Kegiatan HIMTI UNA",
+  "kontak": "Kontak HIMTI UNA",
+  "divisi/kaderisasi": "Divisi Kaderisasi",
+  "divisi/humas": "Divisi Humas",
+  "divisi/kominfo": "Divisi Kominfo",
+  "divisi/agama-sosial": "Divisi Agama & Sosial",
+  "divisi/minat-bakat": "Divisi Minat & Bakat",
   "bidang/kaderisasi": "Bidang Kaderisasi",
   "bidang/humas": "Bidang Humas",
   "bidang/kominfo": "Bidang Kominfo",
