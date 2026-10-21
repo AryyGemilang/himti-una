@@ -58,12 +58,12 @@ export default function Tentang() {
           {/* Photo strip */}
           <div className="reveal tentang-photo" style={{ ["--d" as string]: "200ms" }}>
             <img
-              src="/himti-una/images/kegiatan/screening-test/foto-sesi-02.jpeg"
-              alt="Mahasiswa HIMTI UNA mengikuti sesi wawancara screening test"
-              width={1280} height={720} loading="lazy"
-              style={{ width: "100%", height: "clamp(180px, 30vw, 440px)", objectFit: "cover" }}
+              src="/himti-una/images/tinjauan/foto-kelompok-luar-ruangan.webp"
+              alt="Anggota HIMTI UNA berfoto bersama di luar ruangan"
+              width={1800} height={1350} loading="lazy"
+              style={{ width: "100%", height: "clamp(180px, 30vw, 440px)", objectFit: "cover", objectPosition: "center 85%" }}
             />
-            <p className="tentang-photo-caption">Screening test rekrutmen anggota · Dokumentasi HIMTI UNA</p>
+            <p className="tentang-photo-caption">Kebersamaan anggota HIMTI UNA · Dokumentasi HIMTI UNA</p>
           </div>
 
         </div>

@@ -9,7 +9,7 @@ Seluruh aset yang dilayani langsung oleh situs disimpan di `public/images/`. Ber
 | `branding/` | Logo HIMTI UNA dan Universitas Asahan. `branding/mitra/` menyimpan logo organisasi mitra seperti PERMIKOMNAS. Favicon memakai logo HIMTI UNA di folder ini. |
 | `home/hero/` | Foto utama hero Beranda. |
 | `sejarah/` | Foto ketua yang ditampilkan pada linimasa sejarah HIMTI. |
-| `tinjauan/` | Aset yang isi visualnya dapat dikenali, tetapi belum ditemukan referensi pada kode dan belum ditentukan halaman penggunaannya. Tinjau sebelum dipakai atau dipindahkan. |
+| `tinjauan/` | Foto kelompok luar ruangan yang ditampilkan pada bagian Tentang. |
 | `pengurus/inti/` | Ilustrasi ketua umum, sekretaris umum, dan bendahara umum. |
 | `pengurus/kepala-bidang/` | Ilustrasi kepala bidang. |
 | `pengurus/dewan-pengawas/` | Ilustrasi Dewan Pengawas Organisasi. |
@@ -38,17 +38,17 @@ Seluruh aset yang dilayani langsung oleh situs disimpan di `public/images/`. Ber
 | --- | --- |
 | `home/hero/musyawarah-besar-himti-una.jpg` | Hero Beranda (`src/components/Hero.tsx`). |
 | `sejarah/*.jpg` | Foto linimasa halaman Sejarah (`src/components/Sejarah.tsx`). |
-| `kegiatan/screening-test/foto-sesi-*.jpeg` | Galeri Kegiatan; `foto-sesi-02.jpeg` juga dipakai pada halaman Tentang. |
+| `kegiatan/screening-test/foto-sesi-*.jpeg` | Galeri Kegiatan. |
 | `kegiatan/screening-test/video-sesi-*.mp4` dan poster pasangannya | Galeri Kegiatan. |
 | `pengurus/**/*.svg` | Foto ilustrasi pengurus dan anggota (`src/data/pengurus.ts`, `src/data/bidang.ts`). |
 | `branding/*` | Navbar, footer, favicon, latar dekoratif, dan logo bagian situs. |
 | `branding/mitra/logo-permikomnas.png` | Bagian Visi Misi. |
-| `tinjauan/foto-kelompok-luar-ruangan.jpg` | Belum ditemukan referensi kode. Foto kelompok di luar ruangan; nama file sebelumnya menyebut halaman Tentang, tetapi kode saat ini tidak memakainya. Dibiarkan untuk ditinjau. |
+| `tinjauan/foto-kelompok-luar-ruangan.webp` | Strip foto terkompresi pada halaman Tentang (`src/components/Tentang.tsx`); JPEG asli tetap disimpan. |
 
 ## Hasil audit aset
 
-- Semua 38 berkas aset di `public/images/` sudah dikategorikan dan namanya dinormalkan. Path dan referensi yang ditemukan diperbarui bersamaan dengan pemindahan.
+- Semua 39 berkas aset di `public/images/` sudah dikategorikan dan namanya dinormalkan. Path dan referensi yang ditemukan diperbarui bersamaan dengan pemindahan.
 - Perbandingan SHA-256 tidak menemukan berkas identik di `public/images/`. Foto screening memiliki adegan yang mirip, tetapi hash dan isi visualnya berbeda, jadi dipertahankan sebagai foto terpisah.
 - Tidak ada berkas di `public/images/` yang dibiarkan tanpa kategori. `placeholder-person.svg` tetap digunakan sebagai foto cadangan.
-- `tinjauan/foto-kelompok-luar-ruangan.jpg` adalah satu-satunya aset publik tanpa referensi kode yang ditemukan. Aset tetap disimpan agar kegunaannya dapat diputuskan kemudian.
+- Versi WebP foto kelompok luar ruangan digunakan pada bagian Tentang (`src/components/Tentang.tsx`); JPEG asli dipertahankan.
 - Audit kode tidak menemukan referensi untuk aset berikut di `src/assets/images/`; aset tersebut dibiarkan di tempatnya karena berada di luar folder publik dan tidak perlu dipindahkan untuk penataan ini: `illustrations/hero.png` (ilustrasi dekoratif), `logos/logo-una-reference.jpg`, `logos/logo-himti-reference.jpg` (gambar referensi logo), dan `icons/vite.svg` (ikon bawaan). Ketiganya bukan duplikat byte-identik dari aset publik.
