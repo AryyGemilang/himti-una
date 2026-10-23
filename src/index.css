@@ -581,6 +581,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 .nav-overlay a:hover { color: var(--ink); }
 .nav-overlay a:focus-visible { color: var(--ink); background: var(--accent-dim); }
 .nav-overlay .nav-overlay-action { margin-top: 0.375rem; }
+.nav-overlay .nav-recruitment-mobile { display: none; }
 .nav-mobile-pengurus { width: 100%; }
 .nav-mobile-pengurus-row { display: flex; align-items: center; width: 100%; }
 .nav-mobile-pengurus-row > a { flex: 1; }
@@ -1801,7 +1802,21 @@ img, svg, video { max-width: 100%; height: auto; }
   .nav-brand-name strong { font-size: 1rem; }
   .nav-brand-name small { display: none; }
   .nav-links { display: none !important; }
-  .nav-recruitment-desktop { display: inline-flex; }
+  .nav-recruitment-desktop { display: none; }
+  .nav-overlay .nav-recruitment-mobile {
+    display: inline-flex;
+    width: 100%;
+    min-height: 2.75rem;
+    justify-content: flex-start;
+    margin: 0.375rem 0 0;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.625rem;
+    font-size: 1rem;
+    letter-spacing: 0.015em;
+    text-transform: none;
+  }
+  .nav-overlay .nav-recruitment-mobile.is-open { color: #fff; background: #071d60; }
+  .nav-overlay .nav-recruitment-mobile.is-closed { color: var(--muted); background: var(--surface-2); }
   .theme-toggle-mobile,
   .mobile-theme-holder { display: none !important; }
   .theme-toggle-desktop { display: inline-flex; margin-left: auto; }

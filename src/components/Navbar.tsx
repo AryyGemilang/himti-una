@@ -12,10 +12,18 @@ const MENU = [
 
 type PublicEvent = { type: string; registrationOpen: boolean }
 
-function RecruitmentAction({ open }: { open: boolean }) {
-  const className = `nav-recruitment nav-recruitment-desktop${open ? " is-open" : " is-closed"}`
+function RecruitmentAction({
+  open,
+  mobile = false,
+  onNavigate,
+}: {
+  open: boolean
+  mobile?: boolean
+  onNavigate?: () => void
+}) {
+  const className = `nav-recruitment ${mobile ? "nav-recruitment-mobile" : "nav-recruitment-desktop"}${open ? " is-open" : " is-closed"}`
   return open ? (
-    <a className={className} href="/pendaftaran" aria-live="polite" aria-label="Open Recruitment. Lihat pendaftaran yang sedang dibuka">
+    <a className={className} href="/pendaftaran" onClick={onNavigate} aria-live="polite" aria-label="Open Recruitment. Lihat pendaftaran yang sedang dibuka">
       <span className="recruitment-open-dot" aria-hidden="true" />
       <span className="recruitment-label">Open Recruitment</span>
       <ArrowUpRight size={16} aria-hidden="true" />
@@ -380,6 +388,7 @@ export default function Navbar({ path }: { path: string }) {
             {label}
           </a>
         ))}
+        <RecruitmentAction mobile open={recruitmentOpen} onNavigate={() => setOpen(false)} />
       </nav>
     </>
   )
