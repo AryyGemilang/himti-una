@@ -1,0 +1,1509 @@
+{
+ "url": "http://127.0.0.1:5174/himti-una/",
+ "at": "2026-10-22T13:37:53.566Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.4,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 39,
+    "css": 10,
+    "transitions": 28,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3921,
+     "screens": 4.4,
+     "words": 290,
+     "img": 10,
+     "video": 0,
+     "canvas": 0,
+     "svg": 20,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 9,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "logo-himti.webp",
+      "musyawarah-besar-himti-una.jpg",
+      "logo-himti.webp",
+      "muhammad-kenichiro-athallah-ketua-umum.webp",
+      "pasya-sekretaris-umum.webp",
+      "natalie-bendahara-umum.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Himpunan Mahasiswa Teknik Informatika",
+     "words": 4,
+     "chars": 37,
+     "lines": 2,
+     "size": 57.6,
+     "vw": 4,
+     "font": "Jost",
+     "weight": 900,
+     "tracking": -0.055,
+     "leading": 0.98,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.44,
+     "top": 407,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Himpunan Mahasiswa Teknik Informatika",
+     "words": 4,
+     "lines": 2,
+     "size": 57.6,
+     "font": "Jost"
+    },
+    "headings": [
+     {
+      "text": "BERANDA",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 68,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "TENTANG KAMI",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 167,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "SEJARAH",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.18,
+      "top": 267,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "VISI MISI",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.18,
+      "top": 366,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Himpunan Mahasiswa Teknik Informatika",
+      "words": 4,
+      "chars": 37,
+      "lines": 2,
+      "size": 57.6,
+      "vw": 4,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.055,
+      "leading": 0.98,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 407,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "PENGURUS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 466,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "KEGIATAN",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 566,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "DOKUMENTASI",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 665,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "KONTAK",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.03,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.17,
+      "top": 765,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Pengurus Inti HIMTI 2025/2026",
+      "words": 4,
+      "chars": 29,
+      "lines": 2,
+      "size": 66.2,
+      "vw": 4.6,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.055,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.52,
+      "top": 1025,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "WELCOME",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 80,
+      "vw": 5.6,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.055,
+      "leading": 0.98,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.48,
+      "top": 1997,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "05",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 96,
+      "vw": 6.7,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.07,
+      "leading": 0.85,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.08,
+      "top": 2322,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "H I M T I U N A HIMTI UNA — Himpunan Mahasiswa Teknik Informatika Universitas Asahan",
+      "words": 17,
+      "chars": 84,
+      "lines": 2,
+      "size": 50.4,
+      "vw": 3.5,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 1,
+      "top": 3099,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Jost",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      14,
+      15,
+      16,
+      17,
+      20,
+      25,
+      50,
+      56,
+      58,
+      66,
+      80,
+      96
+     ],
+     "sizeCount": 13,
+     "notLoaded": [],
+     "body": {
+      "font": "Jost",
+      "size": 16,
+      "leading": 1.45,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.7
+     },
+     "measureChars": 70,
+     "max": {
+      "size": 96,
+      "vw": 6.7,
+      "font": "Jost",
+      "text": "05"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 3,
+     "microLabelShare": 0.01,
+     "microSamples": [
+      "Navigasi",
+      "Lokasi",
+      "Hubungi"
+     ],
+     "upperShare": 0.06,
+     "centerShare": 0.22,
+     "smallText": 8
+    },
+    "eyebrows": [],
+    "numbered": [
+     {
+      "text": "05",
+      "size": 96,
+      "top": 2322
+     }
+    ],
+    "color": {
+     "bodyBg": "#0b1220",
+     "bodyBgHsl": {
+      "h": 220,
+      "s": 0.49,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0b1220",
+       "top": 0,
+       "hsl": {
+        "h": 220,
+        "s": 0.49,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#111c30",
+       "top": 1869,
+       "hsl": {
+        "h": 219,
+        "s": 0.48,
+        "l": 0.13
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#b8c4d6",
+       "share": 0.85
+      },
+      {
+       "color": "#f1f5f9",
+       "share": 0.06
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      },
+      {
+       "color": "#93c5fd",
+       "share": 0.02
+      },
+      {
+       "color": "#a9b8cc",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#60a5fa",
+      "hsl": {
+       "h": 213,
+       "s": 0.94,
+       "l": 0.68
+      },
+      "fg": "#091322"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 38,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "Beranda",
+      "Rekrutmen Ditutup",
+      "Kenali HIMTI"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 1,
+     "shadowSamples": [
+      "div.hero-photo-frame → rgba(0, 0, 0, 0.3) 0px 19.2px 48px 0px",
+      "span.hero-bubble.hero-bubble-one → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+      "span.hero-bubble.hero-bubble-two → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+      "div.reveal.bezel → rgba(0, 0, 0, 0.3) 0px 18px 44px 0px"
+     ],
+     "gradients": 11,
+     "scrims": 0,
+     "gradientSamples": [
+      "span.bokeh-light.bokeh-light-left → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "span.bokeh-light.bokeh-light-right → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "span.bokeh-light.bokeh-light-left-secondary → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "span.bokeh-light.bokeh-light-right-secondary → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)"
+     ],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.footer-bottom 1312px"
+     ],
+     "outlinedBoxes": 6,
+     "dashed": 0,
+     "blurred": 2,
+     "roundedBoxes": 9,
+     "boxRadius": 18,
+     "squareMedia": 2,
+     "roundedMedia": 7,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1288
+      },
+      {
+       "count": 5,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 2509
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 0.2
+     }
+    ],
+    "nav": {
+     "links": 12,
+     "fixed": true,
+     "height": 76,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "jost"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.74,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 35,
+    "css": 8,
+    "transitions": 26,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 4768,
+     "screens": 4.7,
+     "words": 255,
+     "img": 10,
+     "video": 0,
+     "canvas": 0,
+     "svg": 20,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "logo-himti.webp",
+      "musyawarah-besar-himti-una.jpg",
+      "muhammad-kenichiro-athallah-ketua-umum.webp",
+      "pasya-sekretaris-umum.webp",
+      "natalie-bendahara-umum.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Himpunan Mahasiswa Teknik Informat",
+     "words": 4,
+     "chars": 34,
+     "lines": 2,
+     "size": 54.4,
+     "vw": 7.1,
+     "font": "Jost",
+     "weight": 900,
+     "tracking": -0.055,
+     "leading": 0.98,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.95,
+     "top": 138,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Himpunan Mahasiswa Teknik Informat",
+     "words": 4,
+     "lines": 2,
+     "size": 54.4,
+     "font": "Jost"
+    },
+    "headings": [
+     {
+      "text": "Himpunan Mahasiswa Teknik Informat",
+      "words": 4,
+      "chars": 34,
+      "lines": 2,
+      "size": 54.4,
+      "vw": 7.1,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.055,
+      "leading": 0.98,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 138,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Pengurus Inti HIMTI 2025/2026",
+      "words": 4,
+      "chars": 29,
+      "lines": 1,
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.055,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 1099,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "WELCOME",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 59.2,
+      "vw": 7.7,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.055,
+      "leading": 0.98,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.81,
+      "top": 2291,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "05",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 56,
+      "vw": 7.3,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.07,
+      "leading": 0.85,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.09,
+      "top": 2572,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "H I M T I U N A HIMTI UNA — Himpunan Mahasiswa Teknik Informatika Universitas Asahan",
+      "words": 17,
+      "chars": 84,
+      "lines": 2,
+      "size": 26.9,
+      "vw": 3.5,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 1,
+      "top": 3357,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Jost",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      19,
+      27,
+      35,
+      54,
+      56,
+      59
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Jost",
+      "size": 14.8,
+      "leading": 1.45,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.7
+     },
+     "measureChars": 70,
+     "max": {
+      "size": 59.2,
+      "vw": 7.7,
+      "font": "Jost",
+      "text": "WELCOME"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 3,
+     "microLabelShare": 0.012,
+     "microSamples": [
+      "Navigasi",
+      "Lokasi",
+      "Hubungi"
+     ],
+     "upperShare": 0.03,
+     "centerShare": 0.25,
+     "smallText": 6
+    },
+    "eyebrows": [],
+    "numbered": [
+     {
+      "text": "05",
+      "size": 56,
+      "top": 2572
+     }
+    ],
+    "color": {
+     "bodyBg": "#0b1220",
+     "bodyBgHsl": {
+      "h": 220,
+      "s": 0.49,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#111c30",
+       "top": 2227,
+       "hsl": {
+        "h": 219,
+        "s": 0.48,
+        "l": 0.13
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#b8c4d6",
+       "share": 0.84
+      },
+      {
+       "color": "#f1f5f9",
+       "share": 0.07
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      },
+      {
+       "color": "#a9b8cc",
+       "share": 0.03
+      },
+      {
+       "color": "#93c5fd",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#60a5fa",
+      "hsl": {
+       "h": 213,
+       "s": 0.94,
+       "l": 0.68
+      },
+      "fg": "#091322"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 42,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "Rekrutmen Ditutup",
+      "Kenali HIMTI"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 1,
+     "shadowSamples": [
+      "div.hero-photo-frame → rgba(0, 0, 0, 0.3) 0px 19.2px 48px 0px",
+      "span.hero-bubble.hero-bubble-one → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+      "span.hero-bubble.hero-bubble-two → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+      "div.reveal.bezel → rgba(0, 0, 0, 0.3) 0px 18px 44px 0px"
+     ],
+     "gradients": 8,
+     "scrims": 0,
+     "gradientSamples": [
+      "span.bokeh-light.bokeh-light-left → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "span.bokeh-light.bokeh-light-right → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "div.reveal.bezel → linear-gradient(145deg, color(srgb 0.695059 0.836235 0.994353), rgb(43, 59, 85) 52%, color(srgb 0.237059 0.405",
+      "span.pengurus-card-overlay → linear-gradient(rgba(5, 15, 24, 0) 35%, rgba(5, 15, 24, 0.3) 56%, rgba(5, 15, 24, 0.94) 100%)"
+     ],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.footer-bottom 728px"
+     ],
+     "outlinedBoxes": 5,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 8,
+     "boxRadius": 18,
+     "squareMedia": 2,
+     "roundedMedia": 7,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 0.52
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 68,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "jost"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.63,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 35,
+    "css": 8,
+    "transitions": 26,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5102,
+     "screens": 6,
+     "words": 253,
+     "img": 10,
+     "video": 0,
+     "canvas": 0,
+     "svg": 20,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "logo-himti.webp",
+      "musyawarah-besar-himti-una.jpg",
+      "muhammad-kenichiro-athallah-ketua-umum.webp",
+      "pasya-sekretaris-umum.webp",
+      "natalie-bendahara-umum.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Himpunan Mahasiswa Teknik Informatika",
+     "words": 4,
+     "chars": 37,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Jost",
+     "weight": 900,
+     "tracking": -0.055,
+     "leading": 0.98,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 161,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Himpunan Mahasiswa Teknik Informatika",
+     "words": 4,
+     "lines": 2,
+     "size": 36,
+     "font": "Jost"
+    },
+    "headings": [
+     {
+      "text": "Himpunan Mahasiswa Teknik Informatika",
+      "words": 4,
+      "chars": 37,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Jost",
+      "weight": 900,
+      "tracking": -0.055,
+      "leading": 0.98,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 161,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Pengurus Inti HIMTI 2025/2026",
+      "words": 4,
+      "chars": 29,
+      "lines": 2,
+      "size": 35.2,
+      "vw": 9,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.055,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 762,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "WELCOME",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 9.8,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.055,
+      "leading": 0.98,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 2434,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "05",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 56,
+      "vw": 14.4,
+      "font": "Jost",
+      "weight": 850,
+      "tracking": -0.07,
+      "leading": 0.85,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "left",
+      "widthRatio": 0.18,
+      "top": 2790,
+      "tag": "strong",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 4,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Jost",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      19,
+      35,
+      36,
+      38,
+      56
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Jost",
+      "size": 14.1,
+      "leading": 1.45,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.7
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 56,
+      "vw": 14.4,
+      "font": "Jost",
+      "text": "05"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 3,
+     "microLabelShare": 0.012,
+     "microSamples": [
+      "Navigasi",
+      "Lokasi",
+      "Hubungi"
+     ],
+     "upperShare": 0.03,
+     "centerShare": 0.24,
+     "smallText": 6
+    },
+    "eyebrows": [],
+    "numbered": [
+     {
+      "text": "05",
+      "size": 56,
+      "top": 2790
+     }
+    ],
+    "color": {
+     "bodyBg": "#0b1220",
+     "bodyBgHsl": {
+      "h": 220,
+      "s": 0.49,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#111c30",
+       "top": 958,
+       "hsl": {
+        "h": 219,
+        "s": 0.48,
+        "l": 0.13
+       }
+      },
+      {
+       "color": "#17243a",
+       "top": 958,
+       "hsl": {
+        "h": 218,
+        "s": 0.43,
+        "l": 0.16
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#b8c4d6",
+       "share": 0.83
+      },
+      {
+       "color": "#f1f5f9",
+       "share": 0.07
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      },
+      {
+       "color": "#a9b8cc",
+       "share": 0.03
+      },
+      {
+       "color": "#93c5fd",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#60a5fa",
+      "hsl": {
+       "h": 213,
+       "s": 0.94,
+       "l": 0.68
+      },
+      "fg": "#091322"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 37,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 1,
+     "heroLabels": [
+      "Kenali HIMTI"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 1,
+     "shadowSamples": [
+      "div.hero-photo-frame → rgba(0, 0, 0, 0.3) 0px 19.2px 48px 0px",
+      "span.hero-bubble.hero-bubble-one → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+      "span.hero-bubble.hero-bubble-two → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+      "div.reveal.bezel → rgba(0, 0, 0, 0.3) 0px 18px 44px 0px"
+     ],
+     "gradients": 9,
+     "scrims": 0,
+     "gradientSamples": [
+      "span.bokeh-light.bokeh-light-left → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "span.bokeh-light.bokeh-light-right → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+      "div.nav-pill → linear-gradient(135deg, rgba(186, 218, 251, 0.16), rgba(12, 25, 43, 0.76) 72%)",
+      "div.reveal.bezel → linear-gradient(145deg, color(srgb 0.695059 0.836235 0.994353), rgb(43, 59, 85) 52%, color(srgb 0.237059 0.405"
+     ],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.footer-bottom 350px"
+     ],
+     "outlinedBoxes": 5,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 8,
+     "boxRadius": 18,
+     "squareMedia": 2,
+     "roundedMedia": 7,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 956
+      },
+      {
+       "count": 5,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 2887
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 1
+     },
+     {
+      "type": "img",
+      "ratio": 0.26
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": true,
+     "height": 62,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "jost"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"05\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "3 tiny uppercase letter-spaced labels (e.g. \"Navigasi\", \"Lokasi\", \"Hubungi\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "width": 1440,
+   "message": "11 gradient fill(s): span.bokeh-light.bokeh-light-left → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%) | span.bokeh-light.bokeh-light-right → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%) | span.bokeh-light.bokeh-light-left-secondary → radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, rgba(147, 197, 253, 0.06) 34%, rgba(0, 0, 0, 0) 72%)",
+   "fix": "Use a flat colour or a real image. The only gradient allowed by default is a neutral scrim over a photo for legibility.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "14 box-shadow(s) on elements at rest: div.hero-photo-frame → rgba(0, 0, 0, 0.3) 0px 19.2px 48px 0px | span.hero-bubble.hero-bubble-one → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px | span.hero-bubble.hero-bubble-two → rgba(0, 0, 0, 0.3) 0px 5.6px 17.6px 0px",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "hairline",
+   "width": 1440,
+   "message": "1 thin rule(s)/divider line(s): div.footer-bottom 1312px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "6 boxes drawn with a 1px outline.",
+   "fix": "Define a surface by its fill (one tone step from the page) or leave the content unboxed.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 1440,
+   "message": "2 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell."
+  },
+  {
+   "level": "FAIL",
+   "id": "icon-cards",
+   "width": 1440,
+   "message": "1 row(s) of identical cards each topped with a small icon (5 cards).",
+   "fix": "Replace with one composed section from the direction: a narrative split, a list set in large type, or real imagery per item.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "13 different font sizes (12, 14, 15, 16, 17, 20, 25, 50, 56, 58, 66, 80, 96).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "8 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"Himpunan Mahasiswa\" (screen 1, 100% hidden); \"Teknik Informatika\" (screen 1, 100% hidden); \"Pengurus Inti HIMTI 2025/2026\" (screen 2, 100% hidden); \"WELCOME\" (screen 3, 100% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 768,
+   "message": "Body text is 14.8px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/home/teenager/himti-una/.taste-skill/inspect/desktop-fold.jpg",
+   "pages": [
+    "/home/teenager/himti-una/.taste-skill/inspect/desktop-page-01.jpg",
+    "/home/teenager/himti-una/.taste-skill/inspect/desktop-page-02.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/home/teenager/himti-una/.taste-skill/inspect/tablet-fold.jpg",
+   "pages": [
+    "/home/teenager/himti-una/.taste-skill/inspect/tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/home/teenager/himti-una/.taste-skill/inspect/mobile-fold.jpg",
+   "pages": [
+    "/home/teenager/himti-una/.taste-skill/inspect/mobile-page-01.jpg"
+   ]
+  }
+ ]
+}
