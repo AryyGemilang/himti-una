@@ -111,7 +111,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="footer-developer">
-              Pengembangan website: <a href="mailto:aryagemilangsinuhaji@gmail.com">aryagemilangsinuhaji@gmail.com</a>
+              Contact Developer: <a href="mailto:aryagemilangsinuhaji@gmail.com">aryagemilangsinuhaji@gmail.com</a>
             </p>
           </section>
         </div>
