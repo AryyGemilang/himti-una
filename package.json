@@ -4,24 +4,43 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/spa-fallback.mjs",
-    "lint": "oxlint src scripts vite.config.ts",
+    "dev": "concurrently -k -n api,web \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "tsx watch server/index.ts",
+    "dev:web": "vite",
+    "build": "tsc -b && tsc -p tsconfig.server.json && vite build && node scripts/spa-fallback.mjs",
+    "start:api": "node dist-server/server/index.js",
+    "db:migrate": "tsx server/migrate.ts",
+    "db:seed-screening": "tsx scripts/seed-screening-documentation.ts",
+    "admin:create": "tsx scripts/bootstrap-admins.ts",
+    "test": "tsx --test server/*.test.ts",
+    "db:setup": "bash scripts/setup-local-db.sh",
+    "lint": "oxlint src server scripts vite.config.ts",
     "preview": "npm run build && vite preview"
   },
   "dependencies": {
+    "express": "^5.3.0",
     "lucide-react": "^1.56.0",
+    "multer": "^2.4.0",
+    "pdfkit": "^0.20.2",
+    "pg": "^8.23.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
     "@types/node": "^24.13.3",
+    "@types/pdfkit": "^0.17.6",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^10.0.6",
     "oxlint": "^1.81.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }

@@ -38,8 +38,7 @@ Seluruh aset yang dilayani langsung oleh situs disimpan di `public/images/`. Ber
 | --- | --- |
 | `home/hero/musyawarah-besar-himti-una.jpg` | Hero Beranda (`src/components/Hero.tsx`). |
 | `sejarah/*.jpg` | Foto linimasa halaman Sejarah (`src/components/Sejarah.tsx`). |
-| `kegiatan/screening-test/foto-sesi-*.jpeg` | Galeri Kegiatan. |
-| `kegiatan/screening-test/video-sesi-*.mp4` dan poster pasangannya | Galeri Kegiatan. |
+| `kegiatan/screening-test/*` | Sumber dokumentasi Screening Test. Jalankan `npm run db:seed-screening` setelah PostgreSQL aktif dan migration diterapkan untuk menyalin media ke `storage/media` serta mendaftarkan metadata pada tabel dokumentasi. |
 | `pengurus/**/*.svg` | Foto ilustrasi pengurus dan anggota (`src/data/pengurus.ts`, `src/data/bidang.ts`). |
 | `branding/*` | Navbar, footer, favicon, latar dekoratif, dan logo bagian situs. |
 | `branding/mitra/logo-permikomnas.png` | Bagian Visi Misi. |
@@ -51,4 +50,5 @@ Seluruh aset yang dilayani langsung oleh situs disimpan di `public/images/`. Ber
 - Perbandingan SHA-256 tidak menemukan berkas identik di `public/images/`. Foto screening memiliki adegan yang mirip, tetapi hash dan isi visualnya berbeda, jadi dipertahankan sebagai foto terpisah.
 - Tidak ada berkas di `public/images/` yang dibiarkan tanpa kategori. `placeholder-person.svg` tetap digunakan sebagai foto cadangan.
 - Versi WebP foto kelompok luar ruangan digunakan pada bagian Tentang (`src/components/Tentang.tsx`); JPEG asli dipertahankan.
+- Screening Test kini menjadi arsip pada halaman Dokumentasi. Seeder memindahkan delapan foto dan dua video ke penyimpanan lokal terstruktur; poster video disimpan dan dikaitkan ke metadata video. File sumber di folder ini tetap dipertahankan.
 - Audit kode tidak menemukan referensi untuk aset berikut di `src/assets/images/`; aset tersebut dibiarkan di tempatnya karena berada di luar folder publik dan tidak perlu dipindahkan untuk penataan ini: `illustrations/hero.png` (ilustrasi dekoratif), `logos/logo-una-reference.jpg`, `logos/logo-himti-reference.jpg` (gambar referensi logo), dan `icons/vite.svg` (ikon bawaan). Ketiganya bukan duplikat byte-identik dari aset publik.

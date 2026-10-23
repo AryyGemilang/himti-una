@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar"
 import BgLogo from "./components/BgLogo"
 import BokehLights from "./components/BokehLights"
 import Hero from "./components/Hero"
+import HomeLeadership from "./components/HomeLeadership"
 import HomeWelcome from "./components/HomeWelcome"
 import Tentang from "./components/Tentang"
 import Sejarah from "./components/Sejarah"
@@ -13,8 +14,13 @@ import Kontak from "./components/Kontak"
 import CalonMahasiswa from "./components/CalonMahasiswa"
 import Footer from "./components/Footer"
 import BidangPage from "./components/BidangPage"
+import AdminPanel from "./components/AdminPanel"
+import { RegistrationForm, RegistrationList } from "./components/RegistrationPages"
+import { DocumentationDetail, DocumentationList } from "./components/DocumentationPages"
 import { useRoute, navigate, currentPath } from "./lib/router"
 import { getBidang } from "./data/bidang"
+
+const BASE_URL = import.meta.env.BASE_URL
 
 /** Intersep tautan lokal untuk navigasi client-side tanpa reload. */
 function useLinkInterceptor() {
@@ -24,6 +30,7 @@ function useLinkInterceptor() {
       const anchor = (event.target as HTMLElement).closest("a")
       const href = anchor?.getAttribute("href")
       if (!href || !href.startsWith("/") || href.startsWith("//")) return
+      if (href.startsWith(`${BASE_URL}api/`) || href.startsWith(`${BASE_URL}media/`)) return
 
       event.preventDefault()
       const [path, hash] = href.split("#")
@@ -55,6 +62,7 @@ function HomePage() {
   return (
     <main>
       <Hero />
+      <HomeLeadership />
       <HomeWelcome />
     </main>
   )
@@ -67,6 +75,8 @@ function PageContent({ path }: { path: string }) {
     case "/visi-misi": return <main className="route-page"><VisiMisi /></main>
     case "/pengurus": return <main className="route-page"><Pengurus /></main>
     case "/kegiatan": return <main className="route-page"><Kegiatan /></main>
+    case "/pendaftaran": return <RegistrationList />
+    case "/dokumentasi": return <DocumentationList />
     case "/kontak": return <main className="route-page"><Kontak /><CalonMahasiswa /></main>
     default: return <HomePage />
   }
@@ -80,11 +90,17 @@ export default function App() {
 
   const match = path.match(/^\/(?:divisi|bidang)\/([^/]+)$/)
   const bidang = match ? getBidang(match[1]) : undefined
-  const isUnknownRoute = !PAGE_ROUTES.has(path) && !bidang
+  const registrationMatch = path.match(/^\/pendaftaran\/([^/]+)$/)
+  const documentationMatch = path.match(/^\/dokumentasi\/([^/]+)$/)
+  const isAdmin = path === "/admin" || path.startsWith("/admin/")
+  const isKnownFeatureRoute = path === "/pendaftaran" || path === "/dokumentasi" || Boolean(registrationMatch || documentationMatch) || isAdmin
+  const isUnknownRoute = !PAGE_ROUTES.has(path) && !bidang && !isKnownFeatureRoute
 
   useEffect(() => {
     if (isUnknownRoute) navigate("/", { replace: true })
   }, [isUnknownRoute])
+
+  if (isAdmin) return <AdminPanel path={path} />
 
   return (
     <>
@@ -92,7 +108,10 @@ export default function App() {
       <BgLogo />
       <BokehLights />
       <Navbar path={path} />
-      {bidang ? <BidangPage bidang={bidang} /> : <PageContent path={path} />}
+      {bidang ? <BidangPage bidang={bidang} />
+        : registrationMatch ? <RegistrationForm slug={decodeURIComponent(registrationMatch[1])} />
+          : documentationMatch ? <DocumentationDetail slug={decodeURIComponent(documentationMatch[1])} />
+            : <PageContent path={path} />}
       <Footer />
     </>
   )

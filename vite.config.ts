@@ -8,4 +8,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  server: {
+    proxy: {
+      '/himti-una/api': {
+        target: 'http://127.0.0.1:3001',
+        rewrite: (path) => path.replace(/^\/himti-una/, ''),
+      },
+      '/himti-una/media': {
+        target: 'http://127.0.0.1:3001',
+        rewrite: (path) => path.replace(/^\/himti-una/, ''),
+      },
+    },
+  },
 })

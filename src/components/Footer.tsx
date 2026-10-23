@@ -1,16 +1,17 @@
-import { Mail, MapPin } from "lucide-react"
-import { LOGO_UNA } from "../lib/assets"
+import { ArrowUp, Mail, MapPin } from "lucide-react"
+import { bidangList } from "../data/bidang"
 
 const CURRENT_YEAR = new Date().getFullYear()
-const LETTERS = "HIMTI".split("")
-const HEIGHTS = [85, 100, 92, 76, 95]
-const UNA_L   = "UNA".split("")
-const UNA_H   = [80, 100, 70]
+const MAP_URL = "https://www.google.com/maps/place/Universitas+Asahan+(UNA)/@2.9662091,99.6219396,17z/data=!3m1!4b1!4m6!3m5!1s0x3032495abfd9eb8d:0x9473c0d893d71d28!8m2!3d2.9662091!4d99.6219396!16s%2Fg%2F1hm5b9k0x?authuser=0&entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D"
 
 const NAV = [
-  ["Beranda","/"],["Tentang","/tentang"],["Sejarah","/sejarah"],
-  ["Visi Misi","/visi-misi"],["Pengurus","/pengurus"],["Kegiatan","/kegiatan"],["Kontak","/kontak"],
-  ["Calon Mahasiswa Baru","/#calon-mahasiswa"],
+  ["Beranda", "/"],
+  ["Tentang Kami", "/tentang"],
+  ["Sejarah", "/sejarah"],
+  ["Visi Misi", "/visi-misi"],
+  ["Kepengurusan", "/pengurus"],
+  ["Kegiatan", "/kegiatan"],
+  ["Kontak", "/kontak"],
 ]
 
 const SOCIAL_LINKS = [
@@ -38,80 +39,21 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "var(--surface)" }}>
-
-      {/* Mark band */}
-      <div className="wrap" style={{ paddingTop: "5rem", paddingBottom: "2rem" }}>
-        <div className="mark-band reveal" style={{ height: "clamp(56px, 12vw, 140px)" }} aria-hidden>
-          {LETTERS.map((l, i) => (
-            <div key={i} className="mark-letter" style={{
-              height: `${HEIGHTS[i]}%`,
-              width: "clamp(36px, 7vw, 88px)",
-              fontSize: "clamp(1rem, 3.5vw, 3.5rem)",
-            }}>{l}</div>
-          ))}
-          <div style={{ width: "clamp(8px, 1.5vw, 20px)" }} />
-          {UNA_L.map((l, i) => (
-            <div key={`u${i}`} className="mark-letter" style={{
-              height: `${UNA_H[i]}%`,
-              width: "clamp(36px, 7vw, 88px)",
-              fontSize: "clamp(1rem, 3.5vw, 3.5rem)",
-              background: "var(--accent-dim)",
-              color: "var(--accent-strong)",
-            }}>{l}</div>
-          ))}
-        </div>
-        <p className="sr-only">HIMTI UNA — Himpunan Mahasiswa Teknik Informatika Universitas Asahan</p>
-      </div>
-
-      {/* Links row */}
-      <div className="wrap" style={{ paddingBottom: "4rem" }}>
+    <footer className="site-footer">
+      <div className="wrap site-footer-wrap">
         <div className="footer-grid">
-
-          <div>
-            <div className="footer-brand-logos">
-              <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI" className="footer-brand-logo" />
-              <a href="https://una.ac.id/" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" className="una-logo-link">
-                <img src={LOGO_UNA} alt="Logo Universitas Asahan" className="footer-brand-logo" />
-              </a>
-              <span className="footer-faculty">Fakultas<br />Teknik</span>
+          <section className="footer-brand" aria-labelledby="footer-brand-title">
+            <div className="footer-brand-heading">
+              <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI UNA" className="footer-brand-logo" />
+              <div>
+                <h2 id="footer-brand-title">HIMTI UNA</h2>
+                <p>Himpunan Mahasiswa Teknik Informatika</p>
+              </div>
             </div>
-            <p style={{ fontSize: "var(--step-sm)", color: "var(--muted)", maxWidth: "36ch", margin: 0 }}>
+            <p className="footer-description">
               Himpunan Mahasiswa Teknik Informatika Universitas Asahan, wadah aspirasi,
-              prestasi, dan inovasi mahasiswa IT sejak 1 Oktober 2013.
+              prestasi, dan inovasi mahasiswa sejak 1 Oktober 2013.
             </p>
-          </div>
-
-          <div>
-            <p className="label" style={{ marginBottom: "1.25rem" }}>Navigasi</p>
-            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-              {NAV.map(([l, h]) => (
-                <li key={h}>
-                  <a href={h} style={{ fontSize: "var(--step-sm)", color: "var(--muted)", textDecoration: "none", transition: "color 160ms ease" }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--ink)" }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--muted)" }}
-                  >{l}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="label" style={{ marginBottom: "1.25rem" }}>Lokasi</p>
-            <address className="footer-address">
-              Fakultas Teknik<br />Universitas Asahan<br />Kisaran, Sumatera Utara<br />
-              Jl. Jend. A. Yani, Kisaran Naga, Kec. Kota Kisaran Timur, Kisaran, Sumatera Utara 21216
-            </address>
-            <a className="footer-info-link" href="https://www.google.com/maps/place/Universitas+Asahan+(UNA)/@2.9662091,99.6219396,17z/data=!3m1!4b1!4m6!3m5!1s0x3032495abfd9eb8d:0x9473c0d893d71d28!8m2!3d2.9662091!4d99.6219396!16s%2Fg%2F1hm5b9k0x?authuser=0&entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
-              <MapPin aria-hidden size={16} /> Lihat lokasi
-            </a>
-          </div>
-
-          <div>
-            <p className="label" style={{ marginBottom: "1.25rem" }}>Hubungi</p>
-            <a className="footer-info-link" href="mailto:himti.universitasasahan@gmail.com">
-              <Mail aria-hidden size={16} /> Email HIMTI UNA
-            </a>
             <div className="footer-socials" aria-label="Media sosial HIMTI UNA">
               {SOCIAL_LINKS.map(({ label, href, icon }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
@@ -119,106 +61,219 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="footer-developer-label">Contact Developer</p>
-            <a className="footer-developer-link" href="mailto:aryagemilangsinuhaji@gmail.com">
-              aryagemilangsinuhaji@gmail.com
-            </a>
-          </div>
+          </section>
 
+          <nav className="footer-column" aria-label="Navigasi utama">
+            <h2 className="footer-column-title">Navigasi Utama</h2>
+            <ul>
+              {NAV.map(([label, href]) => (
+                <li key={href}><a href={href}>{label}</a></li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className="footer-column" aria-label="Divisi HIMTI UNA">
+            <h2 className="footer-column-title">Divisi</h2>
+            <ul>
+              {bidangList.map(({ slug, namaPendek }) => (
+                <li key={slug}><a href={`/divisi/${slug}/`}>{namaPendek}</a></li>
+              ))}
+            </ul>
+          </nav>
+
+          <section className="footer-contact" aria-labelledby="footer-contact-title">
+            <h2 className="footer-column-title" id="footer-contact-title">Hubungi Kami</h2>
+            <a className="footer-contact-card" href={MAP_URL} target="_blank" rel="noopener noreferrer">
+              <span className="footer-contact-icon"><MapPin aria-hidden size={22} /></span>
+              <span className="footer-contact-copy">
+                <small>Sekretariat</small>
+                <strong>Fakultas Teknik, Universitas Asahan<br />Kisaran, Sumatera Utara 21216</strong>
+                <span>Lihat lokasi di peta ↗</span>
+              </span>
+            </a>
+            <a className="footer-contact-card" href="mailto:himti.universitasasahan@gmail.com">
+              <span className="footer-contact-icon"><Mail aria-hidden size={22} /></span>
+              <span className="footer-contact-copy">
+                <small>Email Resmi</small>
+                <strong>himti.universitasasahan@gmail.com</strong>
+              </span>
+            </a>
+            <p className="footer-developer">
+              Pengembangan website: <a href="mailto:aryagemilangsinuhaji@gmail.com">aryagemilangsinuhaji@gmail.com</a>
+            </p>
+          </section>
         </div>
 
-        {/* Bottom */}
         <div className="footer-bottom">
-          <p style={{ fontSize: "var(--step-xs)", color: "var(--muted-2)", margin: 0 }}>
-            © {CURRENT_YEAR} HIMTI Universitas Asahan
-          </p>
-          <a href="/" className="btn" style={{ fontSize: "var(--step-xs)", minHeight: "2.25rem", padding: "0 1.1rem" }}>
-            Ke Beranda
-          </a>
+          <p>© {CURRENT_YEAR} HIMTI Universitas Asahan. All rights reserved.</p>
+          <p>Himpunan Mahasiswa Teknik Informatika Universitas Asahan</p>
         </div>
       </div>
 
+      <button
+        type="button"
+        className="footer-back-to-top"
+        aria-label="Kembali ke atas"
+        title="Kembali ke atas"
+        onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
+      >
+        <ArrowUp aria-hidden size={28} />
+      </button>
+
       <style>{`
+        .site-footer {
+          position: relative;
+          color: #f5f7ff;
+          background:
+            radial-gradient(70% 100% at 100% 100%, rgb(44 69 141 / 24%), transparent 64%),
+            linear-gradient(115deg, #071747, #06123f 72%);
+        }
+        .site-footer .site-footer-wrap {
+          width: min(calc(100% - var(--margin) - var(--margin)), 88rem);
+          margin-inline: auto;
+          padding-block: clamp(3.5rem, 6vw, 5.5rem) 1.5rem;
+        }
         .footer-grid {
           display: grid;
-          grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
-          gap: 3rem;
-          padding-top: 2.5rem;
+          grid-template-columns: minmax(17rem, 1.35fr) minmax(9rem, 0.78fr) minmax(9rem, 0.78fr) minmax(18rem, 1.25fr);
+          gap: clamp(1.5rem, 3vw, 3.25rem);
+          align-items: start;
         }
-        .footer-address {
-          margin: 0 0 0.75rem;
-          color: var(--muted);
-          font-size: var(--step-sm);
-          font-style: normal;
-          line-height: 1.7;
-          overflow-wrap: anywhere;
-        }
-        .footer-info-link {
-          display: inline-flex;
-          min-height: 2.75rem;
-          align-items: center;
-          gap: 0.55rem;
-          color: var(--muted);
-          font-size: var(--step-sm);
-          text-decoration: none;
-          overflow-wrap: anywhere;
-          transition: color 160ms ease;
-        }
-        .footer-info-link:hover, .footer-info-link:focus-visible,
-        .footer-developer-link:hover, .footer-developer-link:focus-visible { color: var(--ink); }
-        .footer-info-link:focus-visible, .footer-socials a:focus-visible,
-        .footer-developer-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-        .footer-socials { display: flex; gap: 0.5rem; margin: 0.25rem 0 1.25rem; }
-        .footer-socials a {
-          display: inline-flex;
-          width: 2.75rem;
-          height: 2.75rem;
-          align-items: center;
-          justify-content: center;
-          color: var(--muted);
-          border-radius: 50%;
-          transition: color 160ms ease, background 160ms ease;
-        }
-        .footer-socials a:hover, .footer-socials a:focus-visible {
-          color: var(--accent-strong);
-          background: var(--accent-dim);
-        }
-        .footer-developer-label { margin: 0 0 0.35rem; color: var(--muted-2); font-size: var(--step-xs); }
-        .footer-developer-link { color: var(--muted); font-size: var(--step-xs); overflow-wrap: anywhere; text-underline-offset: 0.2em; }
-        .footer-brand-logos {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 1.25rem;
-        }
+        .footer-brand-heading { display: flex; align-items: center; gap: 1rem; }
         .footer-brand-logo {
-          width: auto;
-          height: clamp(5rem, 7vw, 6rem);
-          max-width: 8rem;
+          flex: 0 0 auto;
+          width: clamp(4.25rem, 5.5vw, 5.25rem);
+          height: clamp(4.25rem, 5.5vw, 5.25rem);
+          padding: 0.45rem;
+          border-radius: 1rem;
+          background: #fff;
           object-fit: contain;
         }
-        .footer-faculty {
-          color: var(--muted);
-          font-size: var(--step-sm);
-          font-weight: 600;
-          line-height: 1.15;
+        .footer-brand-heading h2 { margin: 0; color: #fff; font-size: clamp(1.35rem, 1.8vw, 1.8rem); font-weight: 850; letter-spacing: -0.035em; }
+        .footer-brand-heading p { margin: 0.2rem 0 0; color: #c4cee7; font-size: var(--step-xs); line-height: 1.35; }
+        .footer-description { max-width: 40ch; margin: 1.5rem 0 1.25rem; color: #bdc9e4; font-size: var(--step-sm); line-height: 1.7; }
+        .footer-socials { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+        .footer-socials a {
+          display: grid;
+          place-items: center;
+          width: 3rem;
+          height: 3rem;
+          border-radius: 0.8rem;
+          color: #fff;
+          background: rgb(255 255 255 / 9%);
+          transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
         }
-        .footer-bottom {
-          margin-top: 3rem;
-          padding-top: 1.5rem;
+        .footer-socials a:hover { color: #ffd44f; background: rgb(255 255 255 / 15%); transform: translateY(-2px); }
+        .footer-socials a:focus-visible,
+        .footer-column a:focus-visible,
+        .footer-contact-card:focus-visible,
+        .footer-developer a:focus-visible,
+        .footer-back-to-top:focus-visible { outline: 2px solid #ffd44f; outline-offset: 4px; }
+        .footer-column-title {
+          margin: 0 0 1.25rem;
+          padding-left: 0.85rem;
+          border-left: 4px solid #ffc928;
+          color: #fff;
+          font-size: clamp(1rem, 1.25vw, 1.2rem);
+          font-weight: 800;
+          line-height: 1.4;
+        }
+        .footer-column ul { display: grid; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
+        .footer-column a {
+          display: inline-flex;
+          align-items: flex-start;
+          gap: 0.45rem;
+          min-height: 2rem;
+          color: #c4cee7;
+          font-size: var(--step-sm);
+          line-height: 1.4;
+          text-decoration: none;
+          transition: color 160ms ease, transform 160ms ease;
+        }
+        .footer-column a::before { content: "›"; color: #91a4ce; font-weight: 700; }
+        .footer-column a:hover { color: #ffd44f; transform: translateX(2px); }
+        .footer-contact { display: grid; gap: 1rem; }
+        .footer-contact .footer-column-title { margin-bottom: 0.25rem; }
+        .footer-contact-card {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          min-width: 0;
+          min-height: 5.5rem;
+          padding: 1rem;
+          border: 1px solid rgb(197 210 243 / 17%);
+          border-radius: 1.1rem;
+          color: inherit;
+          background: rgb(255 255 255 / 7%);
+          text-decoration: none;
+          transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+        }
+        .footer-contact-card:hover { border-color: rgb(255 201 40 / 54%); background: rgb(255 255 255 / 10%); transform: translateY(-2px); }
+        .footer-contact-icon {
+          display: grid;
+          flex: 0 0 3.25rem;
+          place-items: center;
+          width: 3.25rem;
+          height: 3.25rem;
+          border: 1px solid rgb(255 201 40 / 38%);
+          border-radius: 0.9rem;
+          color: #ffd44f;
+          background: rgb(255 201 40 / 11%);
+        }
+        .footer-contact-copy { display: grid; min-width: 0; gap: 0.3rem; }
+        .footer-contact-copy small { color: #ffd44f; font-size: var(--step-xs); font-weight: 800; letter-spacing: 0.045em; text-transform: uppercase; }
+        .footer-contact-copy strong { color: #f4f6fc; font-size: var(--step-sm); font-weight: 550; line-height: 1.4; overflow-wrap: anywhere; }
+        .footer-contact-copy > span { color: #c4cee7; font-size: var(--step-xs); }
+        .footer-developer { margin: 0; color: #aebbd9; font-size: var(--step-xs); line-height: 1.6; overflow-wrap: anywhere; }
+        .footer-developer a { color: #d5def2; text-underline-offset: 0.2em; }
+        .footer-developer a:hover { color: #ffd44f; }
+        .site-footer .footer-bottom {
           display: flex;
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
-          gap: 1rem;
+          gap: 0.75rem 2rem;
+          margin-top: clamp(2.5rem, 5vw, 4rem);
+          padding-top: 1.5rem;
+          border-top: 1px solid rgb(197 210 243 / 14%);
         }
-        @media (max-width: 48em) {
-          .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-          .footer-brand-logos { gap: 0.75rem; }
-          .footer-brand-logo { height: clamp(4.25rem, 18vw, 5rem); max-width: 6.75rem; }
+        .footer-bottom p { margin: 0; color: #b8c5e2; font-size: var(--step-xs); line-height: 1.5; }
+        .footer-back-to-top {
+          position: fixed;
+          z-index: 30;
+          right: max(1.5rem, env(safe-area-inset-right));
+          bottom: max(1.5rem, env(safe-area-inset-bottom));
+          display: grid;
+          place-items: center;
+          width: 4.1rem;
+          height: 4.1rem;
+          border: 3px solid #ffc928;
+          border-radius: 50%;
+          color: #fff;
+          background: #08236d;
+          cursor: pointer;
+          box-shadow: 0 8px 24px rgb(2 8 35 / 30%);
+          transition: transform 180ms ease, background-color 180ms ease;
         }
-        @media (min-width: 48.01em) and (max-width: 64em) {
-          .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+        .footer-back-to-top:hover { transform: translateY(-3px); background: #10368f; }
+        @media (max-width: 70em) {
+          .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; }
+          .footer-brand { grid-column: 1; }
+          .footer-contact { grid-column: 2; grid-row: 1 / span 2; }
+        }
+        @media (max-width: 44em) {
+          .site-footer .site-footer-wrap { width: min(calc(100% - 2rem), 34rem); padding-top: 3.25rem; }
+          .footer-grid { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
+          .footer-brand, .footer-contact { grid-column: auto; grid-row: auto; }
+          .footer-brand-heading { align-items: center; }
+          .footer-brand-logo { width: 4rem; height: 4rem; }
+          .footer-contact-card { padding: 0.85rem; }
+          .site-footer .footer-bottom { align-items: flex-start; flex-direction: column; margin-top: 2.5rem; }
+          .footer-back-to-top { right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); width: 3.5rem; height: 3.5rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .footer-socials a, .footer-column a, .footer-contact-card, .footer-back-to-top { transition: none; }
+          .footer-socials a:hover, .footer-column a:hover, .footer-contact-card:hover, .footer-back-to-top:hover { transform: none; }
         }
       `}</style>
     </footer>

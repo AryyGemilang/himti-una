@@ -14,7 +14,7 @@ export function useReveal(rootMargin = "0px 0px -80px 0px") {
       },
       { rootMargin }
     )
-    el.querySelectorAll(".reveal, .reveal-left, .shutter").forEach(el => io.observe(el))
+    el.querySelectorAll(".reveal, .reveal-left, .reveal-x, .shutter").forEach(el => io.observe(el))
     return () => io.disconnect()
   }, [rootMargin])
 

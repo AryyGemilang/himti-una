@@ -10,9 +10,9 @@ export const PERIODE = "Periode Kepengurusan 2025/2026"
 
 // Pemetaan aset mengikuti nama dan jabatan pada berkas foto yang tersedia.
 export const FOTO_PENGURUS = {
-  ketua: "/himti-una/images/pengurus/inti/muhammad-kenichiro-athallah-ketua-umum.webp",
-  sekretaris: "/himti-una/images/pengurus/inti/pasya-sekretaris-umum.webp",
-  bendahara: "/himti-una/images/pengurus/inti/natalie-bendahara-umum.webp",
+  ketua: "/himti-una/images/pengurus/inti/muhammad-kenichiro-athallah-ketua-umum.svg",
+  sekretaris: "/himti-una/images/pengurus/inti/pasya-sekretaris-umum.svg",
+  bendahara: "/himti-una/images/pengurus/inti/natalie-bendahara-umum.svg",
   kepalaBidangHumas: "/himti-una/images/pengurus/kepala-bidang/yudha-kepala-bidang-humas.webp",
   kepalaBidangKaderisasi: "/himti-una/images/pengurus/kepala-bidang/milhan-kepala-bidang-kaderisasi.webp",
   kepalaBidangAgamaSosial: "/himti-una/images/pengurus/kepala-bidang/bagus-kepala-bidang-agama-sosial.webp",

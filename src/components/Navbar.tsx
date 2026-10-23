@@ -1,13 +1,32 @@
 import { useEffect, useRef, useState } from "react"
-import { ChevronDown, Moon, Sun } from "lucide-react"
+import { ArrowUpRight, ChevronDown, LockKeyhole, Moon, Sun } from "lucide-react"
 import { bidangList } from "../data/bidang"
 import { LOGO_UNA } from "../lib/assets"
+import { apiUrl } from "../lib/api"
 
 const MENU = [
-  ["Beranda", "/"], ["Tentang", "/tentang"], ["Sejarah", "/sejarah"],
+  ["Beranda", "/"], ["Tentang Kami", "/tentang"], ["Sejarah", "/sejarah"],
   ["Visi Misi", "/visi-misi"], ["Pengurus", "/pengurus"],
-  ["Kegiatan", "/kegiatan"], ["Kontak", "/kontak"],
+  ["Kegiatan", "/kegiatan"], ["Dokumentasi", "/dokumentasi"], ["Kontak", "/kontak"],
 ] as const
+
+type PublicEvent = { type: string; registrationOpen: boolean }
+
+function RecruitmentAction({ open }: { open: boolean }) {
+  const className = `nav-recruitment nav-recruitment-desktop${open ? " is-open" : " is-closed"}`
+  return open ? (
+    <a className={className} href="/pendaftaran" aria-live="polite" aria-label="Open Recruitment. Lihat pendaftaran yang sedang dibuka">
+      <span className="recruitment-open-dot" aria-hidden="true" />
+      <span className="recruitment-label">Open Recruitment</span>
+      <ArrowUpRight size={16} aria-hidden="true" />
+    </a>
+  ) : (
+    <button className={className} type="button" disabled aria-live="polite" aria-label="Rekrutmen Ditutup">
+      <LockKeyhole size={16} aria-hidden="true" />
+      <span className="recruitment-label">Rekrutmen Ditutup</span>
+    </button>
+  )
+}
 
 const isActiveRoute = (path: string, href: string) => path === href || (href === "/pengurus" && /^\/(?:divisi|bidang)\//.test(path))
 
@@ -34,6 +53,7 @@ export default function Navbar({ path }: { path: string }) {
   const [desktopPengurusOpen, setDesktopPengurusOpen] = useState(false)
   const [navHidden, setNavHidden] = useState(false)
   const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
+  const [recruitmentOpen, setRecruitmentOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const mobileThemeRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLElement>(null)
@@ -41,6 +61,26 @@ export default function Navbar({ path }: { path: string }) {
   const desktopPengurusRef = useRef<HTMLLIElement>(null)
   const suppressDropdownFocusRef = useRef(false)
   const pointerInNavigationRef = useRef(false)
+
+  useEffect(() => {
+    let active = true
+    const refreshRecruitmentStatus = async () => {
+      try {
+        const response = await fetch(apiUrl("/events"), { cache: "no-store" })
+        if (!response.ok) throw new Error("Status pendaftaran belum dapat dimuat.")
+        const events = await response.json() as PublicEvent[]
+        if (active) setRecruitmentOpen(events.some(event => event.type === "recruitment" && event.registrationOpen))
+      } catch {
+        if (active) setRecruitmentOpen(false)
+      }
+    }
+    void refreshRecruitmentStatus()
+    const interval = window.setInterval(() => void refreshRecruitmentStatus(), 60_000)
+    return () => {
+      active = false
+      window.clearInterval(interval)
+    }
+  }, [])
 
   const toggleTheme = () => {
     const nextDarkMode = !darkMode
@@ -180,7 +220,7 @@ export default function Navbar({ path }: { path: string }) {
             <a href="https://una.ac.id/" className="nav-una-logo" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)">
               <img src={LOGO_UNA} alt="Logo Universitas Asahan" />
             </a>
-            <span className="nav-brand-name"><strong>HIMTI</strong><small>Universitas Asahan</small></span>
+            <span className="nav-brand-name"><strong>HIMTI UNA</strong><small>Himpunan Mahasiswa Teknik Informatika</small></span>
           </div>
 
           {/* Desktop links */}
@@ -236,6 +276,7 @@ export default function Navbar({ path }: { path: string }) {
           </ul>
 
           <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
+          <RecruitmentAction open={recruitmentOpen} />
 
           {/* Hamburger — morphs to X */}
           <button

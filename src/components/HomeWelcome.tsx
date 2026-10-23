@@ -65,33 +65,35 @@ export default function HomeWelcome() {
         }
         .home-welcome-intro {
           display: grid;
-          justify-items: center;
+          justify-items: stretch;
           gap: 2rem;
-          text-align: center;
+          text-align: left;
         }
-        .home-welcome-copy { max-width: 54rem; }
+        .home-welcome-copy { width: 100%; max-width: none; }
         .home-welcome-title {
           max-width: 15ch;
           margin-top: 0;
+          margin-inline: auto;
           color: var(--ink);
           font-size: clamp(2.6rem, 6vw, 5rem);
           font-weight: 850;
           line-height: 0.98;
           letter-spacing: -0.055em;
           text-wrap: balance;
+          text-align: center;
         }
-        .home-welcome-title,
-        .home-welcome-description { margin-inline: auto; }
         .home-welcome-description {
-          max-width: 58ch;
-          margin-top: 1.25rem;
+          max-width: 72rem;
+          margin: 1.25rem auto 0;
           color: var(--muted);
           font-size: var(--step-md);
           line-height: 1.55;
+          text-align: center;
         }
         .home-field-arrow { transition: transform 200ms var(--spring); }
         .home-welcome-count {
           display: flex;
+          justify-self: start;
           align-items: center;
           justify-content: center;
           gap: 1rem;

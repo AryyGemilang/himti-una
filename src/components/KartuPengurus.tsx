@@ -5,11 +5,16 @@ import type { Orang } from "../data/pengurus"
 import Foto from "./Foto"
 
 const CLOSE_DURATION = 180
+const FEATURE_CARD_BACKGROUND = `url("${encodeURI(`${import.meta.env.BASE_URL}images/pengurus/Background blur kartu.jpg`)}")`
 
-export default function KartuPengurus({ orang, delay = 0, size = "md" }: {
+export default function KartuPengurus({ orang, delay = 0, size = "md", className = "", tilt = false, fullName = false, roleLabel }: {
   orang: Orang
   delay?: number
   size?: "lg" | "md" | "sm"
+  className?: string
+  tilt?: boolean
+  fullName?: boolean
+  roleLabel?: string
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
@@ -86,7 +91,7 @@ export default function KartuPengurus({ orang, delay = 0, size = "md" }: {
 
   return (
     <>
-      <div className="reveal bezel" style={{ ["--d" as string]: `${delay}ms` }}>
+      <div className={`reveal bezel ${className}`.trim()} style={{ ["--d" as string]: `${delay}ms` }}>
         <div className="bezel-inner pengurus-card-inner">
           <button
             ref={cardButtonRef}
@@ -94,6 +99,20 @@ export default function KartuPengurus({ orang, delay = 0, size = "md" }: {
             className="pengurus-card-button"
             aria-haspopup="dialog"
             aria-label={`Lihat detail ${orang.namaLengkap}, ${orang.jabatan}`}
+            onPointerMove={event => {
+              if (!tilt || event.pointerType === "touch" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+              const bounds = event.currentTarget.getBoundingClientRect()
+              const x = (event.clientX - bounds.left) / bounds.width
+              const y = (event.clientY - bounds.top) / bounds.height
+              event.currentTarget.style.setProperty("--card-tilt-x", `${(0.5 - y) * 5}deg`)
+              event.currentTarget.style.setProperty("--card-tilt-y", `${(x - 0.5) * 5}deg`)
+              event.currentTarget.style.setProperty("--card-pointer-x", `${x * 100}%`)
+              event.currentTarget.style.setProperty("--card-pointer-y", `${y * 100}%`)
+            }}
+            onPointerLeave={event => {
+              event.currentTarget.style.setProperty("--card-tilt-x", "0deg")
+              event.currentTarget.style.setProperty("--card-tilt-y", "0deg")
+            }}
             onClick={() => {
               if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
               closeTimerRef.current = null
@@ -103,16 +122,18 @@ export default function KartuPengurus({ orang, delay = 0, size = "md" }: {
             }}
           >
             <span className="pengurus-photo-frame" aria-hidden="true">
-              <Foto
-                src={orang.foto}
-                alt=""
-                className="pengurus-photo"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 58%", display: "block" }}
-              />
+              <span className="pengurus-photo-artwork" style={tilt ? { backgroundImage: FEATURE_CARD_BACKGROUND } : undefined}>
+                <Foto
+                  src={orang.foto}
+                  alt=""
+                  className="pengurus-photo"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 58%", display: "block" }}
+                />
+              </span>
             </span>
             <span className="pengurus-card-overlay">
-              <span className="pengurus-card-name" style={{ fontSize: nameSize }}>{orang.nama}</span>
-              <span className="pengurus-card-role">{orang.jabatan}</span>
+              <span className="pengurus-card-name" style={{ fontSize: nameSize }}>{fullName ? orang.namaLengkap : orang.nama}</span>
+              <span className="pengurus-card-role">{roleLabel ?? orang.jabatan}</span>
             </span>
           </button>
         </div>
