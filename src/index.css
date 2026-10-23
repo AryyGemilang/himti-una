@@ -617,6 +617,7 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   min-height: 40px;
   padding-block: 0.5rem;
 }
+.nav-mobile-brand { display: none; }
 
 /* Shared photo card used on the overview and each field detail page. */
 .pengurus-card-inner { padding: 0; overflow: hidden; }
@@ -1791,6 +1792,7 @@ img, svg, video { max-width: 100%; height: auto; }
     border-radius: 9999px;
     overflow: visible;
   }
+  .nav-brand-visible .nav-pill { width: 100%; }
   .nav-brand-group,
   .nav-brand-visible .nav-brand-group { order: 0; width: auto; gap: 0.4rem; overflow: visible; transform: none; }
   .nav-brand-group .nav-logo,
@@ -1847,4 +1849,84 @@ img, svg, video { max-width: 100%; height: auto; }
   .nav-recruitment-desktop .recruitment-label { display: none; }
   .nav-recruitment-desktop.is-open::after { content: "Open"; }
   .nav-recruitment-desktop.is-closed::after { content: "Ditutup"; }
+}
+
+/* Mobile navbar: balanced touch controls with the identity in the menu. */
+@media (max-width: 60em) {
+  .nav-pill {
+    justify-content: space-between;
+    width: 100%;
+    min-height: 56px;
+    height: 56px;
+    padding: 0 12px;
+    gap: 0;
+    overflow: visible;
+  }
+  .nav-brand-group:not(.nav-mobile-brand) { display: none; }
+  .nav-hamburger.mobile-nav-control,
+  .theme-toggle-desktop.mobile-nav-control {
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  .nav-hamburger.mobile-nav-control { order: 0; }
+  .theme-toggle-desktop.mobile-nav-control {
+    order: 1;
+    margin-left: 0;
+  }
+  .theme-toggle-desktop.mobile-nav-control .theme-toggle-thumb {
+    width: 28px;
+    height: 28px;
+  }
+  .theme-toggle-desktop.mobile-nav-control.is-dark .theme-toggle-thumb { transform: translateX(14px); }
+  .mobile-theme-holder { display: none !important; }
+  .nav-overlay .nav-mobile-brand {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.45rem;
+    margin: 0 0 0.5rem;
+    padding: 0.25rem 0.75rem 0.85rem;
+    border-bottom: 1px solid var(--nav-glass-border);
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-overlay .nav-mobile-brand a {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 40px;
+    padding: 0;
+    border-radius: 0.5rem;
+    color: var(--ink);
+    font-size: inherit;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 1;
+    transform: none;
+  }
+  .nav-overlay .nav-mobile-brand .nav-logo,
+  .nav-overlay .nav-mobile-brand .nav-una-logo { min-width: 32px; min-height: 40px; }
+  .nav-overlay .nav-mobile-brand .nav-logo img { width: 32px; height: 32px; }
+  .nav-overlay .nav-mobile-brand .nav-una-logo img { display: block; width: auto; height: 28px; }
+  .nav-overlay .nav-mobile-brand .nav-brand-name {
+    display: grid;
+    gap: 0.12rem;
+    min-width: 0;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .nav-overlay .nav-mobile-brand .nav-brand-name strong { font-size: 1rem; white-space: nowrap; }
+  .nav-overlay .nav-mobile-brand .nav-brand-name small { display: block; color: var(--muted); font-size: 0.72rem; white-space: normal; }
 }

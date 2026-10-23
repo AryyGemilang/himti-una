@@ -12,6 +12,20 @@ const MENU = [
 
 type PublicEvent = { type: string; registrationOpen: boolean }
 
+function BrandIdentity({ mobileMenu = false, onNavigate }: { mobileMenu?: boolean; onNavigate?: () => void }) {
+  return (
+    <div className={`nav-brand-group${mobileMenu ? " nav-mobile-brand" : ""}`} aria-label="Logo HIMTI dan Universitas Asahan">
+      <a href="/" className="nav-logo" aria-label="HIMTI UNA, ke Beranda" onClick={onNavigate}>
+        <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI UNA" />
+      </a>
+      <a href="https://una.ac.id/" className="nav-una-logo" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)" onClick={onNavigate}>
+        <img src={LOGO_UNA} alt="Logo Universitas Asahan" />
+      </a>
+      <span className="nav-brand-name"><strong>HIMTI UNA</strong><small>Himpunan Mahasiswa Teknik Informatika</small></span>
+    </div>
+  )
+}
+
 function RecruitmentAction({
   open,
   mobile = false,
@@ -41,7 +55,7 @@ const isActiveRoute = (path: string, href: string) => path === href || (href ===
 function ThemeToggle({ darkMode, onToggle, mobile = false }: { darkMode: boolean; onToggle: () => void; mobile?: boolean }) {
   return (
     <button
-      className={`theme-toggle ${mobile ? "theme-toggle-mobile" : "theme-toggle-desktop"} ${darkMode ? "is-dark" : ""}`}
+      className={`theme-toggle ${mobile ? "theme-toggle-mobile" : "theme-toggle-desktop mobile-nav-control"} ${darkMode ? "is-dark" : ""}`}
       type="button"
       role="switch"
       aria-checked={darkMode}
@@ -221,15 +235,7 @@ export default function Navbar({ path }: { path: string }) {
         onFocusCapture={revealNavigation}
       >
         <div className="nav-pill">
-          <div className="nav-brand-group" aria-label="Logo HIMTI dan Universitas Asahan">
-            <a href="/" className="nav-logo" aria-label="HIMTI UNA, ke Beranda">
-              <img src="/himti-una/images/branding/logo-himti.webp" alt="Logo HIMTI UNA" />
-            </a>
-            <a href="https://una.ac.id/" className="nav-una-logo" aria-label="Kunjungi website resmi Universitas Asahan (una.ac.id)">
-              <img src={LOGO_UNA} alt="Logo Universitas Asahan" />
-            </a>
-            <span className="nav-brand-name"><strong>HIMTI UNA</strong><small>Himpunan Mahasiswa Teknik Informatika</small></span>
-          </div>
+          <BrandIdentity />
 
           {/* Desktop links */}
           <ul className="nav-links" role="list">
@@ -288,7 +294,7 @@ export default function Navbar({ path }: { path: string }) {
 
           {/* Hamburger — morphs to X */}
           <button
-            className="nav-hamburger"
+            className="nav-hamburger mobile-nav-control"
             ref={hamburgerRef}
             onClick={() => {
               if (!open) setNavHidden(false)
@@ -298,7 +304,7 @@ export default function Navbar({ path }: { path: string }) {
             aria-label={open ? "Tutup menu" : "Buka menu"}
             aria-expanded={open}
             aria-controls="nav-mobile-overlay"
-            style={{ position: "relative", width: 44, height: 44 }}
+            style={{ position: "relative" }}
           >
             <span style={{
               position: "absolute", left: 8, top: open ? "50%" : 11,
@@ -345,6 +351,7 @@ export default function Navbar({ path }: { path: string }) {
         aria-hidden={!open}
         inert={!open}
       >
+        <BrandIdentity mobileMenu onNavigate={() => setOpen(false)} />
         {MENU.map(([label, href], i) => label === "Pengurus" ? (
           <div className="nav-mobile-pengurus" key={href}>
             <div className="nav-mobile-pengurus-row">
