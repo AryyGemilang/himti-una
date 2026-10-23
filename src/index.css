@@ -301,7 +301,6 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   transition: background var(--t-med) ease, box-shadow var(--t-med) ease;
   max-width: calc(100vw - 2.5rem);
 }
-.mobile-theme-holder { display: contents; }
 
 /* Mobile: hamburger tetap di kiri; ruang untuk logo bertambah ke arah kanan. */
 @media (max-width: 60em) {
@@ -314,11 +313,6 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
   }
   .nav.nav-hidden { transform: translateY(calc(-100% - 1rem)); }
   .nav-reveal-zone { display: none; }
-  .mobile-theme-holder.nav-hidden .theme-toggle-mobile {
-    transform: translateY(calc(-100% - 1rem));
-    visibility: hidden;
-    transition: transform 300ms cubic-bezier(.2, .75, .25, 1), visibility 0s linear 300ms;
-  }
   .nav-pill {
     justify-content: flex-start;
     gap: 0.25rem;
@@ -503,23 +497,6 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 }
 .theme-toggle.is-dark .theme-toggle-thumb { transform: translateX(24px); }
 .theme-toggle:focus-visible { outline-color: var(--accent-strong); }
-.theme-toggle-mobile { display: none; }
-@media (max-width: 60em) {
-  .theme-toggle-desktop { display: none; }
-  .theme-toggle-mobile {
-    position: fixed;
-    top: calc(env(safe-area-inset-top) + 0.5rem);
-    right: max(1rem, env(safe-area-inset-right));
-    z-index: 110;
-    display: inline-flex;
-    background: var(--nav-glass);
-    border-color: var(--nav-glass-border);
-    box-shadow: 0 10px 26px var(--shadow);
-    backdrop-filter: blur(18px) saturate(145%);
-    -webkit-backdrop-filter: blur(18px) saturate(145%);
-    transition: transform 300ms cubic-bezier(.2, .75, .25, 1), visibility 0s linear;
-  }
-}
 
 @media (hover: hover) and (pointer: fine) {
   .nav-reveal-zone {
@@ -534,11 +511,10 @@ h1,h2,h3 { font-family: var(--font); text-wrap: balance; hyphens: none; }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .nav-pill { background: var(--nav-surface); }
-  .theme-toggle-mobile { background: var(--nav-surface); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav, .theme-toggle-mobile, .mobile-theme-holder .theme-toggle-mobile {
+  .nav {
     transition-duration: 1ms;
     transition-delay: 0ms;
   }
@@ -1819,8 +1795,6 @@ img, svg, video { max-width: 100%; height: auto; }
   }
   .nav-overlay .nav-recruitment-mobile.is-open { color: #fff; background: #071d60; }
   .nav-overlay .nav-recruitment-mobile.is-closed { color: var(--muted); background: var(--surface-2); }
-  .theme-toggle-mobile,
-  .mobile-theme-holder { display: none !important; }
   .theme-toggle-desktop { display: inline-flex; margin-left: auto; }
   .nav-hamburger {
     order: 3;
@@ -1889,19 +1863,17 @@ img, svg, video { max-width: 100%; height: auto; }
   .theme-toggle-desktop.mobile-nav-control {
     order: 1;
     margin-left: 0;
+    flex-basis: 46px;
+    width: 46px;
+    min-width: 46px;
+    height: 40px;
+    min-height: 40px;
+    padding: 0 4px;
+    border-radius: 999px;
+    border: 1px solid var(--nav-glass-border);
+    background: var(--nav-glass);
+    color: var(--ink);
   }
-  .theme-toggle-desktop.mobile-nav-control .theme-toggle-thumb {
-    display: grid;
-    place-items: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 0;
-    background: transparent;
-    color: var(--accent-strong);
-    transform: none;
-  }
-  .theme-toggle-desktop.mobile-nav-control.is-dark .theme-toggle-thumb { transform: none; }
-  .mobile-theme-holder { display: none !important; }
   .nav-overlay .nav-mobile-brand {
     display: flex;
     align-items: center;

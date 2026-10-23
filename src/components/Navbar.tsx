@@ -53,10 +53,10 @@ function RecruitmentAction({
 
 const isActiveRoute = (path: string, href: string) => path === href || (href === "/pengurus" && /^\/(?:divisi|bidang)\//.test(path))
 
-function ThemeToggle({ darkMode, onToggle, mobile = false }: { darkMode: boolean; onToggle: () => void; mobile?: boolean }) {
+function ThemeToggle({ darkMode, onToggle }: { darkMode: boolean; onToggle: () => void }) {
   return (
     <button
-      className={`theme-toggle ${mobile ? "theme-toggle-mobile" : "theme-toggle-desktop mobile-nav-control"} ${darkMode ? "is-dark" : ""}`}
+      className={`theme-toggle theme-toggle-desktop mobile-nav-control ${darkMode ? "is-dark" : ""}`}
       type="button"
       role="switch"
       aria-checked={darkMode}
@@ -78,7 +78,6 @@ export default function Navbar({ path }: { path: string }) {
   const [darkMode, setDarkMode] = useState(() => document.documentElement.dataset.theme === "dark")
   const [recruitmentOpen, setRecruitmentOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
-  const mobileThemeRef = useRef<HTMLDivElement>(null)
   const menuRef = useRef<HTMLElement>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
   const desktopPengurusRef = useRef<HTMLLIElement>(null)
@@ -138,7 +137,6 @@ export default function Navbar({ path }: { path: string }) {
       accumulatedDistance = 0
 
       const focused = headerRef.current?.contains(document.activeElement)
-        || mobileThemeRef.current?.contains(document.activeElement)
       if (open || pointerInNavigationRef.current || focused) {
         setNavHidden(false)
         return
@@ -313,20 +311,6 @@ export default function Navbar({ path }: { path: string }) {
           </button>
         </div>
       </header>
-
-      <div
-        ref={mobileThemeRef}
-        className={`mobile-theme-holder${navHidden ? " nav-hidden" : ""}`}
-        onPointerEnter={event => enterNavigation(event.pointerType)}
-        onPointerLeave={event => leaveNavigation(event.pointerType)}
-        onFocusCapture={revealNavigation}
-      >
-        <ThemeToggle
-          darkMode={darkMode}
-          onToggle={toggleTheme}
-          mobile
-        />
-      </div>
 
       {/* Full-screen mobile overlay */}
       <nav
