@@ -1876,17 +1876,31 @@ img, svg, video { max-width: 100%; height: auto; }
     min-height: 44px;
     padding: 0;
     border-radius: 50%;
+    border: 1px solid var(--nav-glass-border);
+    background: var(--nav-glass);
+    color: var(--ink);
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
   }
+  .nav-hamburger.mobile-nav-control:hover,
+  .theme-toggle-desktop.mobile-nav-control:hover { background: var(--nav-glass-highlight); border-color: var(--accent-strong); }
+  .nav-hamburger.mobile-nav-control:active,
+  .theme-toggle-desktop.mobile-nav-control:active { transform: scale(0.96); }
   .nav-hamburger.mobile-nav-control { order: 0; }
   .theme-toggle-desktop.mobile-nav-control {
     order: 1;
     margin-left: 0;
   }
   .theme-toggle-desktop.mobile-nav-control .theme-toggle-thumb {
-    width: 28px;
-    height: 28px;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+    background: transparent;
+    color: var(--accent-strong);
+    transform: none;
   }
-  .theme-toggle-desktop.mobile-nav-control.is-dark .theme-toggle-thumb { transform: translateX(14px); }
+  .theme-toggle-desktop.mobile-nav-control.is-dark .theme-toggle-thumb { transform: none; }
   .mobile-theme-holder { display: none !important; }
   .nav-overlay .nav-mobile-brand {
     display: flex;

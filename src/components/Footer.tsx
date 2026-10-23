@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react"
 import { ArrowUp, Mail, MapPin } from "lucide-react"
 import { bidangList } from "../data/bidang"
+import { subscribeToScroll } from "../lib/scroll"
 
 const CURRENT_YEAR = new Date().getFullYear()
+const BACK_TO_TOP_THRESHOLD = 320
 const MAP_URL = "https://www.google.com/maps/place/Universitas+Asahan+(UNA)/@2.9662091,99.6219396,17z/data=!3m1!4b1!4m6!3m5!1s0x3032495abfd9eb8d:0x9473c0d893d71d28!8m2!3d2.9662091!4d99.6219396!16s%2Fg%2F1hm5b9k0x?authuser=0&entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D"
 
 const NAV = [
@@ -38,6 +41,15 @@ const SOCIAL_LINKS = [
 ]
 
 export default function Footer() {
+  const [showBackToTop, setShowBackToTop] = useState(() => window.scrollY > BACK_TO_TOP_THRESHOLD)
+
+  useEffect(() => {
+    return subscribeToScroll(({ y }) => {
+      const shouldShow = y > BACK_TO_TOP_THRESHOLD
+      setShowBackToTop(current => current === shouldShow ? current : shouldShow)
+    })
+  }, [])
+
   return (
     <footer className="site-footer">
       <div className="wrap site-footer-wrap">
@@ -112,9 +124,11 @@ export default function Footer() {
 
       <button
         type="button"
-        className="footer-back-to-top"
+        className={`footer-back-to-top${showBackToTop ? " is-visible" : ""}`}
         aria-label="Kembali ke atas"
         title="Kembali ke atas"
+        aria-hidden={!showBackToTop}
+        tabIndex={showBackToTop ? 0 : -1}
         onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
       >
         <ArrowUp aria-hidden size={28} />
@@ -253,9 +267,20 @@ export default function Footer() {
           background: #08236d;
           cursor: pointer;
           box-shadow: 0 8px 24px rgb(2 8 35 / 30%);
-          transition: transform 180ms ease, background-color 180ms ease;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transform: translateY(0.65rem);
+          transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms, background-color 180ms ease;
         }
-        .footer-back-to-top:hover { transform: translateY(-3px); background: #10368f; }
+        .footer-back-to-top.is-visible {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+          transition-delay: 0s;
+        }
+        .footer-back-to-top.is-visible:hover { transform: translateY(-3px); background: #10368f; }
         @media (max-width: 70em) {
           .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; }
           .footer-brand { grid-column: 1; }

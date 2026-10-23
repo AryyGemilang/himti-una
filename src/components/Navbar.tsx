@@ -3,6 +3,7 @@ import { ArrowUpRight, ChevronDown, LockKeyhole, Moon, Sun } from "lucide-react"
 import { bidangList } from "../data/bidang"
 import { LOGO_UNA } from "../lib/assets"
 import { apiUrl } from "../lib/api"
+import { subscribeToScroll } from "../lib/scroll"
 
 const MENU = [
   ["Beranda", "/"], ["Tentang Kami", "/tentang"], ["Sejarah", "/sejarah"],
@@ -116,50 +117,34 @@ export default function Navbar({ path }: { path: string }) {
   }
 
   useEffect(() => {
-    let frame = 0
-    let previousY = Math.max(0, window.scrollY)
     let previousDirection = 0
     let accumulatedDistance = 0
     const threshold = 12
     const topSafeZone = 80
 
-    const onScroll = () => {
-      if (frame) return
-      frame = window.requestAnimationFrame(() => {
-        frame = 0
-        const currentY = Math.max(0, window.scrollY)
-        const delta = currentY - previousY
-        previousY = currentY
-
-        if (currentY <= topSafeZone) {
-          accumulatedDistance = 0
-          previousDirection = 0
-          setNavHidden(false)
-          return
-        }
-        if (!delta) return
-
-        const direction = delta > 0 ? 1 : -1
-        accumulatedDistance = direction === previousDirection ? accumulatedDistance + Math.abs(delta) : Math.abs(delta)
-        previousDirection = direction
-        if (accumulatedDistance < threshold) return
+    return subscribeToScroll(({ y, delta }) => {
+      if (y <= topSafeZone) {
         accumulatedDistance = 0
+        previousDirection = 0
+        setNavHidden(false)
+        return
+      }
+      if (!delta) return
 
-        const focused = headerRef.current?.contains(document.activeElement)
-          || mobileThemeRef.current?.contains(document.activeElement)
-        if (open || pointerInNavigationRef.current || focused) {
-          setNavHidden(false)
-          return
-        }
-        setNavHidden(direction > 0)
-      })
-    }
+      const direction = delta > 0 ? 1 : -1
+      accumulatedDistance = direction === previousDirection ? accumulatedDistance + Math.abs(delta) : Math.abs(delta)
+      previousDirection = direction
+      if (accumulatedDistance < threshold) return
+      accumulatedDistance = 0
 
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => {
-      window.removeEventListener("scroll", onScroll)
-      if (frame) window.cancelAnimationFrame(frame)
-    }
+      const focused = headerRef.current?.contains(document.activeElement)
+        || mobileThemeRef.current?.contains(document.activeElement)
+      if (open || pointerInNavigationRef.current || focused) {
+        setNavHidden(false)
+        return
+      }
+      setNavHidden(direction > 0)
+    })
   }, [open])
 
   const revealNavigation = () => setNavHidden(false)
